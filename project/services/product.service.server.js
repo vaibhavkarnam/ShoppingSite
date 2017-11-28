@@ -1,4 +1,5 @@
 var app = require("../../express");
+var productModel = require("../models/product/product.model.server");
 var mongoose = require("mongoose");
 const http = require('http');
 'use strict';
@@ -8,6 +9,10 @@ var apiKey = "hkdhjjxs2xwx46mm6mf347wx";
 var walmart = require('walmart')(apiKey);
 
 app.get("/api/walmartSearch/:product", walmartProductSearch);
+app.get("/api/product/:websiteId",findProductById);
+app.post("/api/product",createProduct);
+app.put("/api/product/:productId",updateProduct);
+app.delete("/api/product/:productId",deleteProduct);
 
 function walmartProductSearch(req, res){
     var product = req.query.product;
@@ -16,4 +21,75 @@ function walmartProductSearch(req, res){
         console.log(response.totalResults);
         res.json(response);
     });
+}
+
+function deleteProduct(req,res){
+    var productId = req.params.productId;
+    productModel
+        .deleteProduct(productId)
+        .then(function (status){
+            res.json(status);
+        });
+}
+
+function updateProduct(req, res){
+    var productId = req.params.productId;
+    var product = req.body;
+    productModel
+        .updateProduct(productId,product)
+        .then(function (status){
+            // console.log(status);
+            // res.json(status);
+            return productModel
+                .findProductById(productId);
+        },function (err){
+            res.sendStatus(404).send(err);
+        })
+        .then(function (product){
+            // console.log(user);
+            res.json(product);
+            return;
+        },function (err) {
+            res.sendStatus(404).send(err);
+            return;
+            // }
+        });
+
+    // for(var w in websites) {
+    //         if(websites[w]._id === websiteId) {
+    //             websites[w] = website;
+    //             res.json(websites[w]);
+    //             return;
+    //         }
+    //     }
+    //     res.sendStatus(404);
+}
+
+function createProduct(req, res) {
+    var product = req.body;
+    productModel
+        .createProduct(product)
+        .then(function (product){
+            res.json(product);
+        });
+    // website._id = (new Date()).getTime() + "";
+    // website.developerId = userId;
+    // websites.push(website);
+    // res.json(website);
+}
+// console.log(sites);
+// res.json(sites);
+// }
+
+function findProductById(req,res){
+    var productId = req.params.productId;
+    productModel
+        .findProductById(productId)
+        .then(function (product){
+            res.json(product);
+        });
+    // var website = websites.find(function (website){
+    //        return website._id === req.params.websiteId;
+    //     });
+    //      res.json(website);
 }
