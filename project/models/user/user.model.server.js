@@ -14,33 +14,12 @@ userModel.findUserByCredentials = findUserByCredentials;
 userModel.deleteUser = deleteUser;
 userModel.findAllUsers = findAllUsers;
 userModel.findUserByUsername = findUserByUsername;
-userModel.addWebsite = addWebsite;
-userModel.deleteWebsite = deleteWebsite;
 userModel.findUserByGoogleId = findUserByGoogleId;
 
 module.exports = userModel;
 
 function findUserByGoogleId(googleId) {
     return userModel.findOne({'google.id': googleId})
-}
-
-function deleteWebsite(userId,websiteId){
-    return userModel
-        .findById(userId)
-        .then (function (user){
-            var index = user.websites.indexOf(websiteId);
-            user.websites.splice(index,1);
-            return user.save();
-        });
-}
-
-function addWebsite(userId, websiteId){
-    return userModel
-        .findById(userId)
-        .then (function (user){
-            user.websites.push(websiteId);
-            return user.save();
-        });
 }
 
 function findUserByUsername(username){

@@ -8,7 +8,7 @@ var userSchema = mongoose.Schema({
     password: String,
     firstName: String,
     lastName: String,
-    roles: [{type:String,default:'USER',enum:['USER','STUDENT','FACULTY','ADMIN']}],
+    roles: [{type:String,default:'USER',enum:['USER','CUSTOMER','SELLER','ADMIN','REPRESENTATIVE','TECHNICIAN']}],
     email: String,
     dob: Date,
     isAdmin: Boolean,
@@ -17,7 +17,6 @@ var userSchema = mongoose.Schema({
         token: String
     },
     // phone: String
-    websites: [{type: mongoose.Schema.Types.ObjectId, ref: "WebsiteModel"}],
     dateCreated: {type: Date,default: Date.now()}
 },{collection: "user"});
 
