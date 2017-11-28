@@ -39,5 +39,10 @@
                 controller  : 'createproductController',
                 controllerAs: 'model'
             })
+            .when('/register', {
+                templateUrl: 'views/register.view.client.html',
+                controller  : 'registerController',
+                controllerAs: 'model'
+            })
     }
 })();
