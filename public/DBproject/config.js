@@ -11,7 +11,7 @@
         $routeProvider
             .when('/', {
                 templateUrl: 'views/home.html',
-                controller  : 'movieController',
+                controller  : 'homeController',
                 controllerAs: 'model'
             })
             .when('/products', {

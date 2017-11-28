@@ -9,7 +9,7 @@
 (function (){
     //iife immediately invoked function expression
     angular
-        .module("WamApp")
+        .module("omdbApp")
         .controller("loginController",loginController);
 
     function loginController($location, userService, $rootScope) {
