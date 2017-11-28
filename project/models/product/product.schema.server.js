@@ -3,14 +3,18 @@
  */
 var mongoose = require('mongoose');
 
-var websiteSchema = mongoose.Schema({
-    developerId:{type: mongoose.Schema.Types.ObjectId, ref:'UserModel'},
+var productSchema = mongoose.Schema({
     name: String,
+    brand: String,
     description: String,
+    price: String,
+    color: String,
+    stock: String,
+    imageurl: [String],
     // phone: String
     // websites: [{type: mongoose.Schema.ObjectId, ref: "WebsiteModel"}],
     dateCreated: {type: Date,default: Date.now()},
-    pages:[{type:mongoose.Schema.Types.ObjectId, ref:'PageModel'}]
-},{collection: "website"});
+    reviews:[{type:mongoose.Schema.Types.ObjectId, ref:'ReviewModel'}]
+},{collection: "product"});
 
-module.exports = websiteSchema;
+module.exports = productSchema;
