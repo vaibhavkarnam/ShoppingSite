@@ -1,0 +1,124 @@
+
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header col-xs-6">
+            <div class="row">
+                <!--<div class="col-glyphicon-position">-->
+                <!--<a class= "wdc-anchor-new"-->
+                <!--hrprofile.view.client.htmlhtml">-->
+                <!--<span class="glyphicon glyphicon-chevron-left"></span>-->
+                <!--</a>-->
+                <!--</div>-->
+                <div class="col-website-position">
+                    <a class="navbar-brand "
+                       href="#!/profile/{{model.user._id}}">Profile</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="navbar-text pull-right">
+            <a class= "navbar-link pointer"
+               ng-click="model.updateUser(model.user)">
+                <span class="glyphicon glyphicon-ok pull-right"></span>
+            </a>
+        </div><!-- /.navbar-collapse -->
+
+    </div><!-- /.container-fluid -->
+</nav>
+
+
+
+<div class="container-fluid wbd-profile-container">
+
+    <div ng-show="model.message" class="alert alert-info">
+        {{model.message}}
+    </div>
+    <form>
+        <div class="form-group">
+            <label for="firstName">First Name</label>
+            <input name="firstName"
+                   ng-model="model.user.firstName"
+                   class="form-control"
+                   id="firstName"
+                   placeholder="First Name"/>
+        </div>
+        <div class="form-group">
+            <label for="lastName">Last Name</label>
+            <input name="lastName"
+                   ng-model="model.user.lastName"
+                   class="form-control"
+                   id="lastName"
+                   placeholder="Last Name"/>
+        </div>
+        <div class="form-group">
+            <label for="username">Username</label>
+            <input name="username"
+                   ng-model="model.user.username"
+                   readonly
+                   class="form-control"
+                   id="username"
+                   value="alice"/>
+        </div>
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input name="email"
+                   ng-model="model.user.email"
+                   type="email"
+                   class="form-control"
+                   id="email"
+                   placeholder="alice@wonderland.com"/>
+        </div>
+        <div class="form-group">
+            <label for="dob">Date Of Birth</label>
+            <input name="dob"
+                   ng-model="model.user.dob"
+                   type="date"
+                   class="form-control"
+                   id="dob"
+                   placeholder="11/12/2017"/>
+        </div>
+    </form>
+
+    <ul class="list-group">
+        <li class="list-group-item active">
+            <div class="row">
+                <div class="col-xs-5">Name</div>
+                <div class="col-xs-5 col-sm-4">Updated</div>
+                <div class="col-sm-2 hidden-xs">Developer</div>
+                <div class="col-xs-2 col-sm-1"></div>
+            </div>
+        </li>
+        <li ng-repeat="website in model.websites" class="list-group-item">
+            <div class="row">
+                <div class="col-xs-5">
+                    <a href="#!/user/{{model.userId}}/website/{{website._id}}/page">{{website.name}}</a></div>
+                <div class="col-xs-5 col-sm-4">{{website.dateCreated | date : 'short'}}</div>
+                <div class="col-sm-2 hidden-xs">{{website.developerId.username}}</div>
+                <div class="col-xs-2 col-sm-1">
+                    <a href="#!/user/{{model.userId}}/website/{{website._id}}">
+                        <span class="glyphicon glyphicon-cog pull-right"></span>
+                    </a>
+                </div>
+            </div>
+        </li>
+
+    </ul>
+
+    <a class="btn btn-default btn-primary btn-block"
+       href="#!/user/{{model.user._id}}/website"
+       role="button">Websites</a>
+    <a class="btn btn-default btn-danger btn-block"
+       ng-click="model.unRegisterUser()"
+       role="button">Unregister</a>
+    <a class="btn btn-default btn-danger btn-block"
+       ng-click="model.logout()"
+       role="button">Logout</a>
+
+
+</div>
+<div ng-include="'views/common/footer-common.view.client.html'"></div>
+
+
+

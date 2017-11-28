@@ -12,7 +12,7 @@
         .module("omdbApp")
         .controller("loginController",loginController);
 
-    function loginController($location, userService, $rootScope) {
+    function loginController() {
         // JSON = Javascript Object Notation
         var model = this;
 
