@@ -8,13 +8,13 @@ var db = require("../database");
 var productModel = mongoose.model('productModel',productSchema);
 var userModel = require('../user/user.model.server');
 
-websiteModel.createProduct = createProduct;
-websiteModel.updateProduct = updateProduct;
-websiteModel.findAllProducts = findAllProducts;
-websiteModel.deleteProduct = deleteProduct;
-websiteModel.findProductById = findProductById;
-websiteModel.deleteReview = deleteReview;
-websiteModel.addReview = addReview;
+productModel.createProduct = createProduct;
+productModel.updateProduct = updateProduct;
+productModel.findAllProducts = findAllProducts;
+productModel.deleteProduct = deleteProduct;
+productModel.findProductById = findProductById;
+productModel.deleteReview = deleteReview;
+productModel.addReview = addReview;
 
 module.exports = websiteModel;
 

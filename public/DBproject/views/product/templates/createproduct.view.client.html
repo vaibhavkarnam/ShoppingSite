@@ -39,7 +39,7 @@
         <div class="form-group">
             <label for="brand">Brand</label>
             <input name="brand"
-                   ng-model="model.user.brand"
+                   ng-model="product.brand"
                    class="form-control"
                    id="brand"
                    placeholder="Brand"/>
@@ -47,7 +47,7 @@
         <div class="form-group">
             <label for="Name">Name</label>
             <input name="Name"
-                   ng-model="model.user.Name"
+                   ng-model="product.name"
                    class="form-control"
                    id="Name"
                    placeholder="Name"/>
@@ -55,7 +55,7 @@
         <div class="form-group">
             <label for="price">Price</label>
             <input name="price"
-                   ng-model="model.user.price"
+                   ng-model="product.name"
                    class="form-control"
                    id="price"
                    placeholder="Price"/>
@@ -86,7 +86,7 @@
         </div>
     </form>
     <a class="btn btn-default btn-primary btn-block"
-       href="#!/user/{{model.user._id}}/website"
+       ng-click="model.createProduct(product)"
        role="button">Create</a>
     <a class="btn btn-default btn-danger btn-block"
        ng-click="model.unRegisterUser()"
