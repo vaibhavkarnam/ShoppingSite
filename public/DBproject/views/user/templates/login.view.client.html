@@ -1,0 +1,50 @@
+
+
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header col-xs-6">
+            <a class="navbar-brand"
+               href="#!/login">Login</a>
+
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+
+    </div><!-- /.container-fluid -->
+</nav>
+
+<div class="container-fluid wbd-login-container">
+    <div>
+        <!--<div ng-show="model.errorMessage" class="alert alert-danger">-->
+            <!--{{model.errorMessage}}-->
+        <!--</div>-->
+        <label for="username">Username</label>
+        <input name="username"
+               ng-model="model.user.username"
+               class="form-control"
+               id="username"
+               placeholder="username"/>
+
+        <label for="password">Password</label>
+        <input name="password"
+               type="password"
+               ng-model="model.user.password"
+               class="form-control"
+               id="password"
+               placeholder="password"/>
+        <a class="btn btn-default btn-primary btn-block"
+           ng-click="model.login(model.user)">Login</a>
+        <a href="/auth/google" class="btn btn-danger btn-block">
+            <span class="fa fa-google-plus"></span>
+            Google
+        </a>
+        <a class="btn btn-default btn-success btn-block"
+           href="#!/register"
+           role="button">Register</a>
+    </div>
+    <nav class="navbar navbar-default navbar-fixed-bottom">
+
+    </nav>
+
+</div>

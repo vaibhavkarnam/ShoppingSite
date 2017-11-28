@@ -14,5 +14,20 @@
                 controller  : 'movieController',
                 controllerAs: 'model'
             })
+            .when('/products', {
+                templateUrl: 'views/products.html',
+                controller  : 'movieController',
+                controllerAs: 'model'
+            })
+            .when('/product_detail', {
+                templateUrl: 'views/product_detail.html',
+                controller  : 'movieController',
+                controllerAs: 'model'
+            })
+            .when('/login', {
+                templateUrl: 'views/user/templates/login.view.client.html',
+                controller  : 'loginController',
+                controllerAs: 'model'
+            })
     }
 })();

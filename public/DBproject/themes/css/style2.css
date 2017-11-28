@@ -1,0 +1,131 @@
+input,textarea,select {
+margin-bottom: 5px;
+}
+
+@media (min-width: 768px){
+.navbar-text {
+    margin-right: 15px;
+    margin-left: 15px;
+}
+}
+body{
+    padding-top: 60px;
+    padding-bottom: 60px;
+    overflow-y: scroll;
+}
+.navbar-default {
+    background-color: #5061a0;
+    border-color: #262d4c;
+}
+
+.navbar-default .navbar-brand,
+.navbar-default a.navbar-brand:visited{
+    color: white;
+}
+.wdc-anchor-new {
+    color: white;
+}
+
+.col-glyphicon-position{
+    width: 5%;
+    float: left;
+    padding-top: 15px;
+    padding-left: 6px;
+}
+.wdc-back{
+    float: left;
+}
+
+.wbd-split-view-left{
+    position: absolute;
+    top: 60px;
+    bottom: 60px;
+    z-index: 1;
+    overflow-y: scroll;
+}
+
+@media (min-width: 1200px){
+    .col-lg-9.wbd-split-view-right{
+        width: 75%;
+        position: absolute;
+        top: 60px;
+        right: 0px;
+        bottom: 60px;
+        overflow-y: scroll;
+    }
+}
+
+.glyphicon-ok,.glyphicon-user {
+    color: white;
+    font-size: 20px;
+}
+.navbar-default .navbar-brand:hover, .glyphicon-ok:hover, .glyphicon-user:hover,.glyphicon-plus:hover,.glyphicon-eye-open:hover,.glyphicon-play:hover{
+    color: black;
+}
+
+.wbd-toolbar{
+    position: absolute;
+    background-color: white;
+    z-index: 1;
+    right:4px;
+    border-bottom-left-radius: 5px;
+    border-top-left-radius: 5px;
+    opacity: 0.7;
+    padding-right: 10px;
+}
+.wbd-toolbar-youtube{
+    position: absolute;
+    background-color: white;
+    z-index: 1;
+    right:0px;
+    top:40px;
+    border-bottom-left-radius: 5px;
+    border-top-left-radius: 5px;
+    opacity: 0.7;
+}
+
+.wbd-widget-video {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 */
+    padding-top: 25px;
+    height: 0;
+}
+.wbd-widget-video iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.wbd-widget {
+    margin: 10px ;
+}
+
+.wbd-widget-format {
+    margin-bottom: 10px ;
+}
+
+.container-fluid.wbd-login-container{
+    padding-left: 28px;
+    padding-right: 28px;
+}
+
+.container-fluid.wbd-profile-container{
+    padding-left: 15px;
+    padding-right: 15px;
+}
+.pointer{
+    cursor: pointer;
+}
+.wdc-padding-profile{
+    padding-right: 15px;
+}
+.navbar-default a.navbar-brand:hover{
+    color:black;
+}
+
+.taj-carousel-container, .taj-carousel-img{
+    width: 100%;
+    height: 600px !important;
+}
