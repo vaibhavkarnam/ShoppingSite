@@ -1,0 +1,99 @@
+
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header col-xs-6">
+            <div class="row">
+                <!--<div class="col-glyphicon-position">-->
+                <!--<a class= "wdc-anchor-new"-->
+                <!--hrprofile.view.client.htmlhtml">-->
+                <!--<span class="glyphicon glyphicon-chevron-left"></span>-->
+                <!--</a>-->
+                <!--</div>-->
+                <div class="col-website-position">
+                    <a class="navbar-brand "
+                       href="#!/profile/{{model.user._id}}">Create Product</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="navbar-text pull-right">
+            <a class= "navbar-link pointer"
+               ng-click="model.updateUser(model.user)">
+                <span class="glyphicon glyphicon-ok pull-right"></span>
+            </a>
+        </div><!-- /.navbar-collapse -->
+
+    </div><!-- /.container-fluid -->
+</nav>
+
+
+
+<div class="container-fluid wbd-profile-container">
+
+    <div ng-show="model.message" class="alert alert-info">
+        {{model.message}}
+    </div>
+    <form>
+        <div class="form-group">
+            <label for="brand">Brand</label>
+            <input name="brand"
+                   ng-model="model.user.brand"
+                   class="form-control"
+                   id="brand"
+                   placeholder="Brand"/>
+        </div>
+        <div class="form-group">
+            <label for="Name">Name</label>
+            <input name="Name"
+                   ng-model="model.user.Name"
+                   class="form-control"
+                   id="Name"
+                   placeholder="Name"/>
+        </div>
+        <div class="form-group">
+            <label for="price">Price</label>
+            <input name="price"
+                   ng-model="model.user.price"
+                   class="form-control"
+                   id="price"
+                   placeholder="Price"/>
+        </div>
+        <div class="form-group">
+            <label for="Color">Color</label>
+            <input name="Color"
+                   ng-model="model.user.Color"
+                   class="form-control"
+                   id="Color"
+                   placeholder="Color"/>
+        </div>
+        <div class="form-group">
+            <label for="stock">Stock</label>
+            <input name="stock"
+                   ng-model="model.user.stock"
+                   class="form-control"
+                   id="stock"
+                   placeholder="stock"/>
+        </div>
+        <div class="form-group">
+            <label for="imageurl">Image Url</label>
+            <input name="imageurl"
+                   ng-model="model.user.imageurl"
+                   class="form-control"
+                   id="imageurl"
+                   placeholder="imageurl"/>
+        </div>
+    </form>
+    <a class="btn btn-default btn-primary btn-block"
+       href="#!/user/{{model.user._id}}/website"
+       role="button">Create</a>
+    <a class="btn btn-default btn-danger btn-block"
+       ng-click="model.unRegisterUser()"
+       role="button">Cancel</a>
+
+</div>
+<div ng-include="'views/common/footer-common.view.client.html'"></div>
+
+
+

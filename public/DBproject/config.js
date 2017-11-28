@@ -34,5 +34,10 @@
                 controller  : 'profileController',
                 controllerAs: 'model'
             })
+            .when('/createproduct', {
+                templateUrl: 'views/product/templates/createproduct.view.client.html',
+                controller  : 'createproductController',
+                controllerAs: 'model'
+            })
     }
 })();
