@@ -20,9 +20,9 @@
         model.logout = logout;
 
         function init() {
-                    var usr = userobject;
-                    usr.dob = new Date(usr.dob);
-                    model.user = usr;
+                    // var usr = userobject;
+                    // usr.dob = new Date(usr.dob);
+                    // model.user = usr;
                     // if (typeof model.user.dob !== 'undefined') {
                     //     model.user.dob = setDate(model.user.dob);
                     // }

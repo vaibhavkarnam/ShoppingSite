@@ -1,0 +1,27 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header col-xs-6">
+            <div class="row">
+                <div class="col-glyphicon-position">
+                    <a class= "wdc-anchor-new"
+                       href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page">
+                        <span class="glyphicon glyphicon-chevron-left"></span>
+                    </a>
+                </div>
+                <div class="col-website-position">
+                    <a class="navbar-brand"
+                       href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget">Widget-List</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="navbar-text pull-right">
+            <a class= "wdc-anchor-new"
+               href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/new">
+                <span class="glyphicon glyphicon-plus pull-right"></span>
+            </a>
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+</nav>
