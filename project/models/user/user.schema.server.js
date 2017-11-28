@@ -17,7 +17,10 @@ var userSchema = mongoose.Schema({
         token: String
     },
     // phone: String
-    dateCreated: {type: Date,default: Date.now()}
+    dateCreated: {type: Date,default: Date.now()},
+    products: [{type: mongoose.Schema.Types.ObjectId, ref: "ProductModel"}],
+    services: [{type: mongoose.Schema.Types.ObjectId, ref: "ServiceModel"}],
+    returns: [{type: mongoose.Schema.Types.ObjectId, ref: "ReturnModel"}],
 },{collection: "user"});
 
 module.exports = userSchema;

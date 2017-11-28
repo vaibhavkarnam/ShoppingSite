@@ -15,6 +15,12 @@ userModel.deleteUser = deleteUser;
 userModel.findAllUsers = findAllUsers;
 userModel.findUserByUsername = findUserByUsername;
 userModel.findUserByGoogleId = findUserByGoogleId;
+userModel.addProduct = addProduct;
+userModel.deleteProduct = deleteProduct;
+userModel.addService = addService;
+userModel.deleteService = deleteService;
+userModel.addReturn = addReturn;
+userModel.deleteReturn = deleteReturn;
 
 module.exports = userModel;
 
@@ -52,4 +58,61 @@ function deleteUser(userId){
 
 function findUserById(userId){
     return userModel.findById(userId);
+}
+
+function deleteProduct(userId,productId){
+    return userModel
+        .findById(userId)
+        .then (function (user){
+            var index = user.products.indexOf(productId);
+            user.products.splice(index,1);
+            return user.save();
+        });
+}
+
+function addProduct(userId, productId){
+    return userModel
+        .findById(userId)
+        .then (function (user){
+            user.products.push(productId);
+            return user.save();
+        });
+}
+
+function deleteService(userId,serviceId){
+    return userModel
+        .findById(userId)
+        .then (function (user){
+            var index = user.services.indexOf(serviceId);
+            user.services.splice(index,1);
+            return user.save();
+        });
+}
+
+function addService(userId, serviceId){
+    return userModel
+        .findById(userId)
+        .then (function (user){
+            user.services.push(serviceId);
+            return user.save();
+        });
+}
+
+function deleteReturn(userId,returnId){
+    return userModel
+        .findById(userId)
+        .then (function (user){
+            var index = user.services.indexOf(returnId);
+            user.returns.splice(index,1);
+            return user.save();
+        });
+}
+
+function addReturn(userId, returnId){
+    return userModel
+        .findById(userId)
+        .then (function (user){
+            user.returns.push(returnId);
+            return user.save();
+        });
 }
