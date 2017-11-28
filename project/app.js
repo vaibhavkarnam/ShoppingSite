@@ -13,7 +13,7 @@ var mongoose = require("mongoose");
 /*mongoose.connect("mongodb://localhost/projectDB");
 mongoose.Promise = require('q').Promise;*/
 
-require("./product.service.server");
+require("./services/product.service.server");
 /*
 require("./website.service.server");
 require("./page.service.server");
