@@ -20,6 +20,7 @@ app.use(passport.session());
 
 app.use(express.static(__dirname + '/public'));
 
+require("./project/app");
 //require ('./POC/app');
 
 app.listen(process.env.PORT ||3000);

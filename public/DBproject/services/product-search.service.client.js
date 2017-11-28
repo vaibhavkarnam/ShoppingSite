@@ -12,9 +12,9 @@
         this.searchProductByName = searchProductByName;
 
         function searchProductByName(product){
-            var url = "http://api.walmartlabs.com/v1/search?apiKey=hkdhjjxs2xwx46mm6mf347wx&numItems=12&query="+product;
+            var url = "/api/walmartSearch/"+product;
             return $http.get(url)
-                .then(function (response) {
+                .then(function (response){
                     return response.data;
                 });
         }
