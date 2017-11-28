@@ -8,10 +8,10 @@
 (function (){
     //iife immediately invoked function expression
     angular
-        .module("WamApp")
+        .module("omdbApp")
         .controller("createproductController",createproductController);
 
-    function profileController() {
+    function createproductController() {
 
         var model = this;
 
