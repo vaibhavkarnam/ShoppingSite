@@ -26,6 +26,11 @@ body{
     color: white;
 }
 
+.profile-list-gray{
+    background-color: darkgrey;
+    color: white;
+}
+
 .col-glyphicon-position{
     width: 5%;
     float: left;
