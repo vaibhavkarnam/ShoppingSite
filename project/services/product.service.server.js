@@ -15,7 +15,7 @@ app.put("/api/product/:productId",updateProduct);
 app.delete("/api/product/:productId",deleteProduct);
 
 function walmartProductSearch(req, res){
-    var product = req.query.product;
+    var product = req.params.product;
 
     walmart.search(product, null).then(function(response) {
         console.log(response.totalResults);
