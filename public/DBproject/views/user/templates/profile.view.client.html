@@ -29,135 +29,314 @@
 </nav>
 
 
+<!--<div id="content">-->
+    <!--<ul id="tabs" class="nav nav-tabs" data-tabs="tabs">-->
+        <!--<li class="active"><a href="#red" data-toggle="tab">Red</a></li>-->
+        <!--<li><a href="#orange" data-toggle="tab">Orange</a></li>-->
+        <!--<li><a href="#yellow" data-toggle="tab">Yellow</a></li>-->
+        <!--<li><a href="#green" data-toggle="tab">Green</a></li>-->
+        <!--<li><a href="#blue" data-toggle="tab">Blue</a></li>-->
+    <!--</ul>-->
+    <!--<div id="my-tab-content" class="tab-content">-->
+        <!--<div class="tab-pane active" id="red">-->
+            <!--<h1>Red</h1>-->
+            <!--<p>red red red red red red</p>-->
+        <!--</div>-->
+        <!--<div class="tab-pane" id="orange">-->
+            <!--<h1>Orange</h1>-->
+            <!--<p>orange orange orange orange orange</p>-->
+        <!--</div>-->
+        <!--<div class="tab-pane" id="yellow">-->
+            <!--<h1>Yellow</h1>-->
+            <!--<p>yellow yellow yellow yellow yellow</p>-->
+        <!--</div>-->
+        <!--<div class="tab-pane" id="green">-->
+            <!--<h1>Green</h1>-->
+            <!--<p>green green green green green</p>-->
+        <!--</div>-->
+        <!--<div class="tab-pane" id="blue">-->
+            <!--<h1>Blue</h1>-->
+            <!--<p>blue blue blue blue blue</p>-->
+        <!--</div>-->
+    <!--</div>-->
+<!--</div>-->
 
-<div class="container-fluid wbd-profile-container">
 
-    <div ng-show="model.message" class="alert alert-info">
-        {{model.message}}
+<!--<script type="text/javascript">-->
+    <!--$(document).ready(function () {-->
+        <!--$('#tabs').tab();-->
+    <!--});-->
+<!--</script>-->
+<!--</div>-->
+
+<!--<ul class="nav nav-tabs" id="myTab">-->
+    <!--<li class="active"><a data-target="#home" data-toggle="tab">Home</a></li>-->
+    <!--<li><a data-target="#profile" data-toggle="tab">Profile</a></li>-->
+    <!--<li><a data-target="#messages" data-toggle="tab">Messages</a></li>-->
+    <!--<li><a data-target="#settings" data-toggle="tab">Settings</a></li>-->
+<!--</ul>-->
+
+<!--<div class="tab-content">-->
+    <!--<div class="tab-pane active" id="home">Home</div>-->
+    <!--<div class="tab-pane" id="profile">Profile</div>-->
+    <!--<div class="tab-pane" id="messages">Message</div>-->
+    <!--<div class="tab-pane" id="settings">Settings</div>-->
+<!--</div>-->
+
+<script>
+    jQuery(function () {
+        jQuery('#myTab a:last').tab('show')
+    })
+</script>
+
+<!--<div id="content">-->
+    <!--<ul id="tabs" class="nav nav-tabs" data-tabs="tabs">-->
+        <!--<li class="active"><a href="#red" data-toggle="tab">Red</a>-->
+        <!--</li>-->
+        <!--<li><a href="#orange" data-toggle="tab">Orange</a>-->
+        <!--</li>-->
+        <!--<li><a href="#yellow" data-toggle="tab">Yellow</a>-->
+        <!--</li>-->
+        <!--<li><a href="#green" data-toggle="tab">Green</a>-->
+        <!--</li>-->
+        <!--<li><a href="#blue" data-toggle="tab">Blue</a>-->
+        <!--</li>-->
+    <!--</ul>-->
+<!--</div>-->
+<!--<div id="my-tab-content" class="tab-content">-->
+    <!--<div class="tab-pane active" id="red">-->
+        <!--<h1>Red</h1>-->
+        <!--<p>red red red red red red</p>-->
+    <!--</div>-->
+    <!--<div class="tab-pane" id="orange">-->
+        <!--<h1>Orange</h1>-->
+        <!--<p>orange orange orange orange orange</p>-->
+    <!--</div>-->
+    <!--<div class="tab-pane" id="yellow">-->
+        <!--<h1>Yellow</h1>-->
+        <!--<p>yellow yellow yellow yellow yellow</p>-->
+    <!--</div>-->
+    <!--<div class="tab-pane" id="green">-->
+        <!--<h1>Green</h1>-->
+        <!--<p>green green green green green</p>-->
+    <!--</div>-->
+    <!--<div class="tab-pane" id="blue">-->
+        <!--<h1>Blue</h1>-->
+        <!--<p>blue blue blue blue blue</p>-->
+    <!--</div>-->
+<!--</div>-->
+
+<!--<ul>-->
+    <!--<li class="nav-item"><a class="active" href="#a" data-toggle="tab">a</a></li>-->
+    <!--<li class="nav-item"><a class="active" href="#b" data-toggle="tab">b</a></li>-->
+<!--</ul>-->
+
+<!--<div class="tab-content">-->
+    <!--<div class="tab-pane active" id="a">a</div>-->
+    <!--<div class="tab-pane"        id="b">b</div>-->
+<!--</div>-->
+
+<!--<ul class="nav nav-tabs">-->
+    <!--<li><a href="#a" data-toggle="tab">a</a></li>-->
+    <!--<li><a href="#b" data-toggle="tab">b</a></li>-->
+    <!--<li><a href="#c" data-toggle="tab">c</a></li>-->
+    <!--<li><a href="#d" data-toggle="tab">d</a></li>-->
+<!--</ul>-->
+
+<!--<div class="tab-content">-->
+    <!--<div class="tab-pane active" id="a">AAA</div>-->
+    <!--<div class="tab-pane" id="b">BBB</div>-->
+    <!--<div class="tab-pane" id="c">CCC</div>-->
+    <!--<div class="tab-pane" id="d">DDD</div>-->
+<!--</div>-->
+<!--Run code snippet-->
+
+<div id="kv-avatar-errors-2" class="center-block"></div>
+<form class="form form-vertical" action="/api/upload/project" method="post" enctype="multipart/form-data">
+    <div class="row">
+        <div class="col-sm-4" id="profilebtn">
+            <div class="kv-avatar center-block text-center" style="width:200px">
+                <img ng-src="{{model.user.ProfilePic}}" src="{{model.user.ProfilePic}}">
+                <input id="avatar-2" name="avatar-2" type="file" class="file-loading" required>
+                <input  name="userId"    value="{{model.userId}}"   style="display: none"/>
+                <button type="submit"    class="btn btn-sucess btn-block">Upload Profile Pic</button>
+            </div>
+        </div>
+        <div class="col-sm-8">
+            <div class="tabbable tabs-below" ng-init="selectedTab = 1;">
+                <!--<ul class="nav nav-tabs nav-justified">-->
+                    <!--<li ng-class="{active: selectedTab == 1}">-->
+                        <!--<a data-target="#" data-ng-click="selectedTab = 1;">Reviews</a>-->
+                    <!--</li>-->
+                    <!--<li ng-class="{active: selectedTab == 2}">-->
+                        <!--<a data-target="#" data-ng-click="selectedTab = 2;">Profile</a>-->
+                    <!--</li>-->
+                    <!--<li ng-class="{active: selectedTab == 3}">-->
+                        <!--<a data-target="#" data-ng-click="selectedTab = 3;">Following</a>-->
+                    <!--</li>-->
+                    <!--<li ng-class="{active: selectedTab == 4}">-->
+                        <!--<a data-target="#" data-ng-click="selectedTab = 4;">Followers</a>-->
+                    <!--</li>-->
+                <!--</ul>-->
+
+                <ul class="nav nav-tabs nav-justified" id="myTab">
+                    <li class="active"><a data-target="#home" data-toggle="tab">Home</a></li>
+                    <li><a data-target="#profile" data-toggle="tab">Profile</a></li>
+                    <li><a data-target="#products" data-toggle="tab">Liked Products</a></li>
+                    <li><a data-target="#Reviews" data-toggle="tab">Your Reviews</a></li>
+                    <li><a data-target="#Orders" data-toggle="tab">Your Orders</a></li>
+                    <li><a data-target="#Sellers" data-toggle="tab">Following</a></li>
+
+                </ul>
+
+                <div class="tab-content">
+                    <div class="tab-pane active" id="home">Home</div>
+                    <div class="tab-pane" id="profile">
+                        <div class="tab-content" ng-show="selectedTab == 2">
+                            <div ng-show="model.message" class="alert alert-info">
+                                {{model.message}}
+                            </div>
+                            <form>
+                                <div class="form-group">
+                                    <label for="firstName">First Name</label>
+                                    <input name="firstName"
+                                           ng-model="model.user.firstName"
+                                           class="form-control"
+                                           id="firstName"
+                                           placeholder="First Name"/>
+                                </div>
+                                <div class="form-group">
+                                    <label for="lastName">Last Name</label>
+                                    <input name="lastName"
+                                           ng-model="model.user.lastName"
+                                           class="form-control"
+                                           id="lastName"
+                                           placeholder="Last Name"/>
+                                </div>
+                                <div class="form-group">
+                                    <label for="username">Username</label>
+                                    <input name="username"
+                                           ng-model="model.user.username"
+                                           readonly
+                                           class="form-control"
+                                           id="username"
+                                           value="alice"/>
+                                </div>
+                                <div class="form-group">
+                                    <label for="email">Email</label>
+                                    <input name="email"
+                                           ng-model="model.user.email"
+                                           type="email"
+                                           class="form-control"
+                                           id="email"
+                                           placeholder="alice@wonderland.com"/>
+                                </div>
+                                <div class="form-group">
+                                    <label for="dob">Date Of Birth</label>
+                                    <input name="dob"
+                                           ng-model="model.user.dob"
+                                           type="date"
+                                           class="form-control"
+                                           id="dob"
+                                           placeholder="11/12/2017"/>
+                                </div>
+                            </form>
+                            <a class="btn btn-default btn-primary btn-block"
+                               href="#!/user/{{model.user._id}}/website"
+                               role="button">Websites</a>
+                            <a class="btn btn-default btn-danger btn-block"
+                               ng-click="model.unRegisterUser()"
+                               role="button">Unregister</a>
+                            <a class="btn btn-default btn-danger btn-block"
+                               ng-click="model.logout()"
+                               role="button">Logout</a>
+
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="products">
+                    <ul class="list-group">
+                        <li class="list-group-item active">
+                            <div class="row">
+                                <div class="col-xs-5">Liked Products</div>
+                            </div>
+                        </li>
+                        <li ng-repeat="website in model.websites" class="list-group-item">
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <a href="#!/user/{{model.userId}}/website/{{website._id}}/page">{{website.name}}</a></div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                    <div class="tab-pane" id="Reviews">
+                        <ul class="list-group">
+                            <li class="list-group-item active">
+                                <div class="row">
+                                    <div class="col-xs-5">Your Reviews</div>
+                                </div>
+                            </li>
+                            <li ng-repeat="website in model.websites" class="list-group-item">
+                                <div class="row">
+                                    <div class="col-xs-12">
+                                        <a href="#!/user/{{model.userId}}/website/{{website._id}}/page">{{website.name}}</a></div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="tab-pane" id="Orders">
+                        <ul class="list-group">
+                            <li class="list-group-item active">
+                                <div class="row">
+                                    <div class="col-xs-5">Your Orders</div>
+                                </div>
+                            </li>
+                            <li ng-repeat="website in model.websites" class="list-group-item">
+                                <div class="row">
+                                    <div class="col-xs-12">
+                                        <a href="#!/user/{{model.userId}}/website/{{website._id}}/page">{{website.name}}</a></div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="tab-pane" id="Sellers">
+                        <ul class="list-group">
+                            <li class="list-group-item active">
+                                <div class="row">
+                                    <div class="col-xs-12">Following</div>
+                                </div>
+                            </li>
+                            <li class="list-group-item profile-list-gray">
+                                <div class="row">
+                                    <div class="col-xs-3">Last Name</div>
+                                    <div class="col-xs-3">First Name</div>
+                                    <div class="col-xs-3">Email</div>
+                                    <div class="col-xs-3"></div>
+
+                                </div>
+                            </li>
+                            <li ng-repeat="website in model.websites" class="list-group-item">
+                                <div class="row">
+                                    <div class="col-xs-12">
+                                        <a href="#!/user/{{model.userId}}/website/{{website._id}}/page">{{website.name}}</a></div>
+                                </div>
+                            </li>
+                        </ul>
+
+                    </div>
+                </div>
+
+        </div>
     </div>
-    <form>
-        <div class="form-group">
-            <label for="firstName">First Name</label>
-            <input name="firstName"
-                   ng-model="model.user.firstName"
-                   class="form-control"
-                   id="firstName"
-                   placeholder="First Name"/>
-        </div>
-        <div class="form-group">
-            <label for="lastName">Last Name</label>
-            <input name="lastName"
-                   ng-model="model.user.lastName"
-                   class="form-control"
-                   id="lastName"
-                   placeholder="Last Name"/>
-        </div>
-        <div class="form-group">
-            <label for="username">Username</label>
-            <input name="username"
-                   ng-model="model.user.username"
-                   readonly
-                   class="form-control"
-                   id="username"
-                   value="alice"/>
-        </div>
-        <div class="form-group">
-            <label for="email">Email</label>
-            <input name="email"
-                   ng-model="model.user.email"
-                   type="email"
-                   class="form-control"
-                   id="email"
-                   placeholder="alice@wonderland.com"/>
-        </div>
-        <div class="form-group">
-            <label for="dob">Date Of Birth</label>
-            <input name="dob"
-                   ng-model="model.user.dob"
-                   type="date"
-                   class="form-control"
-                   id="dob"
-                   placeholder="11/12/2017"/>
-        </div>
-    </form>
-
-    <ul class="list-group">
-        <li class="list-group-item active">
-            <div class="row">
-                <div class="col-xs-5">Liked Products</div>
-            </div>
-        </li>
-        <li ng-repeat="website in model.websites" class="list-group-item">
-            <div class="row">
-                <div class="col-xs-12">
-                    <a href="#!/user/{{model.userId}}/website/{{website._id}}/page">{{website.name}}</a></div>
-            </div>
-        </li>
-    </ul>
-
-    <ul class="list-group">
-        <li class="list-group-item active">
-            <div class="row">
-                <div class="col-xs-12">Sellers You Follow</div>
-            </div>
-        </li>
-        <li class="list-group-item profile-list-gray">
-            <div class="row">
-                <div class="col-xs-3">Last Name</div>
-                <div class="col-xs-3">First Name</div>
-                <div class="col-xs-3">Email</div>
-                <div class="col-xs-3"></div>
-
-            </div>
-        </li>
-        <li ng-repeat="website in model.websites" class="list-group-item">
-            <div class="row">
-                <div class="col-xs-12">
-                    <a href="#!/user/{{model.userId}}/website/{{website._id}}/page">{{website.name}}</a></div>
-            </div>
-        </li>
-    </ul>
-
-    <ul class="list-group">
-        <li class="list-group-item active">
-            <div class="row">
-                <div class="col-xs-5">Your Reviews</div>
-            </div>
-        </li>
-        <li ng-repeat="website in model.websites" class="list-group-item">
-            <div class="row">
-                <div class="col-xs-12">
-                    <a href="#!/user/{{model.userId}}/website/{{website._id}}/page">{{website.name}}</a></div>
-            </div>
-        </li>
-    </ul>
-
-    <ul class="list-group">
-        <li class="list-group-item active">
-            <div class="row">
-                <div class="col-xs-5">Your Orders</div>
-            </div>
-        </li>
-        <li ng-repeat="website in model.websites" class="list-group-item">
-            <div class="row">
-                <div class="col-xs-12">
-                    <a href="#!/user/{{model.userId}}/website/{{website._id}}/page">{{website.name}}</a></div>
-            </div>
-        </li>
-    </ul>
-
-    <a class="btn btn-default btn-primary btn-block"
-       href="#!/user/{{model.user._id}}/website"
-       role="button">Websites</a>
-    <a class="btn btn-default btn-danger btn-block"
-       ng-click="model.unRegisterUser()"
-       role="button">Unregister</a>
-    <a class="btn btn-default btn-danger btn-block"
-       ng-click="model.logout()"
-       role="button">Logout</a>
-
-
+    </div>
+</form>
 </div>
+
+
+<!--<div class="container-fluid wbd-profile-container">-->
+    <!---->
+
+
+<!--</div>-->
 <div ng-include="'views/common/footer-common.view.client.html'"></div>
 
 
