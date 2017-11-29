@@ -16,7 +16,7 @@ productModel.findProductById = findProductById;
 productModel.deleteReview = deleteReview;
 productModel.addReview = addReview;
 
-module.exports = websiteModel;
+module.exports = productModel;
 
 function updateProduct(productId,product){
     return productModel

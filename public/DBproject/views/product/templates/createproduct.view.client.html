@@ -55,7 +55,7 @@
         <div class="form-group">
             <label for="price">Price</label>
             <input name="price"
-                   ng-model="product.name"
+                   ng-model="product.price"
                    class="form-control"
                    id="price"
                    placeholder="Price"/>
@@ -63,7 +63,7 @@
         <div class="form-group">
             <label for="Color">Color</label>
             <input name="Color"
-                   ng-model="model.user.Color"
+                   ng-model="product.color"
                    class="form-control"
                    id="Color"
                    placeholder="Color"/>
@@ -71,7 +71,7 @@
         <div class="form-group">
             <label for="stock">Stock</label>
             <input name="stock"
-                   ng-model="model.user.stock"
+                   ng-model="product.stock"
                    class="form-control"
                    id="stock"
                    placeholder="stock"/>
@@ -79,14 +79,14 @@
         <div class="form-group">
             <label for="imageurl">Image Url</label>
             <input name="imageurl"
-                   ng-model="model.user.imageurl"
+                   ng-model="imageurl.urllist"
                    class="form-control"
                    id="imageurl"
                    placeholder="imageurl"/>
         </div>
     </form>
     <a class="btn btn-default btn-primary btn-block"
-       ng-click="model.createProduct(product)"
+       ng-click="model.createProduct(product,imageurl)"
        role="button">Create</a>
     <a class="btn btn-default btn-danger btn-block"
        ng-click="model.unRegisterUser()"
