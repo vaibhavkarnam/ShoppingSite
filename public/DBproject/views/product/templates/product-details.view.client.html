@@ -77,13 +77,13 @@
 							</div>
 							<div class="span5">
 								<address>
-									<strong>Brand:</strong> <span>Apple</span><br>
-									<strong>Name:</strong> <span>Product 14</span><br>
-									<strong>Stock:</strong> <span>0</span><br>
-									<strong>Color:</strong> <span>Out Of Stock</span><br>
-									<strong>Customer Rating:</strong> <span>Out Of Stock</span><br>
+									<strong>Brand:</strong> <span ng-bind="model.product.brand"></span><br>
+									<strong>Name:</strong> <span ng-bind="model.product.name"></span><br>
+									<strong>Stock:</strong> <span ng-bind="model.product.stock"></span><br>
+									<strong>Color:</strong> <span ng-bind="model.product.color"></span><br>
+									<strong>Customer Rating:</strong> <span ng-bind="model.product.customerrating"></span><br>
 								</address>									
-								<h4><strong>Price: $587.50</strong></h4>
+								<h4><strong>Price: </strong><strong ng-bind="model.product.price"></strong></h4>
 							</div>
 							<div class="span5">
 									<button class="btn btn-inverse form-control product-detail-button-space" type="submit">Order</button>
@@ -96,7 +96,7 @@
 									<li class="active"><a href="#home">Description</a></li>
 								</ul>							 
 								<div class="tab-content">
-									<div class="tab-pane active" id="home">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem</div>
+									<div class="tab-pane active" id="home" ng-bind="model.product.description"></div>
 								</div>							
 							</div>
 							<div class="product-detail-margin">

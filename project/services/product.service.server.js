@@ -9,10 +9,12 @@ var apiKey = "hkdhjjxs2xwx46mm6mf347wx";
 var walmart = require('walmart')(apiKey);
 
 app.get("/api/walmartSearch/:product", walmartProductSearch);
-app.get("/api/product/:websiteId",findProductById);
+app.get("/api/product/:productId",findProductById);
 app.post("/api/product",createProduct);
 app.put("/api/product/:productId",updateProduct);
 app.delete("/api/product/:productId",deleteProduct);
+app.get("/api/walmart/:productId", searchProductByProductId);
+
 
 function walmartProductSearch(req, res){
     var product = req.params.product;
@@ -92,4 +94,13 @@ function findProductById(req,res){
     //        return website._id === req.params.websiteId;
     //     });
     //      res.json(website);
+}
+
+function searchProductByProductId(req, res){
+    var productId = req.params.productId;
+
+    walmart.getItem(productId).then(function(item) {
+        console.log(item.product.productName);
+        res.json(item);
+    });
 }

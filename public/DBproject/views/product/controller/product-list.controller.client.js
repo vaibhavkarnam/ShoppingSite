@@ -8,6 +8,7 @@
         var model = this;
 
         //this.getRestaurantDetails = getRestaurantDetails;
+        this.getProductDetails = getProductDetails;
 
         //model.websiteId = $routeParams.wid;
         //model.userId = loggedUser._id;
@@ -22,12 +23,17 @@
                 console.log(pronames.data);
                 model.productList = pronames.items;
             }
+
+
         }
         init();
 
 /*        function getRestaurantDetails(restaurantId){
             $location.url("/restaurant-details/"+restaurantId);
         }*/
+        function getProductDetails(productId){
+            $location.url("/product-details/"+productId);
+        }
 
     }
 

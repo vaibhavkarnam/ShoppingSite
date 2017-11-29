@@ -11,6 +11,21 @@
 
         this.searchProductByName = searchProductByName;
         this.createProduct = createProduct;
+        this.findProductById = findProductById;
+        this.searchProductByWalmartItemId = searchProductByWalmartItemId;
+
+        function findProductById(productId){
+            var url = "/api/product/"+productId;
+            return $http.get(url)
+                .then(function (response){
+                    return response.data;
+                });
+            //  var website = websites.find(function (website){
+            //    return website._id === websiteId;
+            // });
+            //  return angular.copy(website);
+
+        }
 
         function searchProductByName(product){
             var url = "/api/walmartSearch/"+product;
@@ -26,6 +41,15 @@
                 .then(function (response){
                     return response.data;
                 });
+        }
+
+        function searchProductByWalmartItemId(productId){
+            var url = "/api/walmart/"+productId;
+            return $http.get(url)
+                .then(function (response){
+                    return response.data;
+                });
+
         }
 
     }

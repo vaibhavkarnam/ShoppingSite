@@ -47,12 +47,12 @@
 				<div class="row">						
 					<div class="span12">
 						<ul class="thumbnails listing-products list-group">
-							<li class="span3 list-group-item">
-								<div ng-repeat="product in model.productList" class="product-box">
+							<li ng-repeat="product in model.productList" class="span3 list-group-item productlistli">
+								<div class="product-box">
 									<span class="sale_tag"></span>												
-									<a href="product-details.view.client.html"><img alt="" src="{{product.imageEntities[0].mediumImage}}"></a><br/>
-									<a href="product-details.view.client.html" class="title">{{product.name}}</a><br/>
-									<a href="product-details.view.client.html"><img alt="" src="{{product.customerRatingImage}}"></a><br/>
+									<a href="" ng-click="model.getProductDetails(product.itemId)"><img class= "productlistliimage" alt="" src="{{product.imageEntities[0].mediumImage}}"></a><br/>
+									<a href="" ng-click="model.getProductDetails(product.itemId)" class="title">{{product.name}}</a><br/>
+									<a><img alt="" src="{{product.customerRatingImage}}"></a><br/>
 									<!--<a href="#" class="category">Phasellus consequat</a>-->
 									<p class="price">$ {{product.salePrice}}</p>
 								</div>

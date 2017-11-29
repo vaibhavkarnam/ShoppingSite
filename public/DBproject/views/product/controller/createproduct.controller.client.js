@@ -32,7 +32,7 @@
             productService
                 .createProduct(product)
                 .then(function (product){
-                    $location.url('/user/'+ model.userId + "/website");
+                    $location.url('/product-details/'+product._id);
                 });
         }
     }

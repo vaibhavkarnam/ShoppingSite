@@ -11,6 +11,8 @@ var productSchema = mongoose.Schema({
     color: String,
     stock: String,
     imageurl: [String],
+    customerratingurl:String,
+    customerrating:String,
     // phone: String
     // websites: [{type: mongoose.Schema.ObjectId, ref: "WebsiteModel"}],
     dateCreated: {type: Date,default: Date.now()},

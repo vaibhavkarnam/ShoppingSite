@@ -19,9 +19,9 @@
                 controller  : 'movieController',
                 controllerAs: 'model'
             })
-            .when('/product_detail', {
+            .when('/product-details/:productId', {
                 templateUrl: 'views/product/templates/product-details.view.client.html',
-                controller  : 'movieController',
+                controller  : 'productDetailsController',
                 controllerAs: 'model'
             })
             .when('/login', {
