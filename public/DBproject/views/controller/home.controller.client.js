@@ -41,15 +41,16 @@
 
         function searchProductByName(product) {
             alert("coming here");
-            productService
+            $location.path("/list-products/"+product).search({searchInput: product});
+            /*productService
                 .searchProductByName(product)
-                .then(productNames);
+                .then(productNames);*/
         }
 
-        function productNames(pronames){
+/*        function productNames(pronames){
             console.log(pronames.data);
             model.productList = pronames.data;
-        }
+        }*/
         
         function showDoctorDetails(doctor) {
             if (userobject._id)   {

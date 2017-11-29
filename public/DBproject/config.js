@@ -15,12 +15,12 @@
                 controllerAs: 'model'
             })
             .when('/products', {
-                templateUrl: 'views/products.html',
+                templateUrl: 'views/product/templates/product-list.view.client.html',
                 controller  : 'movieController',
                 controllerAs: 'model'
             })
             .when('/product_detail', {
-                templateUrl: 'views/product_detail.html',
+                templateUrl: 'views/product/templates/product-details.view.client.html',
                 controller  : 'movieController',
                 controllerAs: 'model'
             })
@@ -43,6 +43,11 @@
                 templateUrl: 'views/register.view.client.html',
                 controller  : 'registerController',
                 controllerAs: 'model'
+            })
+            .when("/list-products/:product", {
+                templateUrl : "views/product/templates/product-list.view.client.html",
+                controller : "productListController",
+                controllerAs : "model"
             })
     }
 })();

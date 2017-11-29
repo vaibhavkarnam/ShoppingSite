@@ -17,9 +17,9 @@
 					<div class="account pull-right">
 						<ul class="user-menu">				
 							<li><a href="#">My Account</a></li>
-							<li><a href="cart.html">Your Cart</a></li>
-							<li><a href="checkout.html">Checkout</a></li>					
-							<li><a href="register.html">Login</a></li>			
+							<li><a href="../../cart.html">Your Cart</a></li>
+							<li><a href="../../checkout.html">Checkout</a></li>
+							<li><a href="../../register.html">Login</a></li>
 						</ul>
 					</div>
 				</div>
@@ -28,38 +28,39 @@
 		<div id="wrapper" class="container">
 			<section class="navbar main-menu">
 				<div class="navbar-inner main-menu">
-					<a href="home.html" class="logo pull-left"><img src="https://github.com/vaibhavkarnam/ShoppingSite/blob/master/public/DBproject/themes/images/logo.png?raw=true" class="site_logo" alt=""></a>
+					<a href="../../home.html" class="logo pull-left"><img src="https://github.com/vaibhavkarnam/ShoppingSite/blob/master/public/DBproject/themes/images/logo.png?raw=true" class="site_logo" alt=""></a>
 					<nav id="menu" class="pull-right">
 						<ul>
-							<li><a href="./products.html">Clothing</a></li>
-							<li><a href="./products.html">Electronics</a></li>
-							<li><a href="./products.html">Books</a></li>
+							<li><a href="./product-list.view.client.html">Clothing</a></li>
+							<li><a href="./product-list.view.client.html">Electronics</a></li>
+							<li><a href="./product-list.view.client.html">Books</a></li>
 						</ul>
 					</nav>
 				</div>
 			</section>	
 			<section class="header_text sub">
-			<img class="pageBanner" src="../themes/images/pageBanner.png" alt="New products" >
+			<img class="pageBanner" src="../../../themes/images/pageBanner.png" alt="New products" >
 				<h4><span>New products</span></h4>
 			</section>
 			<section class="main-content">
 
 				<div class="row">						
 					<div class="span12">
-						<ul class="thumbnails listing-products">
-							<li class="span3">
-								<div class="product-box">
+						<ul class="thumbnails listing-products list-group">
+							<li class="span3 list-group-item">
+								<div ng-repeat="product in model.productList" class="product-box">
 									<span class="sale_tag"></span>												
-									<a href="product_detail.html"><img alt="" src="../themes/images/ladies/9.jpg"></a><br/>
-									<a href="product_detail.html" class="title">Fusce id molestie massa</a><br/>
-									<a href="#" class="category">Phasellus consequat</a>
-									<p class="price">$341</p>
+									<a href="product-details.view.client.html"><img alt="" src="{{product.imageEntities[0].mediumImage}}"></a><br/>
+									<a href="product-details.view.client.html" class="title">{{product.name}}</a><br/>
+									<a href="product-details.view.client.html"><img alt="" src="{{product.customerRatingImage}}"></a><br/>
+									<!--<a href="#" class="category">Phasellus consequat</a>-->
+									<p class="price">$ {{product.salePrice}}</p>
 								</div>
 							</li>       
-							<li class="span3">
+							<!--<li class="span3">
 								<div class="product-box">												
-									<a href="product_detail.html"><img alt="" src="../themes/images/ladies/8.jpg"></a><br/>
-									<a href="product_detail.html" class="title">Praesent tempor sem</a><br/>
+									<a href="product-details.view.client.html"><img alt="" src="../../../themes/images/ladies/8.jpg"></a><br/>
+									<a href="product-details.view.client.html" class="title">Praesent tempor sem</a><br/>
 									<a href="#" class="category">Erat gravida</a>
 									<p class="price">$28</p>
 								</div>
@@ -67,8 +68,8 @@
 							<li class="span3">
 								<div class="product-box">
 									<span class="sale_tag"></span>												
-									<a href="product_detail.html"><img alt="" src="../themes/images/ladies/7.jpg"></a><br/>
-									<a href="product_detail.html" class="title">Wuam ultrices rutrum</a><br/>
+									<a href="product-details.view.client.html"><img alt="" src="../../../themes/images/ladies/7.jpg"></a><br/>
+									<a href="product-details.view.client.html" class="title">Wuam ultrices rutrum</a><br/>
 									<a href="#" class="category">Suspendisse aliquet</a>
 									<p class="price">$341</p>
 								</div>
@@ -76,52 +77,52 @@
 							<li class="span3">
 								<div class="product-box">												
 									<span class="sale_tag"></span>
-									<a href="product_detail.html"><img alt="" src="../themes/images/ladies/6.jpg"></a><br/>
-									<a href="product_detail.html" class="title">Praesent tempor sem sodales</a><br/>
+									<a href="product-details.view.client.html"><img alt="" src="../../../themes/images/ladies/6.jpg"></a><br/>
+									<a href="product-details.view.client.html" class="title">Praesent tempor sem sodales</a><br/>
 									<a href="#" class="category">Nam imperdiet</a>
 									<p class="price">$49</p>
 								</div>
 							</li>
 							<li class="span3">
 								<div class="product-box">                                        												
-									<a href="product_detail.html"><img alt="" src="../themes/images/ladies/1.jpg"></a><br/>
-									<a href="product_detail.html" class="title">Fusce id molestie massa</a><br/>
+									<a href="product-details.view.client.html"><img alt="" src="../../../themes/images/ladies/1.jpg"></a><br/>
+									<a href="product-details.view.client.html" class="title">Fusce id molestie massa</a><br/>
 									<a href="#" class="category">Congue diam congue</a>
 									<p class="price">$35</p>
 								</div>
 							</li>       
 							<li class="span3">
 								<div class="product-box">												
-									<a href="product_detail.html"><img alt="" src="../themes/images/ladies/2.jpg"></a><br/>
-									<a href="product_detail.html" class="title">Tempor sem sodales</a><br/>
+									<a href="product-details.view.client.html"><img alt="" src="../../../themes/images/ladies/2.jpg"></a><br/>
+									<a href="product-details.view.client.html" class="title">Tempor sem sodales</a><br/>
 									<a href="#" class="category">Gravida placerat</a>
 									<p class="price">$61</p>
 								</div>
 							</li>
 							<li class="span3">
 								<div class="product-box">												
-									<a href="product_detail.html"><img alt="" src="../themes/images/ladies/3.jpg"></a><br/>
-									<a href="product_detail.html" class="title">Quam ultrices rutrum</a><br/>
+									<a href="product-details.view.client.html"><img alt="" src="../../../themes/images/ladies/3.jpg"></a><br/>
+									<a href="product-details.view.client.html" class="title">Quam ultrices rutrum</a><br/>
 									<a href="#" class="category">Orci et nisl iaculis</a>
 									<p class="price">$233</p>
 								</div>
 							</li>
 							<li class="span3">
 								<div class="product-box">												
-									<a href="product_detail.html"><img alt="" src="../themes/images/ladies/4.jpg"></a><br/>
-									<a href="product_detail.html" class="title">Tempor sem sodales</a><br/>
+									<a href="product-details.view.client.html"><img alt="" src="../../../themes/images/ladies/4.jpg"></a><br/>
+									<a href="product-details.view.client.html" class="title">Tempor sem sodales</a><br/>
 									<a href="#" class="category">Urna nec lectus mollis</a>
 									<p class="price">$134</p>
 								</div>
 							</li>
 							<li class="span3">
 								<div class="product-box">												
-									<a href="product_detail.html"><img alt="" src="../themes/images/ladies/5.jpg"></a><br/>
-									<a href="product_detail.html" class="title">Luctus quam ultrices</a><br/>
+									<a href="product-details.view.client.html"><img alt="" src="../../../themes/images/ladies/5.jpg"></a><br/>
+									<a href="product-details.view.client.html" class="title">Luctus quam ultrices</a><br/>
 									<a href="#" class="category">Suspendisse aliquet</a>
 									<p class="price">$261</p>
 								</div>
-							</li>
+							</li>-->
 						</ul>								
 						<hr>
 					</div>
@@ -129,20 +130,20 @@
 						<div class="block">	
 							<ul class="nav nav-list">
 								<li class="nav-header">SUB CATEGORIES</li>
-								<li><a href="products.html">Nullam semper elementum</a></li>
-								<li class="active"><a href="products.html">Phasellus ultricies</a></li>
-								<li><a href="products.html">Donec laoreet dui</a></li>
-								<li><a href="products.html">Nullam semper elementum</a></li>
-								<li><a href="products.html">Phasellus ultricies</a></li>
-								<li><a href="products.html">Donec laoreet dui</a></li>
+								<li><a hrproduct-list.view.client.htmlhtml">Nullam semper elementum</a></li>
+								<li class="active"><a hrproduct-list.view.client.htmlhtml">Phasellus ultricies</a></li>
+								<li><a hrproduct-list.view.client.htmlhtml">Donec laoreet dui</a></li>
+								<li><a hrproduct-list.view.client.htmlhtml">Nullam semper elementum</a></li>
+								<li><a hrproduct-list.view.client.htmlhtml">Phasellus ultricies</a></li>
+								<li><a hrproduct-list.view.client.htmlhtml">Donec laoreet dui</a></li>
 							</ul>
 							<br/>
 							<ul class="nav nav-list below">
 								<li class="nav-header">MANUFACTURES</li>
-								<li><a href="products.html">Adidas</a></li>
-								<li><a href="products.html">Nike</a></li>
-								<li><a href="products.html">Dunlop</a></li>
-								<li><a href="products.html">Yamaha</a></li>
+								<li><a hrproduct-list.view.client.htmlhtml">Adidas</a></li>
+								<li><a hrproduct-list.view.client.htmlhtml">Nike</a></li>
+								<li><a hrproduct-list.view.client.htmlhtml">Dunlop</a></li>
+								<li><a hrproduct-list.view.client.htmlhtml">Yamaha</a></li>
 							</ul>
 						</div>
 						<div class="block">
@@ -160,7 +161,7 @@
 												<div class="product-box">
 													<span class="sale_tag"></span>												
 													<img alt="" src="../themes/images/ladies/1.jpg"><br/>
-													<a href="product_detail.html" class="title">Fusce id molestie massa</a><br/>
+													<a hrproduct-details.view.client.htmlhtml" class="title">Fusce id molestie massa</a><br/>
 													<a href="#" class="category">Suspendisse aliquet</a>
 													<p class="price">$261</p>
 												</div>
@@ -172,7 +173,7 @@
 											<li class="span3">
 												<div class="product-box">												
 													<img alt="" src="../themes/images/ladies/2.jpg"><br/>
-													<a href="product_detail.html" class="title">Tempor sem sodales</a><br/>
+													<a hrproduct-details.view.client.htmlhtml" class="title">Tempor sem sodales</a><br/>
 													<a href="#" class="category">Urna nec lectus mollis</a>
 													<p class="price">$134</p>
 												</div>
@@ -212,4 +213,4 @@
 				<span>Copyright 2013 bootstrappage template  All right reserved.</span>
 			</section>
 		</div>
-		<script src="../themes/js/common.js"></script>	
+		<script src="../../../themes/js/common.js"></script>
