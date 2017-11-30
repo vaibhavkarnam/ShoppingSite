@@ -21,8 +21,28 @@ userModel.addService = addService;
 userModel.deleteService = deleteService;
 userModel.addReturn = addReturn;
 userModel.deleteReturn = deleteReturn;
-
+userModel.addReview = addReview;
 module.exports = userModel;
+
+function addReview(reviewId,Id)
+{
+    return userModel
+        .findUserById(Id)
+        .then(function (user)
+        {
+            user.UserReview.push(reviewId);
+            return user.save();
+        }, function (error)
+        {
+            return error;
+        });
+}
+
+function getReviewforId(ReviewId)
+{
+    return productModel
+        .find({ _id : ReviewId });
+}
 
 function findUserByGoogleId(googleId) {
     return userModel.findOne({'google.id': googleId})

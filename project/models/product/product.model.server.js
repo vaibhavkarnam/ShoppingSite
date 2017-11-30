@@ -15,6 +15,9 @@ productModel.deleteProduct = deleteProduct;
 productModel.findProductById = findProductById;
 productModel.deleteReview = deleteReview;
 productModel.addReview = addReview;
+productModel.createReview = createReview;
+productModel.getReviewforId = getReviewforId;
+userModel.getReviewforId = getReviewforId;
 
 module.exports = productModel;
 
@@ -26,6 +29,24 @@ function updateProduct(productId,product){
 function findProductById(productId) {
     return productModel
         .findById(productId);
+}
+
+function createReview(newReview, userId)
+{
+    return productModel
+        .create(newReview)
+        .then(function (review)
+        {
+            userModel
+                .addReview( review._id, userId);
+            return review;
+        })
+}
+
+function getReviewforId(ReviewId)
+{
+    return productModel
+        .find({ productid : ReviewId });
 }
 
 function findAllProducts(){
