@@ -22,7 +22,16 @@ userModel.deleteService = deleteService;
 userModel.addReturn = addReturn;
 userModel.deleteReturn = deleteReturn;
 userModel.addReview = addReview;
+/*userModel.addProduct = addProduct;*/
 module.exports = userModel;
+
+function addProduct(userId,productId){
+    return userModel.findUserById(userId)
+        .then(function (user){
+            user.products.push(productId);
+            user.save();
+        })
+}
 
 function addReview(reviewId,Id)
 {
@@ -90,14 +99,14 @@ function deleteProduct(userId,productId){
         });
 }
 
-function addProduct(userId, productId){
+/*function addProduct(userId, productId){
     return userModel
         .findById(userId)
         .then (function (user){
             user.products.push(productId);
             return user.save();
         });
-}
+}*/
 
 function deleteService(userId,serviceId){
     return userModel

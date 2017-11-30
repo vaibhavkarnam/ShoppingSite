@@ -23,6 +23,7 @@
                     var usr = userobject;
                     usr.dob = new Date(usr.dob);
                     model.user = usr;
+                    model.products = usr.products;
                     // if (typeof model.user.dob !== 'undefined') {
                     //     model.user.dob = setDate(model.user.dob);
                     // }

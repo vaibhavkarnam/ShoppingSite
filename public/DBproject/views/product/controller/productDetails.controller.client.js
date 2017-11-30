@@ -7,7 +7,7 @@
         .module("omdbApp")
         .controller("productDetailsController", productDetailsController);
 
-    function productDetailsController($routeParams,productService,userobject,userService, $route) {
+    function productDetailsController($routeParams,productService,userobject,userService, $route, $location) {
         var model = this;
         model.productId = $routeParams.productId;
         model.updateProduct = updateProduct;
@@ -15,6 +15,7 @@
         model.userId = userobject._id;
         model.postNewReview = postNewReview;
         model.getAllUserReviews =getAllUserReviews;
+        model.createProduct = createProduct;
 
         function init() {
             getAllUserReviews(model.productId);
@@ -58,6 +59,15 @@
                 });
         }
         init();
+
+        function createProduct(product){
+            console.log(product);
+            productService
+                .createProduct(model.userId,product)
+                .then(function (product){
+                    $location.url('/product-details/'+product._id);
+                });
+        }
 
         //implementation
         function updateProduct(productId){
