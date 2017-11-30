@@ -20,7 +20,7 @@
                 .then(productNames);
 
             function productNames(pronames){
-                console.log(pronames.data);
+                console.log(pronames.items);
                 model.productList = pronames.items;
             }
 
