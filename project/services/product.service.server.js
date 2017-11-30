@@ -118,10 +118,10 @@ function searchProductByProductId(req, res) {
     };
     http.get(options, callback);
 
-    /*    walmart.getItem(productId)
-     .then(function(item) {
-     console.log(item.product.productName);
-     res.json(item);
-     });*/
+            /*    walmart.getItem(productId)
+             .then(function(item) {
+             console.log(item.product.productName);
+             res.json(item);
+             });*/
 
 }

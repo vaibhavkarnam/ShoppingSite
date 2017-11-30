@@ -11,7 +11,7 @@
         .module("omdbApp")
         .controller("profileController",profileController);
 
-    function profileController() {
+    function profileController(userobject) {
 
         var model = this;
 

@@ -14,6 +14,7 @@ var mongoose = require("mongoose");
 mongoose.Promise = require('q').Promise;*/
 
 require("./services/product.service.server");
+require("./services/user.service.server");
 /*
 require("./website.service.server");
 require("./page.service.server");
