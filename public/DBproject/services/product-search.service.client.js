@@ -35,9 +35,9 @@
                 });
         }
 
-        function createProduct(product){
+        function createProduct(userId, product){
             var url = "/api/product";
-            return $http.post(url,product)
+            return $http.post(url,{userId :userId, product : product})
                 .then(function (response){
                     return response.data;
                 });

@@ -40,7 +40,6 @@
         init();
 
         function searchProductByName(product) {
-            alert("coming here");
             $location.path("/list-products/"+product).search({searchInput: product});
             /*productService
                 .searchProductByName(product)

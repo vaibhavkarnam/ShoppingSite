@@ -154,7 +154,7 @@
 <div id="kv-avatar-errors-2" class="center-block"></div>
 <form class="form form-vertical" action="/api/upload/project" method="post" enctype="multipart/form-data">
     <div class="row">
-        <div class="col-sm-4" id="profilebtn">
+        <div class="col-sm-3" id="profilebtn">
             <div class="kv-avatar center-block text-center" style="width:200px">
                 <img ng-src="{{model.user.ProfilePic}}" src="{{model.user.ProfilePic}}">
                 <input id="avatar-2" name="avatar-2" type="file" class="file-loading" required>
@@ -162,7 +162,7 @@
                 <button type="submit"    class="btn btn-sucess btn-block">Upload Profile Pic</button>
             </div>
         </div>
-        <div class="col-sm-8">
+        <div class="col-sm-9">
             <div class="tabbable tabs-below" ng-init="selectedTab = 1;">
                 <!--<ul class="nav nav-tabs nav-justified">-->
                     <!--<li ng-class="{active: selectedTab == 1}">-->
@@ -180,19 +180,18 @@
                 <!--</ul>-->
 
                 <ul class="nav nav-tabs nav-justified" id="myTab">
-                    <li class="active"><a data-target="#home" data-toggle="tab">Home</a></li>
-                    <li><a data-target="#profile" data-toggle="tab">Profile</a></li>
-                    <li><a data-target="#products" data-toggle="tab">Liked Products</a></li>
+                    <li class="active"><a data-target="#profile" data-toggle="tab">Profile</a></li>
+                    <li ><a data-target="#products" data-toggle="tab">Liked Products</a></li>
                     <li><a data-target="#Reviews" data-toggle="tab">Your Reviews</a></li>
                     <li><a data-target="#Orders" data-toggle="tab">Your Orders</a></li>
                     <li><a data-target="#Sellers" data-toggle="tab">Following</a></li>
+                    <li><a data-target="#Returns" data-toggle="tab">Returned Orders</a></li>
 
                 </ul>
 
                 <div class="tab-content">
-                    <div class="tab-pane active" id="home">Home</div>
-                    <div class="tab-pane" id="profile">
-                        <div class="tab-content" ng-show="selectedTab == 2">
+                    <div class="tab-pane active" id="profile">
+                        <div class="tab-content">
                             <div ng-show="model.message" class="alert alert-info">
                                 {{model.message}}
                             </div>
@@ -310,6 +309,31 @@
                                     <div class="col-xs-3">Last Name</div>
                                     <div class="col-xs-3">First Name</div>
                                     <div class="col-xs-3">Email</div>
+                                    <div class="col-xs-3"></div>
+
+                                </div>
+                            </li>
+                            <li ng-repeat="website in model.websites" class="list-group-item">
+                                <div class="row">
+                                    <div class="col-xs-12">
+                                        <a href="#!/user/{{model.userId}}/website/{{website._id}}/page">{{website.name}}</a></div>
+                                </div>
+                            </li>
+                        </ul>
+
+                    </div>
+                    <div class="tab-pane" id="Returns">
+                        <ul class="list-group">
+                            <li class="list-group-item active">
+                                <div class="row">
+                                    <div class="col-xs-12">Returned Products</div>
+                                </div>
+                            </li>
+                            <li class="list-group-item profile-list-gray">
+                                <div class="row">
+                                    <div class="col-xs-3">Product Name</div>
+                                    <div class="col-xs-3">Brand</div>
+                                    <div class="col-xs-3">Price</div>
                                     <div class="col-xs-3"></div>
 
                                 </div>

@@ -86,16 +86,48 @@
                    placeholder="stock"/>
         </div>
         <div class="form-group">
-            <label for="imageurl">Image Url</label>
-            <input name="imageurl"
-                   ng-model="imageurl.urllist"
+            <label for="stock">Category</label>
+            <input name="category"
+                   ng-model="product.category"
                    class="form-control"
-                   id="imageurl"
-                   placeholder="imageurl"/>
+                   id="category"
+                   placeholder="Category"/>
+        </div>
+        <div class="form-group">
+            <label for="primaryimageurl">Primary Image Url</label>
+            <input name="primaryimageurl"
+                   ng-model="product.primaryimageurl"
+                   class="form-control"
+                   id="primaryImageUrl"
+                   placeholder="Primary Image Url"/>
+        </div>
+        <div class="form-group">
+            <label for="imageurl1">Image Url 1</label>
+            <input name="imageurl1"
+                   ng-model="images.image1"
+                   class="form-control"
+                   id="imageurl1"
+                   placeholder="imageurl1"/>
+        </div>
+        <div class="form-group">
+            <label for="imageurl2">Image Url 2</label>
+            <input name="imageurl2"
+                   ng-model="images.image2"
+                   class="form-control"
+                   id="imageurl2"
+                   placeholder="imageurl2"/>
+        </div>
+        <div class="form-group">
+            <label for="imageurl3">Image Url 3</label>
+            <input name="imageurl3"
+                   ng-model="images.image3"
+                   class="form-control"
+                   id="imageurl3"
+                   placeholder="imageurl3"/>
         </div>
     </form>
     <a class="btn btn-default btn-primary btn-block"
-       ng-click="model.createProduct(product,imageurl)"
+       ng-click="model.createProduct(product,images)"
        role="button">Create</a>
     <a class="btn btn-default btn-danger btn-block"
        ng-click="model.unRegisterUser()"

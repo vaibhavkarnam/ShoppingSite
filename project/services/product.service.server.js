@@ -68,7 +68,10 @@ function updateProduct(req, res){
 }
 
 function createProduct(req, res) {
-    var product = req.body;
+    var body = req.body;
+    var userId = body.userId;
+    var product = body.product;
+    product._user = userId;
     productModel
         .createProduct(product)
         .then(function (product){
