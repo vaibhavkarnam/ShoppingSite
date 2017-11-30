@@ -96,11 +96,32 @@ function findProductById(req,res){
     //      res.json(website);
 }
 
-function searchProductByProductId(req, res){
+function searchProductByProductId(req, res) {
     var productId = req.params.productId;
 
-    walmart.getItem(productId).then(function(item) {
-        console.log(item.product.productName);
-        res.json(item);
-    });
+    //var imdbID = req.params['id'];
+    //console.log(imdbID);
+    var options = {
+        host: "api.walmartlabs.com",
+        path: "/v1/items/PRODUCT_ID?apiKey=API_KEY&format=json".replace("API_KEY", apiKey).replace("PRODUCT_ID", productId)
+    };
+    var callback = function (response) {
+        var str = '';
+        response.on('data', function (data) {
+            str += data;
+        });
+        response.on('end', function () {
+            res.writeHead(200, {"Content-Type": "application/json"});
+            console.log(str);
+            res.end(str);
+        });
+    };
+    http.get(options, callback);
+
+            /*    walmart.getItem(productId)
+             .then(function(item) {
+             console.log(item.product.productName);
+             res.json(item);
+             });*/
+
 }

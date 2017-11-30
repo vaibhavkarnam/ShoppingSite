@@ -92,7 +92,7 @@
 						</div>
 						<div class="row">
 							<div class="span9 product-detail-button-space">
-								<ul class="nav nav-tabs" id="myTab">
+								<ul class="nav nav-tabs" id="newTab">
 									<li class="active"><a href="#home">Description</a></li>
 								</ul>							 
 								<div class="tab-content">
@@ -177,18 +177,68 @@
 							<div class="product-detail-margin">
 								<h4 class="title">
 									<span class="pull-left"><span class="text"><strong>Product</strong> Reviews</span></span>
-								</h4>
+
+
+
+
+
+
+
+									<div id="reviewtab">
+							<ul class="nav nav-tabs nav-justified" id="myTab">
+								<li class="active"><a data-target="#products" data-toggle="tab">Reviews</a></li>
+								<li><a data-target="#Reviews" data-toggle="tab">Write a Review</a></li>
+
+							</ul>
+
+							<h4 class="tab-content">
+								<div class="tab-pane" id="products">
+									<div ng-repeat="userReview in model.userReviews">
+									<span class="glyphicon glyphicon-user"></span> USER :<a href="#!/profile/visitor/{{userReview.userID}}" class="btn btn-link">
+									{{userReview.userName}}</a>
+									<p>REVIEW : {{userReview.description}}</p>
+
+
+									</div>
+								</div>
+								<div class="tab-pane" id="Reviews">
+									<div class="col-md-8">
+									<div class="form-group">
+									<div class="page-header">
+									Post a Review
+									</div>
+									<textarea id="reviewdes" ng-model="model.userReview.description"
+									placeholder="Description" rows="5" class="col-xs-12"></textarea>
+									</div>
+									<a class="btn btn-success form-control" id="post"
+									ng-click="model.postNewReview(model.userReview)" data-dismiss="modal">Post</a>
+									</div>
+								</div>
+
+
+									</ul>
+
+
+							</div>
+							</h4>	<!--</div>-->
 							</div>
 						</div>
 					</div>
 
+
 				</div>
 			</section>
+
 			<section id="copyright">
 				<span>Copyright 2013 bootstrappage template  All right reserved.</span>
 			</section>
 		</div>
 		<script src="themes/js/common.js"></script>
+<script>
+    jQuery(function () {
+        jQuery('#newTab a:last').tab('show')
+    })
+</script>
 		<script>
 			$(function () {
 				$('#myTab a:first').tab('show');
