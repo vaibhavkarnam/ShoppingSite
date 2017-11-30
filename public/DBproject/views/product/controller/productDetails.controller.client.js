@@ -7,7 +7,7 @@
         .module("omdbApp")
         .controller("productDetailsController", productDetailsController);
 
-    function productDetailsController($routeParams,productService,userobject,userService, $route) {
+    function productDetailsController($routeParams,productService,userobject,userService, $route,$location) {
         var model = this;
         model.productId = $routeParams.productId;
         model.updateProduct = updateProduct;
@@ -64,12 +64,11 @@
             $location.url("/updateproduct/"+productId);
         }
 
-        function deleteProduct(productId,brandname) {
-            var tempquery = brandname
+        function deleteProduct(productId) {
             productService
                 .deleteProduct(productId)
                 .then(function (){
-                $location.url('/list-products/'+brandname);
+                $location.url('/');
             });
         }
 

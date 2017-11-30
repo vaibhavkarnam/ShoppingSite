@@ -16,6 +16,38 @@
         this.createReview = createReview;
         this.getUserReviews = getUserReviews;
         this.findAllProducts = findAllProducts;
+        this.updateProduct= updateProduct;
+        this.deleteProduct= deleteProduct;
+
+        function updateProduct(productId,product){
+            var url = "/api/product/"+productId;
+            return $http.put(url,product)
+                .then(function (response){
+                    return response.data;
+                });
+            // for(var w in websites) {
+            //     if(websites[w]._id === websiteId) {
+            //         websites[w] = website;
+            //         return websites[w];
+            //     }
+            // }
+            // return null;
+        }
+        function deleteProduct(productId){
+            var url = "/api/product/"+productId;
+            return $http.delete(url)
+                .then(function (response){
+                    return response.data;
+                });
+
+            // for(var w in websites) {
+            //     if (websites[w]._id === websiteId) {
+            //         var index = websites.indexOf(websites[w]);
+            //         websites.splice(index, 1);
+            //         return;
+            //     }
+            // }
+        }
 
         function findProductById(productId){
             var url = "/api/product/"+productId;

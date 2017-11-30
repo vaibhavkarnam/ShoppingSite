@@ -1,0 +1,140 @@
+
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header col-xs-6">
+            <div class="row">
+                <!--<div class="col-glyphicon-position">-->
+                <!--<a class= "wdc-anchor-new"-->
+                <!--hrprofile.view.client.htmlhtml">-->
+                <!--<span class="glyphicon glyphicon-chevron-left"></span>-->
+                <!--</a>-->
+                <!--</div>-->
+                <div class="col-website-position">
+                    <a class="navbar-brand "
+                       href="#!/profile/{{model.user._id}}">Update Product</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="navbar-text pull-right">
+            <a class= "navbar-link pointer"
+               ng-click="model.updateUser(model.user)">
+                <span class="glyphicon glyphicon-ok pull-right"></span>
+            </a>
+        </div><!-- /.navbar-collapse -->
+
+    </div><!-- /.container-fluid -->
+</nav>
+
+
+
+<div class="container-fluid wbd-profile-container">
+
+    <div ng-show="model.message" class="alert alert-info">
+        {{model.message}}
+    </div>
+    <form>
+        <div class="form-group">
+            <label for="brand">Brand</label>
+            <input name="brand"
+                   ng-model="model.product.brand"
+                   class="form-control"
+                   id="brand"
+                   placeholder="Brand"/>
+        </div>
+        <div class="form-group">
+            <label for="Name">Name</label>
+            <input name="Name"
+                   ng-model="model.product.name"
+                   class="form-control"
+                   id="Name"
+                   placeholder="Name"/>
+        </div>
+        <div class="form-group">
+            <label for="price">Price</label>
+            <input name="price"
+                   ng-model="model.product.price"
+                   class="form-control"
+                   id="price"
+                   placeholder="Price"/>
+        </div>
+        <div class="form-group">
+            <label for="Color">Color</label>
+            <input name="Color"
+                   ng-model="model.product.color"
+                   class="form-control"
+                   id="Color"
+                   placeholder="Color"/>
+        </div>
+        <div class="form-group">
+            <label for="description">Description</label>
+            <textarea name="description"
+                   ng-model="model.product.description"
+                   class="form-control"
+                   id="description"
+                   placeholder="description"
+                      rows="5"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="stock">Stock</label>
+            <input name="stock"
+                   ng-model="model.product.stock"
+                   class="form-control"
+                   id="stock"
+                   placeholder="stock"/>
+        </div>
+        <div class="form-group">
+            <label for="stock">Category</label>
+            <input name="category"
+                   ng-model="model.product.category"
+                   class="form-control"
+                   id="category"
+                   placeholder="Category"/>
+        </div>
+        <div class="form-group">
+            <label for="primaryimageurl">Primary Image Url</label>
+            <input name="primaryimageurl"
+                   ng-model="model.product.primaryimageurl"
+                   class="form-control"
+                   id="primaryImageUrl"
+                   placeholder="Primary Image Url"/>
+        </div>
+        <div class="form-group">
+            <label for="imageurl1">Image Url 1</label>
+            <input name="imageurl1"
+                   ng-model="model.product.imageurl[0]"
+                   class="form-control"
+                   id="imageurl1"
+                   placeholder="imageurl1"/>
+        </div>
+        <div class="form-group">
+            <label for="imageurl2">Image Url 2</label>
+            <input name="imageurl2"
+                   ng-model="model.product.imageurl[1]"
+                   class="form-control"
+                   id="imageurl2"
+                   placeholder="imageurl2"/>
+        </div>
+        <div class="form-group">
+            <label for="imageurl3">Image Url 3</label>
+            <input name="imageurl3"
+                   ng-model="model.product.imageurl[2]"
+                   class="form-control"
+                   id="imageurl3"
+                   placeholder="imageurl3"/>
+        </div>
+    </form>
+    <a class="btn btn-default btn-primary btn-block"
+       ng-click="model.updateProduct(model.product)"
+       role="button">Update</a>
+    <a class="btn btn-default btn-danger btn-block"
+       ng-click="model.unRegisterUser()"
+       role="button">Cancel</a>
+
+</div>
+<div ng-include="'views/common/footer-common.view.client.html'"></div>
+
+
+

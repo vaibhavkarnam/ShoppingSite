@@ -54,6 +54,14 @@
                     userobject: checkLoggedIn
                 }
             })
+            .when('/updateproduct/:productId', {
+                templateUrl: 'views/product/templates/updateproduct.view.client.html',
+                controller  : 'UpdateProductController',
+                controllerAs: 'model',
+                resolve:{
+                    userobject: checkLoggedIn
+                }
+            })
             .when('/register', {
                 templateUrl: 'views/user/templates/register.view.client.html',
                 controller  : 'registerController',

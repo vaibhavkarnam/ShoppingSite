@@ -63,7 +63,7 @@ function createProduct(product){
 
 function deleteProduct(productId){
     return productModel
-        .remove({_id: websiteId})
+        .remove({_id: productId})
         .then(function (status){
             return status;
         });
