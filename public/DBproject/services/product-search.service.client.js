@@ -15,9 +15,23 @@
         this.searchProductByWalmartItemId = searchProductByWalmartItemId;
         this.createReview = createReview;
         this.getUserReviews = getUserReviews;
+        this.findAllProducts = findAllProducts;
 
         function findProductById(productId){
             var url = "/api/product/"+productId;
+            return $http.get(url)
+                .then(function (response){
+                    return response.data;
+                });
+            //  var website = websites.find(function (website){
+            //    return website._id === websiteId;
+            // });
+            //  return angular.copy(website);
+
+        }
+
+        function findAllProducts(){
+            var url = "/api/product";
             return $http.get(url)
                 .then(function (response){
                     return response.data;

@@ -14,7 +14,7 @@ var productSchema = mongoose.Schema({
     category: String,
     stock: String,
     color:String,
-    imageurl: [{type:String}],
+    imageurl: [String],
     productid:String,
     customerratingurl:String,
     customerrating:String,

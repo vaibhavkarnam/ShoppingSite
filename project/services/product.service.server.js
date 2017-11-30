@@ -10,6 +10,7 @@ var walmart = require('walmart')(apiKey);
 
 app.get("/api/walmartSearch/:product", walmartProductSearch);
 app.get("/api/product/:productId",findProductById);
+app.get("/api/product",findAllProducts);
 app.post("/api/product",createProduct);
 app.put("/api/product/:productId",updateProduct);
 app.delete("/api/product/:productId",deleteProduct);
@@ -24,6 +25,19 @@ function walmartProductSearch(req, res){
         console.log(response.totalResults);
         res.json(response);
     });
+}
+
+function findAllProducts(req,res){
+    // console.log("ins server");
+    productModel
+        .findAllProducts()
+        .then(function (products) {
+            res.json(products);
+        });
+    // var website = websites.find(function (website){
+    //        return website._id === req.params.websiteId;
+    //     });
+    //      res.json(website);
 }
 
 function deleteProduct(req,res){
