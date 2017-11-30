@@ -54,11 +54,30 @@ function findAllProducts(){
 }
 
 function createProduct(product){
-    return productModel
+/*    return productModel
         .create(product)
         .then(function (product){
             return product;
-        });
+        });*/
+    var producttmp = null;
+    if(product._id == null){
+        return productModel
+            .create(product)
+            .then(function (productDoc){
+                producttmp = productDoc;
+                return userModel.addProduct(product._user, productDoc._id)
+            }, function(error){
+                return res.json({error:error.message});
+            }).catch(function () {
+                console.log("Promise Rejected");
+            })
+            .then(function (userDoc) {
+                return producttmp;
+            });
+    }else{
+        return productModel
+            .findById({_id : product._id});
+    }
 }
 
 function deleteProduct(productId){
