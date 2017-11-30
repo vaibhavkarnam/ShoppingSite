@@ -7,15 +7,17 @@
         .module("omdbApp")
         .controller("productDetailsController", productDetailsController);
 
-    function productDetailsController($routeParams,productService,userobject) {
+    function productDetailsController($routeParams,productService,userobject,userService, $route) {
         var model = this;
         model.productId = $routeParams.productId;
         model.updateProduct = updateProduct;
         model.deleteProduct = deleteProduct;
         model.userId = userobject._id;
-        console.log(model.userId);
+        model.postNewReview = postNewReview;
+        model.getAllUserReviews =getAllUserReviews;
 
         function init() {
+            getAllUserReviews(model.productId);
             productService
                 .findProductById(model.productId)
                 .then(function (product){
@@ -25,7 +27,6 @@
                 .searchProductByWalmartItemId(model.productId)
                 .then(function (response){
                     // var individualpro = response.product;
-                    console.log(response);
                     model.product = {};
                     model.product.brand=response.brandName;
                     model.product.name=response.name;
@@ -72,56 +73,46 @@
 
         function postNewReview(review) {
             model.userReview = review;
+            console.log("postingnewreview");
             userService
-                .findUserById(userId)
+                .findUserById(model.userId)
                 .then(function (user)
                 {
+                              console.log("postingnewreview");
+
                     model.user = user;
-                    model.userReview.movieId = imdbID;
-                    model.userReview.userID = userId;
-                    model.userReview.userRole = user.role;
-                    model.userReview.imdbMovieName = model.movie.Title;
-                    model.userReview.userName = user.username;
+                    model.userReview.productid = model.productId;
+                    model.userReview.userID = model.userId;
+                    model.userReview.productName = model.product.name;
+                    model.userReview.userName = userobject.username;
+                    console.log(model.userReview.userName);
                     // console.log(model.userReview.userRole);
-                    movieService
+                    console.log(model.userReview);
+                    productService
                         .createReview(model.userReview, model.userReview.userID)
                         .then(function (status)
                         {
                             // console.log("jdfs");
-                            model.userReview.description = "";
+                            model.userReview.Review = "";
                             $route.reload();
 
                         });
                 });
 
         }
-        function getAllUserReviews(movieId) {
+        function getAllUserReviews(productId) {
 
-            // console.log(movieId);
 
             model.userReviews =[];
-            model.criticReviews=[];
-
-// console.log("getting reviews");
-            movieService
-                .getUserReviews(movieId)
+            productService
+                .getUserReviews(productId)
                 .then(function (response)
                 {
-                    // console.log("response in review");
-                    // console.log(response);
+                     console.log("response in review");
+                     console.log(response);
                     response
                         .forEach(function (review) {
-                            // console.log(review.userRole);
-                            if (review.userRole=="CRITIC")
-                            {
-                                model.criticReviews.push(review);
-
-                                // console.log( model.criticReviews);
-                            }
-                            else if (review.userRole=="USER")
-                            {
                                 model.userReviews.push(review);
-                            }
                         });
                 });
         }

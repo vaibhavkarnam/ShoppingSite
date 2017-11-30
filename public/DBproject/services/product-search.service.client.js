@@ -13,6 +13,8 @@
         this.createProduct = createProduct;
         this.findProductById = findProductById;
         this.searchProductByWalmartItemId = searchProductByWalmartItemId;
+        this.createReview = createReview;
+        this.getUserReviews = getUserReviews;
 
         function findProductById(productId){
             var url = "/api/product/"+productId;
@@ -51,6 +53,26 @@
                 });
 
         }
+
+        function getUserReviews(productId)
+        {
+            console.log("fetching");
+            var url="/api/project/getReview/"+productId;
+            return $http
+                .get(url)
+                .then(function (response)
+                {
+                    return response.data;
+                });
+        }
+
+        function createReview(review, userId)
+        {
+            console.log(review);
+            return $http
+                .post("/api/project/user/"+userId+"/review", review);
+        }
+
 
     }
 
