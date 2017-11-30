@@ -6,7 +6,7 @@
     function productListController($routeParams, $location, productService) {
 
         var model = this;
-
+        this.getProductDetails = getProductDetails;
         //this.getRestaurantDetails = getRestaurantDetails;
 
         //model.websiteId = $routeParams.wid;
@@ -25,8 +25,14 @@
                     .findAllProducts()
                     .then( function (products){
                         for(i=0; i< products.length;i++){
-                            products[i].id = products[i]._id;
-                            model.productList.push(products[i]);
+                            var product ={}
+                            product.itemId =  products[i]._id
+                            product.imageEntities= [{}]
+                            product.imageEntities[0].mediumImage= products[i].primaryimageurl
+                            product.salePrice = products[i].price
+                            product.name= products[i].name
+                            // products[i].id = products[i]._id;
+                            model.productList.push(product);
                         }
                     });
             }
@@ -36,7 +42,9 @@
 /*        function getRestaurantDetails(restaurantId){
             $location.url("/restaurant-details/"+restaurantId);
         }*/
-
+        function getProductDetails(productId){
+            $location.url("/product-details/"+productId);
+        }
     }
 
 })();

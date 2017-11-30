@@ -132,11 +132,25 @@ function getReviewByProductId(req,res)
 function findProductById(req,res){
     console.log("ins server");
     var productId = req.params.productId;
-    productModel
-        .findProductById(productId)
-        .then(function (product) {
-            res.json(product);
+    if(mongoose.Types.ObjectId.isValid(productId)){
+        return productModel
+            .findProductById(productId)
+            .then(function (product) {
+                if(!(product == "0")){
+                    res.json(product);
+                    return;
+                }else{
+                    res.send("0");
+                    return;
+                } }, function(error){
+                return res.json({error:error.message});
+            }).catch(function () {
+            console.log("Promise Rejected");
         });
+    }else{
+        res.send("0");
+    }
+
     // var website = websites.find(function (website){
     //        return website._id === req.params.websiteId;
     //     });
