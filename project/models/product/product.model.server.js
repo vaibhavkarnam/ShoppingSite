@@ -5,7 +5,7 @@ var mongoose = require('mongoose');
 var productSchema = require('./product.schema.server');
 var db = require("../database");
 
-var productModel = mongoose.model('productModel',productSchema);
+var productModel = mongoose.model('ProductModel',productSchema);
 var userModel = require('../user/user.model.server');
 
 productModel.createProduct = createProduct;
@@ -19,6 +19,7 @@ productModel.createReview = createReview;
 productModel.getReviewforId = getReviewforId;
 userModel.getReviewforId = getReviewforId;
 productModel.findProductByItemId = findProductByItemId;
+productModel.createSellerProduct =createSellerProduct;
 
 module.exports = productModel;
 
@@ -116,4 +117,20 @@ function addReview(productId,reviewId){
             product.reviews.push(reviewId);
             return product.save();
         })
+}
+
+function createSellerProduct(userId,product){
+    var producttmp = null;
+    return productModel
+        .create(product)
+        .then(function (product) {
+            producttmp = product;
+            return userModel
+                .addCreatedProduct(userId,product._id);
+        })
+        .then(function (user) {
+            return producttmp;
+        }).catch(function(error){
+            console.log(error);
+        });
 }

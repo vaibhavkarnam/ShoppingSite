@@ -46,9 +46,25 @@
            class="form-control"
            id="password2"
            placeholder="verify password"/>
+   <div class="row">
+    <div class="col-lg-2 hidden-sm">  <label for="password2">User Type</label></div>
+    <div class="col-lg-8 col-sm-12">
+        <select class="form-control"
+                placeholder="Create a Password"
+                id="usertype"
+                ng-model="usertype">
+            <option value="" disabled selected>Select User Type</option>
+            <option value="CUSTOMER">Customer</option>
+            <option value="SELLER">Seller</option>
+            <option value="TECHNICIAN">Technician</option>
+            <option value="REPRESENTATIVE">Customer Support</option>
+        </select>
+    </div>
+    <div class="col-lg-2 hidden-sm"></div>
+</div>
 
     <a class="btn btn-default btn-primary btn-block"
-       ng-click="model.registerUser(user)"
+       ng-click="model.registerUser(user,usertype)"
        role="button">Register</a>
     <a class="btn btn-default btn-danger btn-block"
        href="#!/login"

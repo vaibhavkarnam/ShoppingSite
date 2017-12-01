@@ -1,5 +1,6 @@
 var app = require("../../express");
 var productModel = require("../models/product/product.model.server");
+var userModel = require("../models/user/user.model.server");
 var mongoose = require("mongoose");
 const http = require('http');
 'use strict';
@@ -87,11 +88,25 @@ function createProduct(req, res) {
     var userId = body.userId;
     var product = body.product;
     product._user = userId;
-    productModel
-        .createProduct(product)
-        .then(function (product){
-            res.json(product);
+    userModel
+        .findUserById(userId)
+        .then(function (user){
+            if(user.roles.indexOf('SELLER') > -1){
+                productModel
+                    .createSellerProduct(userId,product)
+                    .then(function (product){
+                        res.json(product);
+                    });
+            }
+            else{
+                productModel
+                    .createProduct(product)
+                    .then(function (product){
+                        res.json(product);
+                    });
+            }
         });
+
     // website._id = (new Date()).getTime() + "";
     // website.developerId = userId;
     // websites.push(website);

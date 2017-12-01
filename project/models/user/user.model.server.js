@@ -22,6 +22,8 @@ userModel.deleteService = deleteService;
 userModel.addReturn = addReturn;
 userModel.deleteReturn = deleteReturn;
 userModel.addReview = addReview;
+userModel.deleteCreatedProduct = deleteCreatedProduct;
+userModel.addCreatedProduct = addCreatedProduct;
 /*userModel.addProduct = addProduct;*/
 module.exports = userModel;
 
@@ -70,7 +72,7 @@ function findUserByCredentials(username,password){
 }
 
 function createUser(user){
-    user.roles =['USER'];
+    user.roles.push('USER');
     return userModel.create(user);
 }
 
@@ -142,6 +144,26 @@ function addReturn(userId, returnId){
         .findById(userId)
         .then (function (user){
             user.returns.push(returnId);
+            return user.save();
+        });
+}
+
+function deleteCreatedProduct(userId,productId){
+    return userModel
+        .findById(userId)
+        .then (function (user){
+            var index = user.createdProducts.indexOf(productId);
+            user.createdProducts.splice(index,1);
+            return user.save();
+        });
+}
+
+function addCreatedProduct(userId, productId){
+    console.log("fff");
+    return userModel
+        .findById(userId)
+        .then (function (user){
+            user.createdProducts.push(productId);
             return user.save();
         });
 }

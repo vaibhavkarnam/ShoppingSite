@@ -17,7 +17,9 @@
         }
         init();
 
-        function registerUser(user) {
+        function registerUser(user,usertype) {
+            user.roles=[];
+            user.roles.push(usertype);
             console.log("here");
             if(typeof user === 'undefined') {
                 model.error = "Please input user";
