@@ -89,38 +89,31 @@
                 .findUserById(model.userId)
                 .then(function (user)
                 {
-                              console.log("postingnewreview");
-
+                    console.log("postingnewreview");
                     model.user = user;
                     model.userReview.productid = model.productId;
                     model.userReview.userID = model.userId;
-                    model.userReview.productName = model.product.name;
                     model.userReview.userName = userobject.username;
+                    model.userReview.productName = model.product.name;
                     console.log(model.userReview.userName);
-                    // console.log(model.userReview.userRole);
                     console.log(model.userReview);
                     productService
                         .createReview(model.userReview, model.userReview.userID)
                         .then(function (status)
                         {
-                            // console.log("jdfs");
                             model.userReview.Review = "";
                             $route.reload();
 
                         });
-                });
+                });}
 
-        }
+
         function getAllUserReviews(productId) {
-
-
             model.userReviews =[];
             productService
                 .getUserReviews(productId)
                 .then(function (response)
                 {
-                     console.log("response in review");
-                     console.log(response);
                     response
                         .forEach(function (review) {
                                 model.userReviews.push(review);

@@ -104,13 +104,11 @@ function createProduct(req, res) {
 function createReview(req,res)
 {
     var obj=req.body;
- console.log(obj);
     productModel
-        .createReview(obj)
-        .then(function (response)
+        .createReview(obj).then(function (response)
         {
-            // console.log("in revieww");
-            // console.log(response);
+             console.log("in revieww");
+             console.log(response);
             res.sendStatus(200);
         });
 }
@@ -118,13 +116,10 @@ function createReview(req,res)
 
 function getReviewByProductId(req,res)
 {
-// console.log("review in server");
     var ReviewId = req.params.productId;
     productModel.
-    getReviewforId(ReviewId)
-        .then(function (reviews)
+    getReviewforId(ReviewId).then(function (reviews)
         {
-            //console.log(reviews);
             res.json(reviews);
         });
 }

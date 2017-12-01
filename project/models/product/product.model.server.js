@@ -34,11 +34,9 @@ function findProductById(productId) {
 function createReview(newReview, userId)
 {
     return productModel
-        .create(newReview)
-        .then(function (review)
+        .create(newReview).then(function (review)
         {
-            userModel
-                .addReview( review._id, userId);
+            userModel.addReview( review._id, userId);
             return review;
         })
 }
@@ -46,7 +44,9 @@ function createReview(newReview, userId)
 function getReviewforId(ReviewId)
 {
     return productModel
-        .find({ productid : ReviewId });
+        .find(
+            { productid : ReviewId }
+            );
 }
 
 function findAllProducts(){

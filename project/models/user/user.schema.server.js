@@ -16,9 +16,8 @@ var userSchema = mongoose.Schema({
         id: String,
         token: String
     },
-    // phone: String
-    UserReview : [{type:mongoose.Schema.Types.ObjectId, ref:"productSchema"}],
     dateCreated: {type: Date,default: Date.now()},
+    UserReview : [{type:mongoose.Schema.Types.ObjectId, ref:"ProductModel"}],
     products: [{type: mongoose.Schema.Types.ObjectId, ref: "ProductModel"}],
     services: [{type: mongoose.Schema.Types.ObjectId, ref: "ServiceModel"}],
     createdProducts: [{type: mongoose.Schema.Types.ObjectId, ref: "ProductModel"}],
