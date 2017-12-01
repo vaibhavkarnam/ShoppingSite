@@ -25,7 +25,8 @@ var productSchema = mongoose.Schema({
     // websites: [{type: mongoose.Schema.ObjectId, ref: "WebsiteModel"}],
     dateCreated: {type: Date,default: Date.now()},
     reviews:[{type:mongoose.Schema.Types.ObjectId, ref:'ReviewModel'}],
-    _user : {type : mongoose.Schema.Types.ObjectId, ref : "UserModel"}
+    _user : {type : mongoose.Schema.Types.ObjectId, ref : "UserModel"},
+    itemId:String
 },{collection: "product"});
 
 module.exports = productSchema;

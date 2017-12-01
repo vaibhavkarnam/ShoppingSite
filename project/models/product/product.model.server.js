@@ -18,8 +18,13 @@ productModel.addReview = addReview;
 productModel.createReview = createReview;
 productModel.getReviewforId = getReviewforId;
 userModel.getReviewforId = getReviewforId;
+productModel.findProductByItemId = findProductByItemId;
 
 module.exports = productModel;
+
+function findProductByItemId(itemId){
+    return productModel.find({itemId: itemId});
+}
 
 function updateProduct(productId,product){
     return productModel
@@ -54,30 +59,38 @@ function findAllProducts(){
 }
 
 function createProduct(product){
-/*    return productModel
-        .create(product)
-        .then(function (product){
-            return product;
-        });*/
+    /*    return productModel
+     .create(product)
+     .then(function (product){
+     return product;
+     });*/
     var producttmp = null;
-    if(product._id == null){
-        return productModel
-            .create(product)
-            .then(function (productDoc){
-                producttmp = productDoc;
-                return userModel.addProduct(product._user, productDoc._id)
-            }, function(error){
-                return res.json({error:error.message});
-            }).catch(function () {
-                console.log("Promise Rejected");
-            })
-            .then(function (userDoc) {
-                return producttmp;
-            });
-    }else{
-        return productModel
-            .findById({_id : product._id});
-    }
+    return productModel
+        .findProductByItemId(product.itemId)
+        .then(function (product1){
+            if(product1.length !=0 ) {
+                res.json(product1);
+            }else {
+                if(product._id == null){
+                    return productModel
+                        .create(product)
+                        .then(function (productDoc){
+                            producttmp = productDoc;
+                            return userModel.addProduct(product._user, productDoc._id)
+                        }, function(error){
+                            return res.json({error:error.message});
+                        }).catch(function () {
+                            console.log("Promise Rejected");
+                        })
+                        .then(function (productDoc) {
+                            return producttmp;
+                        });
+                }else{
+                    return productModel
+                        .findById({_id : product._id});
+                }
+            }
+        });
 }
 
 function deleteProduct(productId){

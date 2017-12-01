@@ -39,6 +39,7 @@
                                 model.product.customerratingurl = response.customerRatingImage;
                                 model.product.stock = response.stock;
                                 model.product.primaryimageurl = response.largeImage;
+                                model.product.itemId = response.itemId;
                                 // console.log(model.product.imageAssets);
                                 var imagelist = [];
                                 var i =0;
