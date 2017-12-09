@@ -20,6 +20,9 @@ productModel.getReviewforId = getReviewforId;
 userModel.getReviewforId = getReviewforId;
 productModel.findProductByItemId = findProductByItemId;
 productModel.createSellerProduct =createSellerProduct;
+productModel.createQuestion = createQuestion;
+productModel.getQuestionsforId = getQuestionsforId;
+
 
 module.exports = productModel;
 
@@ -47,12 +50,31 @@ function createReview(newReview, userId)
         })
 }
 
+function createQuestion(newQuestion, userId)
+{
+    return productModel
+        .create(newQuestion).then(function (question)
+        {
+            userModel.addQuestion( question._id, userId);
+            return question;
+        })
+}
+
+
 function getReviewforId(ReviewId)
 {
     return productModel
         .find(
             { productid : ReviewId }
             );
+}
+
+function getQuestionsforId(Id)
+{
+    return productModel
+        .find(
+            { productid : Id }
+        );
 }
 
 function findAllProducts(){

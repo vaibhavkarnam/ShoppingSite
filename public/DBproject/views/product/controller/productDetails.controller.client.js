@@ -16,9 +16,11 @@
         model.postNewReview = postNewReview;
         model.getAllUserReviews =getAllUserReviews;
         model.createProduct = createProduct;
-
+        model.postNewQuestion = postNewQuestion;
+        model.getAllUserQuestions =getAllUserQuestions;
         function init() {
             getAllUserReviews(model.productId);
+            getAllUserQuestions(model.productId);
             productService
                 .findProductById(model.productId)
                 .then(function (product){
@@ -108,6 +110,29 @@
                         });
                 });}
 
+        function postNewQuestion(question) {
+            model.userQuestion = question;
+            console.log("postingquestion");
+            userService
+                .findUserById(model.userId)
+                .then(function (user)
+                {
+                    model.user = user;
+                    model.userQuestion.productid = model.productId;
+                    model.userQuestion.userID = model.userId;
+                    model.userQuestion.userName = userobject.username;
+                    model.userQuestion.productName = model.product.name;
+                    model.userQuestion.answered = 0;
+                    console.log(model.userQuestion.userName);
+                    console.log(model.userQuestion);
+                    productService
+                        .createQuestion(model.userQuestion, model.userQuestion.userID)
+                        .then(function (status)
+                        {model.userQuestion.Question = "";
+                            $route.reload();
+
+                        });
+                });}
 
         function getAllUserReviews(productId) {
             model.userReviews =[];
@@ -116,11 +141,28 @@
                 .then(function (response)
                 {
                     response
-                        .forEach(function (review) {
+                        .forEach(function (review)
+                        {
+
                                 model.userReviews.push(review);
                         });
                 });
         }
 
+        function getAllUserQuestions(productId) {
+            model.userQuestions =[];
+            productService
+                .getUserQuestions(productId)
+                .then(function (response)
+                {
+                    console.log(response);
+                    response
+                        .forEach(function (question)
+                        {
+                            if(question.answered === 0)
+                            model.userQuestions.push(question);
+                        });
+                });
+        }
     }
 })();

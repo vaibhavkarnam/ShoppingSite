@@ -17,7 +17,9 @@ app.put("/api/product/:productId",updateProduct);
 app.delete("/api/product/:productId",deleteProduct);
 app.get("/api/walmart/:productId", searchProductByProductId);
 app.post("/api/project/user/:userId/review", createReview);
+app.post("/api/project/user/:userId/question", createQuestion);
 app.get("/api/project/getReview/:productId",getReviewByProductId);
+app.get("/api/project/getQuestion/:productId",getQuestionByProductId);
 
 function walmartProductSearch(req, res){
     var product = req.params.product;
@@ -121,11 +123,24 @@ function createReview(req,res)
     var obj=req.body;
     productModel
         .createReview(obj).then(function (response)
-        {
-             console.log("in revieww");
-             console.log(response);
-            res.sendStatus(200);
-        });
+    {
+        console.log("in revieww");
+        console.log(response);
+        res.sendStatus(200);
+    });
+}
+
+
+function createQuestion(req,res)
+{
+    var obj=req.body;
+    productModel
+        .createQuestion(obj).then(function (response)
+    {
+        console.log("response");
+        console.log(response);
+        res.sendStatus(200);
+    });
 }
 
 
@@ -138,6 +153,18 @@ function getReviewByProductId(req,res)
             res.json(reviews);
         });
 }
+
+
+function getQuestionByProductId(req,res)
+{
+    var QuestionId = req.params.productId;
+    productModel.
+    getQuestionsforId(QuestionId).then(function (questions)
+    {
+        res.json(questions);
+    });
+}
+
 
 function findProductById(req,res){
     console.log("ins server");

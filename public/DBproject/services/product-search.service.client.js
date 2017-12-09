@@ -18,7 +18,8 @@
         this.findAllProducts = findAllProducts;
         this.updateProduct= updateProduct;
         this.deleteProduct= deleteProduct;
-
+        this.createQuestion = createQuestion;
+        this.getUserQuestions = getUserQuestions;
         function updateProduct(productId,product){
             var url = "/api/product/"+productId;
             return $http.put(url,product)
@@ -111,11 +112,28 @@
             );
     }
 
+
+        function getUserQuestions(productId)
+        {
+            var url="/api/project/getQuestion/"+productId;
+            return $http.get(url)
+                .then(function (response)
+                    {
+                        return response.data;
+                    }
+                );
+        }
+
+
         function createReview(review, userId)
         {
             return $http.post("/api/project/user/"+userId+"/review", review);
         }
 
+        function createQuestion(question, userId)
+        {
+            return $http.post("/api/project/user/"+userId+"/question", question);
+        }
 
     }
 
