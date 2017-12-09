@@ -6,6 +6,8 @@ var cookie = require('cookie-parser');
 var session = require('express-session');
 var passport = require('passport');
 var userModel = require("../models/user/user.model.server");
+var multer = require('multer'); // npm install multer --save
+var upload = multer({ dest: __dirname+'/../../public/DBproject/uploads'});
 var LocalStrategy = require('passport-local').Strategy;
 
 passport.use(new LocalStrategy(localStrategy));
@@ -38,6 +40,7 @@ app.put("/api/user/:userId",updateUser);
 app.delete("/api/unregister",unRegisterUser);
 app.delete("/api/user/:userId",isAdmin,deleteUser);
 app.post("/api/login", passport.authenticate('local'),login);
+app.post("/api/upload/project",upload.single('myFile'), uploadImage);
 app.get("/api/checkLoggedIn", checkLoggedIn);
 app.get("/api/checkAdmin", checkAdmin);
 app.post("/api/logout", logout);
@@ -85,6 +88,37 @@ function googleStrategy(token, refreshToken, profile, done) {
             }
         );
 }
+
+function uploadImage(req, res) {
+
+    var myFile        = req.file;
+
+    var userId        = req.body.userId;
+
+    var originalname  = myFile.originalname; // file name on user's computer
+    var filename      = myFile.filename;     // new file name in upload folder
+    var path          = myFile.path;         // full path of uploaded file
+    var destination   = myFile.destination;  // folder where file is saved to
+    var size          = myFile.size;
+    var mimetype      = myFile.mimetype;
+    var photourl     = '/uploads/'+filename;
+
+    return userModel
+        .findUserById(userId)
+        .then(function (user) {
+            user.image_url=photourl;
+            userModel
+                .updateUser(userId, user)
+                .then(function (status) {
+                    var callbackUrl = "/DBproject/#!/profile";
+                    res.redirect(callbackUrl);
+                }, function (err) {
+                    console.log(err);
+                    return err;
+                });
+        });
+}
+
 function unRegisterUser(req,res){
     userModel
         .deleteUser(req.user._id)

@@ -8,6 +8,7 @@ var userSchema = mongoose.Schema({
     password: String,
     firstName: String,
     lastName: String,
+    image_url: String,
     roles: [{type:String,default:'USER',enum:['USER','CUSTOMER','SELLER','ADMIN','REPRESENTATIVE','TECHNICIAN']}],
     email: String,
     dob: Date,

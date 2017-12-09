@@ -60,7 +60,9 @@ function findUserByGoogleId(googleId) {
 }
 
 function findUserByUsername(username){
-    return userModel.findOne({username:username});
+    return userModel.findOne({username:username})
+        .populate('createdProducts')
+        .exec();
 }
 
 function findAllUsers(){
@@ -68,7 +70,9 @@ function findAllUsers(){
 }
 function findUserByCredentials(username,password){
     // console.log(userModel.findOne({username:username,password:password}));
-    return userModel.findOne({username:username,password:password});
+    return userModel.findOne({username:username,password:password})
+        .populate('createdProducts')
+        .exec();
 }
 
 function createUser(user){
@@ -88,7 +92,9 @@ function deleteUser(userId){
 }
 
 function findUserById(userId){
-    return userModel.findById(userId);
+    return userModel.findById(userId)
+            .populate('createdProducts')
+            .exec();
 }
 
 function deleteProduct(userId,productId){

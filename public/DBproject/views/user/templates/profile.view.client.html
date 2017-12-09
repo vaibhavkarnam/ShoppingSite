@@ -152,15 +152,17 @@
 <!--Run code snippet-->
 
 <div id="kv-avatar-errors-2" class="center-block"></div>
-<form class="form form-vertical" action="/api/upload/project" method="post" enctype="multipart/form-data">
     <div class="row">
         <div class="col-sm-3" id="profilebtn">
+            <form class="form form-vertical" action="/api/upload/project" method="post" enctype="multipart/form-data">
             <div class="kv-avatar center-block text-center" style="width:200px">
-                <img ng-src="{{model.user.ProfilePic}}" src="{{model.user.ProfilePic}}">
-                <input id="avatar-2" name="avatar-2" type="file" class="file-loading" required>
-                <input  name="userId"    value="{{model.userId}}"   style="display: none"/>
-                <button type="submit"    class="btn btn-sucess btn-block">Upload Profile Pic</button>
+                <img ng-src="{{model.user.image_url}}">
+                {{model.user.image_url}}
+                <input id="myFile" name="myFile" type="file" class="file-loading" required>
+                <input  name="userId" value="{{model.user._id}}"   style="display: none"/>
+                <button type="submit" class="btn btn-sucess btn-block">Upload Profile Pic</button>
             </div>
+            </form>
         </div>
         <div class="col-sm-9">
             <div class="tabbable tabs-below" ng-init="selectedTab = 1;">
@@ -245,10 +247,10 @@
                                href="#!/user/{{model.user._id}}/website"
                                role="button">Websites</a>
                             <a class="btn btn-default btn-danger btn-block"
-                               ng-click="model.unRegisterUser()"
+                               data-ng-click="model.unRegisterUser()"
                                role="button">Unregister</a>
                             <a class="btn btn-default btn-danger btn-block"
-                               ng-click="model.logout()"
+                               data-ng-click="model.logout()"
                                role="button">Logout</a>
 
                         </div>
@@ -364,10 +366,18 @@
 
                                 </div>
                             </li>
-                            <li ng-repeat="website in model.websites" class="list-group-item">
+                            <li ng-repeat="product in model.user.createdProducts" class="list-group-item">
                                 <div class="row">
-                                    <div class="col-xs-12">
-                                        <a href="#!/user/{{model.userId}}/website/{{website._id}}/page">{{website.name}}</a></div>
+                                    <div class="col-xs-3">{{product.name}}</div>
+                                    <div class="col-xs-3">{{product.brand}}</div>
+                                    <div class="col-xs-2">{{product.price}}</div>
+                                    <div class="col-xs-2"><a class="btn btn-default btn-primary btn-block"
+                                           data-ng-click="model.updateProduct(product._id)"
+                                           role="button">Update</a> </div>
+                                    <div class ="col-xs-2">
+                                        <a class="btn btn-default btn-danger btn-block"
+                                           data-ng-click="model.deleteProduct(product._id)"
+                                           role="button">Delete</a></div>
                                 </div>
                             </li>
                         </ul>
@@ -378,8 +388,6 @@
         </div>
     </div>
     </div>
-</form>
-</div>
 
 
 <!--<div class="container-fluid wbd-profile-container">-->

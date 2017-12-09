@@ -11,13 +11,15 @@
         .module("omdbApp")
         .controller("profileController",profileController);
 
-    function profileController(userobject) {
+    function profileController(userobject,$location,productService) {
 
         var model = this;
 
         model.updateUser = updateUser;
         model.unRegisterUser = unRegisterUser;
         model.logout = logout;
+        model.updateProduct = updateProduct;
+        model.deleteProduct = deleteProduct;
 
         function init() {
                     var usr = userobject;
@@ -78,6 +80,18 @@
                 });
         }
 
+        function updateProduct(productId){
+            $location.url("/updateproduct/"+productId);
+        }
+
+        function deleteProduct(productId) {
+            productService
+                .deleteProduct(productId)
+                .then(function (){
+                    $location.url('/');
+                });
+        }
+
         // function setDate(date){
         //     var year=date.getFullYear();
         //     var month=date.getMonth()+1;
@@ -89,6 +103,5 @@
         //     return date;
         // }
     }
-
 
 })();
