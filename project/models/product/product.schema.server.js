@@ -11,6 +11,8 @@ var productSchema = mongoose.Schema({
     description: String,
     price: String,
     Review: String,
+    Question: String,
+    answered :{type:Number,default:0},
     category: String,
     stock: String,
     color:String,

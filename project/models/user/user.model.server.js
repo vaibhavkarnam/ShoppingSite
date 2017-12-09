@@ -24,6 +24,8 @@ userModel.deleteReturn = deleteReturn;
 userModel.addReview = addReview;
 userModel.deleteCreatedProduct = deleteCreatedProduct;
 userModel.addCreatedProduct = addCreatedProduct;
+userModel.addQuestion = addQuestion;
+
 /*userModel.addProduct = addProduct;*/
 module.exports = userModel;
 
@@ -42,6 +44,20 @@ function addReview(reviewId,Id)
         .then(function (user)
         {
             user.UserReview.push(reviewId);
+            return user.save();
+        }, function (error)
+        {
+            return error;
+        });
+}
+
+function addQuestion(questionId,Id)
+{
+    return userModel
+        .findUserById(Id)
+        .then(function (user)
+        {
+            user.UserQuestion.push(questionId);
             return user.save();
         }, function (error)
         {

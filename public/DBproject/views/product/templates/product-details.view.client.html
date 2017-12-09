@@ -223,6 +223,50 @@
 					</div>
 				</h4><!--</div>-->
 			</div>
+
+
+			<div class="product-detail-margin">
+				<h4 class="title">
+					<span class="pull-left"><span class="text"><strong>Have a question?</strong></span></span>
+
+					<div id="questiontab">
+						<ul class="nav nav-tabs nav-justified" id="myqTab">
+							<li><a data-target="#questions" data-toggle="tab">Ansewered Questions</a></li>
+							<li><a data-target="#postquestion" data-toggle="tab">Ask a Question?</a></li>
+						</ul>
+
+						<h4 class="tab-content">
+							<div class="tab-pane" id = "questions">
+								<div ng-repeat="userQuestion in model.userQuestions">
+									<span class="glyphicon glyphicon-user"></span> USER :<a href="#!/profile/visitor/{{userQuestion.userID}}" class="btn btn-link">
+									{{userQuestion.userName}}</a>
+									<p>Question : {{userQuestion.description}}</p>
+								</div>
+							</div>
+							<div class="tab-pane" id="postquestion">
+								<div class="col-md-8">
+									<div class="form-group">
+										<div class="page-header">
+											Ask a Question?
+										</div>
+										<textarea ng-model="model.userQuestion.description"
+												  placeholder="Description" rows="5" class="col-xs-12"></textarea>
+									</div>
+									<a class="btn btn-success form-control"
+									   ng-click="model.postNewQuestion(model.userQuestion)" data-dismiss="modal">Post</a>
+								</div>
+							</div>
+
+
+						</h4>
+					</div>
+				</h4><!--</div>-->
+			</div>
+
+
+
+
+
 		</div>
 	</div>
 
