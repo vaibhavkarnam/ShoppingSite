@@ -101,7 +101,7 @@ function uploadImage(req, res) {
     var destination   = myFile.destination;  // folder where file is saved to
     var size          = myFile.size;
     var mimetype      = myFile.mimetype;
-    var photourl     = '/uploads/'+filename;
+    var photourl     = '/DBProject/uploads/'+filename;
 
     return userModel
         .findUserById(userId)
