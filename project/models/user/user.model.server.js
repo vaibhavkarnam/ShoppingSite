@@ -25,9 +25,31 @@ userModel.addReview = addReview;
 userModel.deleteCreatedProduct = deleteCreatedProduct;
 userModel.addCreatedProduct = addCreatedProduct;
 userModel.addQuestion = addQuestion;
+userModel.getSellersList = getSellersList;
+userModel.updateFollowing = updateFollowing;
+userModel.updateFollowed = updateFollowed;
 
 /*userModel.addProduct = addProduct;*/
 module.exports = userModel;
+function updateFollowed(sellerName, username){
+    return userModel.findUserByUsername(sellerName)
+        .then(function (user){
+            user.followed.push(username);
+            user.save();
+        })
+}
+
+function updateFollowing(userId, sellerName){
+    return userModel.findUserById(userId)
+        .then(function (user){
+            user.following.push(sellerName);
+            user.save();
+        })
+}
+
+function getSellersList(){
+    return userModel.find({roles : "SELLER"});
+}
 
 function addProduct(userId,productId){
     return userModel.findUserById(userId)
@@ -109,7 +131,7 @@ function deleteUser(userId){
 
 function findUserById(userId){
     return userModel.findById(userId)
-            .populate('createdProducts')
+            .populate('createdProducts products')
             .exec();
 }
 

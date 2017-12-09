@@ -20,18 +20,24 @@
         model.logout = logout;
         model.updateProduct = updateProduct;
         model.deleteProduct = deleteProduct;
+        model.getSellersList = getSellersList;
 
         function init() {
                     var usr = userobject;
                     usr.dob = new Date(usr.dob);
                     model.user = usr;
                     model.products = usr.products;
+                    model.following = model.user.following;
                     // if (typeof model.user.dob !== 'undefined') {
                     //     model.user.dob = setDate(model.user.dob);
                     // }
             // console.log(model.user);
     }
         init();
+
+        function getSellersList(){
+            $location.url("/sellers");
+        }
 
         function updateUser(user) {
             userService

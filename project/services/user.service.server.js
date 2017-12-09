@@ -50,7 +50,34 @@ app.get('/auth/google/callback',
         successRedirect: '/assignment/#!/profile',
         failureRedirect: '/assignment/#!/login'
     }));
+app.get("/api/seller", getSellersList);
+app.post("/api/seller/followMe", followMe);
 
+function getSellersList(req, res){
+    userModel.getSellersList()
+        .then(function (owners){
+            res.json(owners);
+        })
+}
+
+function followMe(req, res){
+    var user = req.user;
+    var body = req.body;
+    var userId = body.userId._id;
+    var sellerName = body.sellerName;
+    var owner = {};
+
+    userModel
+        .updateFollowing(userId, sellerName)
+        .then(function (response){
+            userModel
+                .updateFollowed(sellerName, user.username)
+                .then(function (response){
+                    res.sendStatus(200);
+                })
+            //res.sendStatus(200);
+        })
+}
 
 function googleStrategy(token, refreshToken, profile, done) {
     userModel
