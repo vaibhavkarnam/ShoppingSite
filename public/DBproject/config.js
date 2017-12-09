@@ -75,6 +75,14 @@
                     userobject: checkCurrentUser
                 }
             })
+            .when("/sellers", {
+                templateUrl: "views/user/templates/seller-list.view.client.html",
+                controller : "sellerListController",
+                controllerAs : "model",
+                resolve: {
+                    userobject : checkCurrentUser
+                }
+            })
     }
 
 

@@ -19,9 +19,21 @@
             "logout":logout,
             "checkAdmin": checkAdmin,
             "findAllUsers": findAllUsers,
-            "unRegisterUser":unRegisterUser
+            "unRegisterUser":unRegisterUser,
+            "getSellersList":getSellersList,
+            "followMe":followMe
         };
         return api;
+
+        function followMe(sellerName, userId){
+            var url = "/api/seller/followMe";
+            return  $http.post(url, {userId :userId, sellerName : sellerName});
+        }
+
+        function getSellersList(){
+            var url = "/api/seller";
+            return $http.get(url);
+        }
 
         function unRegisterUser(){
             var url = "/api/unregister";

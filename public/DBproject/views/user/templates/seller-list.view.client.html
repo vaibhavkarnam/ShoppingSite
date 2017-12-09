@@ -1,0 +1,33 @@
+<div>
+    <nav class="navbar rak-navbar-color navbar-fixed-top nav-collapse collapsing">
+        <div class="container-fluid">
+            <a href="#!/customer-profile">
+<!--            <span
+                    class="glyphicon glyphicon-chevron-left white pull-left glyphicon-chevron-position">
+
+            </span>-->
+            </a>
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div>
+                <a class="navbar-brand" white href="">Sellers</a>
+            </div>
+
+        </div><!-- /.container-fluid -->
+    </nav>
+    <div>
+        <ul class="list-group">
+            <div ng-repeat = "owner in model.sellersList" class="wd-widget">
+                <li class="list-group-item">
+                    <div>
+                        <a href="#!/owner">{{owner.username}}</a>
+                        <button
+                                type="button"
+                                class="btn btn-danger btn-sm pull-right rak-owners-list-button"
+                                ng-click = "model.followMe(owner.username)">
+                            <span class="glyphicon glyphicon-star" aria-hidden="true"></span> Follow Me
+                        </button>
+                    </div>
+            </div>
+        </ul>
+    </div>
+</div>
