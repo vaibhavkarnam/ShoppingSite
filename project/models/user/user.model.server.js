@@ -28,9 +28,70 @@ userModel.addQuestion = addQuestion;
 userModel.getSellersList = getSellersList;
 userModel.updateFollowing = updateFollowing;
 userModel.updateFollowed = updateFollowed;
-
+userModel.addCreatedProductForOrder = addCreatedProductForOrder;
+userModel.addProductForOrder = addProductForOrder;
+userModel.addProductForOrder = addProductForOrder;
+userModel.removeOrderFromUser = removeOrderFromUser;
+userModel.addCreatedProductForReturn = addCreatedProductForReturn;
+userModel.addProductForReturn = addProductForReturn;
+userModel.removeReturnFromUser = removeReturnFromUser;
 /*userModel.addProduct = addProduct;*/
 module.exports = userModel;
+
+function removeReturnFromUser(userId, productId){
+    return userModel
+        .findById(userId)
+        .then(function (user){
+            var index = user.returns.indexOf(productId);
+            user.returns.splice(index, 1);
+            return user.save();
+        })
+}
+
+function addProductForReturn(userId,productId){
+    return userModel.findUserById(userId)
+        .then(function (user){
+            user.returns.push(productId);
+            return user.save();
+        })
+}
+
+function addCreatedProductForReturn(userId, productId){
+    return userModel
+        .findById(userId)
+        .then (function (user){
+            user.returns.push(productId);
+            return user.save();
+        });
+}
+
+function removeOrderFromUser(userId, productId){
+    return userModel
+        .findById(userId)
+        .then(function (user){
+            var index = user.orders.indexOf(productId);
+            user.orders.splice(index, 1);
+            return user.save();
+        })
+}
+
+function addProductForOrder(userId,productId){
+    return userModel.findUserById(userId)
+        .then(function (user){
+            user.orders.push(productId);
+            user.save();
+        })
+}
+
+function addCreatedProductForOrder(userId, productId){
+    return userModel
+        .findById(userId)
+        .then (function (user){
+            user.orders.push(productId);
+            return user.save();
+        });
+}
+
 function updateFollowed(sellerName, username){
     return userModel.findUserByUsername(sellerName)
         .then(function (user){
@@ -99,7 +160,7 @@ function findUserByGoogleId(googleId) {
 
 function findUserByUsername(username){
     return userModel.findOne({username:username})
-        .populate('createdProducts')
+        .populate('createdProducts products orders returns')
         .exec();
 }
 
@@ -109,7 +170,7 @@ function findAllUsers(){
 function findUserByCredentials(username,password){
     // console.log(userModel.findOne({username:username,password:password}));
     return userModel.findOne({username:username,password:password})
-        .populate('createdProducts')
+        .populate('createdProducts products orders returns')
         .exec();
 }
 
@@ -131,7 +192,7 @@ function deleteUser(userId){
 
 function findUserById(userId){
     return userModel.findById(userId)
-            .populate('createdProducts products')
+            .populate('createdProducts products orders returns')
             .exec();
 }
 

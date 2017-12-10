@@ -25,7 +25,9 @@ var userSchema = mongoose.Schema({
     createdProducts: [{type: mongoose.Schema.Types.ObjectId, ref: "ProductModel"}],
     returns: [{type: mongoose.Schema.Types.ObjectId, ref: "ReturnModel"}],
     following: [{type :String}],
-    followed : [{type : String}]
+    followed : [{type : String}],
+    orders: [{type: mongoose.Schema.Types.ObjectId, ref: "ProductModel"}],
+    returns: [{type: mongoose.Schema.Types.ObjectId, ref: "ProductModel"}]
 },{collection: "user"});
 
 module.exports = userSchema;

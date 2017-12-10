@@ -29,7 +29,42 @@
         this.getAllUserQuestions = getAllUserQuestions;
         this.getAllQuestions = getAllQuestions;
 
+        this.createProductForOrder = createProductForOrder;
+        this.deleteProductForOrder= deleteProductForOrder;
+        this.createProductForReturn = createProductForReturn;
+        this.deleteProductForReturn= deleteProductForReturn;
 
+        function deleteProductForReturn(productId){
+            var url = "/api/productForReturn/"+productId;
+            return $http.delete(url)
+                .then(function (response){
+                    return response.data;
+                });
+        }
+
+        function createProductForReturn(userId, product){
+            var url = "/api/productForReturn";
+            return $http.post(url,{userId :userId, product : product})
+                .then(function (response){
+                    return response.data;
+                });
+        }
+
+        function deleteProductForOrder(productId){
+            var url = "/api/productForOrder/"+productId;
+            return $http.delete(url)
+                .then(function (response){
+                    return response.data;
+                });
+        }
+
+        function createProductForOrder(userId, product){
+            var url = "/api/productForOrder";
+            return $http.post(url,{userId :userId, product : product})
+                .then(function (response){
+                    return response.data;
+                });
+        }
         function updateProduct(productId,product){
             var url = "/api/product/"+productId;
             return $http.put(url,product)

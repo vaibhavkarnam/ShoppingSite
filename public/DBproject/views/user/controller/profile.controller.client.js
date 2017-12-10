@@ -27,6 +27,8 @@
         model.getReviewById = getReviewById;
         model.getAllUserQuestions = getAllUserQuestions;
         model.getAllQuestions = getAllQuestions;
+        model.deleteProductForOrder = deleteProductForOrder;
+        model.deleteProductForReturn = deleteProductForReturn;
 
         function init() {
             var usr = userobject;
@@ -43,6 +45,22 @@
             getAllQuestions();
         }
         init();
+
+        function deleteProductForReturn(productId) {
+            productService
+                .deleteProductForReturn(productId)
+                .then(function (){
+                    $location.url('/');
+                });
+        }
+
+        function deleteProductForOrder(productId) {
+            productService
+                .deleteProductForOrder(productId)
+                .then(function (){
+                    $location.url('/');
+                });
+        }
 
         function getSellersList(){
             $location.url("/sellers");

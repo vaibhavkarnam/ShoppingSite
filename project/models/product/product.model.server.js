@@ -26,8 +26,128 @@ productModel.updateReview = updateReview;
 productModel.getReviewforUserId = getReviewforUserId;
 productModel.deleteReviews = deleteReviews;
 productModel.findReviewById = findReviewById;
+productModel.createSellerProductForOrder =createSellerProductForOrder;
+productModel.createProductForOrder = createProductForOrder;
+productModel.removeOrder = removeOrder;
+productModel.createSellerProductForReturn = createSellerProductForReturn;
+productModel.createProductForReturn = createProductForReturn;
 
 module.exports = productModel;
+
+function createProductForReturn(product){
+    /*    return productModel
+     .create(product)
+     .then(function (product){
+     return product;
+     });*/
+    var producttmp = null;
+    return productModel
+        .findProductByItemId(product.itemId)
+        .then(function (product1){
+            if(product1.length !=0 ) {
+                return userModel
+                    .addProductForReturn(product._user, product._id)
+                    .then(function (product2){
+                        res.json(product2);
+                    })
+            }else {
+                if(product._id == null){
+                    return productModel
+                        .create(product)
+                        .then(function (productDoc){
+                            producttmp = productDoc;
+                            return userModel.addProductForReturn(product._user, productDoc._id)
+                        }, function(error){
+                            return res.json({error:error.message});
+                        }).catch(function () {
+                            console.log("Promise Rejected");
+                        })
+                        .then(function (productDoc) {
+                            return producttmp;
+                        });
+                }else{
+                    return productModel
+                        .findById({_id : product._id});
+                }
+            }
+        });
+}
+
+function createSellerProductForReturn(userId,product){
+    var producttmp = null;
+    return productModel
+        .create(product)
+        .then(function (product) {
+            producttmp = product;
+            return userModel
+                .addCreatedProductForReturn(userId,product._id);
+        })
+        .then(function (user) {
+            return producttmp;
+        }).catch(function(error){
+            console.log(error);
+        });
+}
+
+function removeOrder(productId){
+    return productModel
+        .findById(productId)
+        .then(function (product){
+            var index = product.orders.indexOf(productId);
+            product.orders.splice(index, 1);
+            return product.save();
+        })
+}
+
+function createProductForOrder(product){
+    var producttmp = null;
+    return productModel
+        .findProductByItemId(product.itemId)
+        .then(function (product1){
+            if(product1.length !=0 ) {
+                return userModel
+                    .addProductForOrder(product._user, product._id)
+                    .then(function (product2){
+                        res.json(product2);
+                    })
+            }else {
+                if(product._id == null){
+                    return productModel
+                        .create(product)
+                        .then(function (productDoc){
+                            producttmp = productDoc;
+                            return userModel.addProductForOrder(product._user, productDoc._id)
+                        }, function(error){
+                            return res.json({error:error.message});
+                        }).catch(function () {
+                            console.log("Promise Rejected");
+                        })
+                        .then(function (productDoc) {
+                            return producttmp;
+                        });
+                }else{
+                    return productModel
+                        .findById({_id : product._id});
+                }
+            }
+        });
+}
+
+function createSellerProductForOrder(userId,product){
+    var producttmp = null;
+    return productModel
+        .create(product)
+        .then(function (product) {
+            producttmp = product;
+            return userModel
+                .addCreatedProductForOrder(userId,product._id);
+        })
+        .then(function (user) {
+            return producttmp;
+        }).catch(function(error){
+            console.log(error);
+        });
+}
 
 function findProductByItemId(itemId){
     return productModel.find({itemId: itemId});
@@ -95,7 +215,11 @@ function createProduct(product){
         .findProductByItemId(product.itemId)
         .then(function (product1){
             if(product1.length !=0 ) {
-                res.json(product1);
+                return userModel
+                    .addProduct(product._user, product._id)
+                    .then(function (product2){
+                        res.json(product2);
+                    })
             }else {
                 if(product._id == null){
                     return productModel
