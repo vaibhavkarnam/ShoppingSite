@@ -22,7 +22,10 @@ productModel.findProductByItemId = findProductByItemId;
 productModel.createSellerProduct =createSellerProduct;
 productModel.createQuestion = createQuestion;
 productModel.getQuestionsforId = getQuestionsforId;
-
+productModel.updateReview = updateReview;
+productModel.getReviewforUserId = getReviewforUserId;
+productModel.deleteReviews = deleteReviews;
+productModel.findReviewById = findReviewById;
 
 module.exports = productModel;
 
@@ -155,4 +158,37 @@ function createSellerProduct(userId,product){
         }).catch(function(error){
             console.log(error);
         });
+}
+
+
+function updateReview( reviewId, review) {
+    return productModel.update(
+        { _id : reviewId },
+        {
+            description: review.description
+        });
+}
+
+function getReviewforUserId(userId)
+{
+    return productModel
+        .find({ userID : userId });
+}
+
+function deleteReviews(userId)
+{
+    return productModel
+        .deleteMany({ userID : userId })
+}
+
+function deleteReview(reviewId)
+{
+    return productModel
+        .findByIdAndRemove({ _id : reviewId})
+}
+
+function  findReviewById(reviewId) {
+
+    return productModel
+        .find({ _id : reviewId });
 }

@@ -11,7 +11,7 @@
         .module("omdbApp")
         .controller("profileController",profileController);
 
-    function profileController(userobject,$location,productService) {
+    function profileController(userobject,$location,productService,$route) {
 
         var model = this;
 
@@ -21,18 +21,27 @@
         model.updateProduct = updateProduct;
         model.deleteProduct = deleteProduct;
         model.getSellersList = getSellersList;
+        model.getAllUserReviews = getAllUserReviews;
+        model.updateUserReview = updateUserReview;
+        model.reviewDelete = reviewDelete;
+        model.getReviewById = getReviewById;
+        model.getAllUserQuestions = getAllUserQuestions;
+        model.getAllQuestions = getAllQuestions;
 
         function init() {
-                    var usr = userobject;
-                    usr.dob = new Date(usr.dob);
-                    model.user = usr;
-                    model.products = usr.products;
-                    model.following = model.user.following;
-                    // if (typeof model.user.dob !== 'undefined') {
-                    //     model.user.dob = setDate(model.user.dob);
-                    // }
+            var usr = userobject;
+            usr.dob = new Date(usr.dob);
+            model.user = usr;
+            model.products = usr.products;
+            model.following = model.user.following;
+            // if (typeof model.user.dob !== 'undefined') {
+            //     model.user.dob = setDate(model.user.dob);
+            // }
             // console.log(model.user);
-    }
+            getAllUserReviews(model.user._id);
+            getAllUserQuestions(model.user._id);
+            getAllQuestions();
+        }
         init();
 
         function getSellersList(){
@@ -95,6 +104,72 @@
                 .deleteProduct(productId)
                 .then(function (){
                     $location.url('/');
+                });
+        }
+
+
+        function getAllUserReviews(userId)
+        {
+// console.log("getting reviews");
+            productService
+                .getAllUserReviews(userId)
+                .then(function (response) {
+                    model.allUserReviews = response;
+                });
+        }
+
+        function getAllUserQuestions(userId)
+        {
+// console.log("getting reviews");
+            productService
+                .getAllUserQuestions(userId)
+                .then(function (response) {
+                    model.allUserQuestions = response;
+                });
+        }
+
+        function getAllQuestions(userId)
+        {
+// console.log("getting reviews");
+            productService
+                .getAllQuestions(userId)
+                .then(function (response) {
+                    console.log(response);
+                    model.allQuestions = response;
+                });
+        }
+
+        function updateUserReview(reviewId,review) {
+// console.log("updating");
+            productService
+                .updateUserReview(reviewId,review)
+                .then(function (response) {
+                    getAllUserReviews(model.userId);
+                });
+        }
+
+
+        function reviewDelete(reviewId) {
+            console.log("deleting review");
+            productService
+                .deleteReview(reviewId)
+                .then(function (status)
+                {
+                    $route.reload();
+                });
+        }
+
+
+        function getReviewById(reviewId) {
+            productService
+                .getReviewById(reviewId)
+                .then(function(response)
+                {
+                    model.reviewForUpdate
+                        =
+                        angular.copy(response);
+                     console.log(model.reviewForUpdate);
+                    // console.log(model.reviewForUpdate.description);
                 });
         }
 

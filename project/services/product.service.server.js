@@ -1,6 +1,8 @@
 var app = require("../../express");
 var productModel = require("../models/product/product.model.server");
 var userModel = require("../models/user/user.model.server");
+var reviewModel = require("../models/reviews/review.model.server");
+var queryModel = require("../models/queries/query.model.server");
 var mongoose = require("mongoose");
 const http = require('http');
 'use strict';
@@ -20,6 +22,16 @@ app.post("/api/project/user/:userId/review", createReview);
 app.post("/api/project/user/:userId/question", createQuestion);
 app.get("/api/project/getReview/:productId",getReviewByProductId);
 app.get("/api/project/getQuestion/:productId",getQuestionByProductId);
+app.get("/api/project/Review/:userId",findReviewforUserId);
+app.delete("/api/project/Review/:reviewId", deleteReview);
+app.put("/api/project/Review/:reviewId", updateReview);
+app.put("/api/project/Answer/:answerId", answerQuestion);
+app.get("/api/project/getReviewForUser/:userId",findReviewforUserId);
+app.get("/api/project/getReviewId/:reviewId", findReviewByReviewId);
+app.get("/api/project/getAnswerId/:answerId", findQuestionById);
+app.get("/api/project/getQuestionsForUser/:userId",findQuestionforUserId);
+app.get("/api/project/getQuestions/:userId",findQuestion);
+
 
 function walmartProductSearch(req, res){
     var product = req.params.product;
@@ -121,7 +133,7 @@ function createProduct(req, res) {
 function createReview(req,res)
 {
     var obj=req.body;
-    productModel
+    reviewModel
         .createReview(obj).then(function (response)
     {
         console.log("in revieww");
@@ -134,10 +146,9 @@ function createReview(req,res)
 function createQuestion(req,res)
 {
     var obj=req.body;
-    productModel
-        .createQuestion(obj).then(function (response)
+    queryModel
+        .createQuery(obj).then(function (response)
     {
-        console.log("response");
         console.log(response);
         res.sendStatus(200);
     });
@@ -146,10 +157,14 @@ function createQuestion(req,res)
 
 function getReviewByProductId(req,res)
 {
+
     var ReviewId = req.params.productId;
-    productModel.
+    console.log(ReviewId);
+    reviewModel.
     getReviewforId(ReviewId).then(function (reviews)
         {
+            console.log("---");
+            console.log(reviews);
             res.json(reviews);
         });
 }
@@ -158,9 +173,11 @@ function getReviewByProductId(req,res)
 function getQuestionByProductId(req,res)
 {
     var QuestionId = req.params.productId;
-    productModel.
-    getQuestionsforId(QuestionId).then(function (questions)
+    queryModel.
+    getQueryforId(QuestionId).then(function (questions)
     {
+        console.log("---");
+        console.log(questions);
         res.json(questions);
     });
 }
@@ -221,4 +238,135 @@ function searchProductByProductId(req, res) {
              res.json(item);
              });*/
 
+}
+
+
+function deleteReview(req, res)
+{
+    var Id = req.params.reviewId;
+    reviewModel
+        .deleteReview(Id)
+        .then(function (status)
+        {
+            res.sendStatus(200);
+        });
+}
+
+function deleteQuestion(req, res)
+{
+    var Id = req.params.answerId;
+    queryModel
+        .deleteQuery(Id)
+        .then(function (status)
+        {
+            res.sendStatus(200);
+        });
+}
+
+function updateReview(req, res)
+{
+    var review = req.body;
+    var Id = req.params.reviewId;
+    reviewModel
+        .updateReview(Id, review)
+        .then(function (response)
+        {
+            res.json(response);
+        });
+}
+
+function answerQuestion(req, res)
+{
+    var question = req.body;
+    var Id = req.params.answerId;
+    console.log(question);
+    console.log(Id);
+    queryModel
+        .updateQuery(Id, question)
+        .then(function (response)
+        {
+            res.json(response);
+        });
+}
+function deleteReviews(req, res)
+{
+    var userId = req.params.userId;
+    reviewModel
+        .deleteReviews(userId)
+        .then(function (status)
+        {
+            res.sendStatus(200);
+        });
+}
+
+function findReviewforUserId(req,res) {
+    var userId=req.params.userId;
+
+    reviewModel
+        .getReviewforUserId(userId)
+        .then(function (reviews)
+        {
+            // console.log(reviews);
+            res.json(reviews);
+        });
+}
+
+function findQuestionforUserId(req,res) {
+    var userId=req.params.userId;
+
+    queryModel
+        .getQueryforUserId(userId)
+        .then(function (questions)
+        {
+            // console.log(reviews);
+            res.json(questions);
+        });
+}
+
+function findQuestion(req,res) {
+
+    queryModel
+        .getQuery()
+        .then(function (questions)
+        {
+            // console.log(reviews);
+            res.json(questions);
+        });
+}
+
+
+function findReviewByReviewId(req, res)
+{
+    console.log("getting reviews");
+    var reviewId = req.params.reviewId;
+    reviewModel
+        .findReviewById(reviewId)
+        .then(function (response)
+        {
+            console.log(response);
+            res.json(response);
+        });
+}
+
+function findQuestionById(req, res)
+{
+    var questionId = req.params.answerId;
+    queryModel
+        .findQueryById(questionId)
+        .then(function (response)
+        {
+            res.json(response);
+        });
+}
+
+function findQueryByQueryId(req, res)
+{
+    var queryId = req.params.queryId;
+    queryModel
+        .findQueryById(queryId)
+        .then(function (response)
+        {
+            console.log(response);
+            res.json(response);
+        });
 }

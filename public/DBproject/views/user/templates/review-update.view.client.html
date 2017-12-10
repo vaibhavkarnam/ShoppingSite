@@ -1,0 +1,45 @@
+
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header col-xs-6">
+            <div class="row">
+                <!--<div class="col-glyphicon-position">-->
+                <!--<a class= "wdc-anchor-new"-->
+                <!--hrprofile.view.client.htmlhtml">-->
+                <!--<span class="glyphicon glyphicon-chevron-left"></span>-->
+                <!--</a>-->
+                <!--</div>-->
+                <div class="col-website-position">
+                    <a class="navbar-brand "
+                       href="#!/profile/{{model.user._id}}">Profile</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="navbar-text pull-right">
+            <a class= "navbar-link pointer"
+               ng-click="model.updateUser(model.user)">
+                <span class="glyphicon glyphicon-ok pull-right"></span>
+            </a>
+        </div><!-- /.navbar-collapse -->
+
+    </div><!-- /.container-fluid -->
+</nav>
+
+
+
+<span>Update Review</span>
+</div>
+<div class="col-lg=5 col-md-5">
+    <div class="form-group">
+<textarea type="text" class="form-control" ng-model="model.reviewForUpdate.description"
+          rows="8" placeholder="Description"></textarea>
+    </div>
+</div>
+<button type="button" class="btn btn-success"
+        ng-click="model.reviewUpdate(model.reviewForUpdate._id,model.reviewForUpdate)">Update</button>
+
+
+<div ng-include="'views/common/footer-common.view.client.html'"></div>

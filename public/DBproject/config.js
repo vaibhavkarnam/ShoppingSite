@@ -46,6 +46,22 @@
                     userobject: checkLoggedIn
                 }
             })
+            .when('/profile/editReview/:reviewId', {
+                templateUrl: 'views/user/templates/review-update.view.client.html',
+                controller  : 'reviewController',
+                controllerAs: 'model',
+                resolve:{
+                    userobject: checkLoggedIn
+                }
+            })
+            .when('/profile/answerQuestion/:answerId', {
+                templateUrl: 'views/user/templates/answer-query.view.client.html',
+                controller  : 'answerController',
+                controllerAs: 'model',
+                resolve:{
+                    userobject: checkLoggedIn
+                }
+            })
             .when('/createproduct', {
                 templateUrl: 'views/product/templates/createproduct.view.client.html',
                 controller  : 'createproductController',
