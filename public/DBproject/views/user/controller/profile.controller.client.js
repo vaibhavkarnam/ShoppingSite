@@ -10,7 +10,7 @@
     angular
         .module("omdbApp")
         .controller("profileController",profileController);
-    
+
     function profileController(userobject,$location,productService,userService,$route) {
 
         var model = this;

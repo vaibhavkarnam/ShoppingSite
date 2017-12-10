@@ -171,3 +171,7 @@ body{
 .navbar-default .navbar-nav>li>a:hover{
     color: black;
 }
+.image-margin{
+    padding-bottom: 10px;
+    padding-top: 10px;
+}

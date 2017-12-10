@@ -164,18 +164,17 @@
             <form class="form form-vertical" action="/api/upload/project" method="post" enctype="multipart/form-data">
             <div class="kv-avatar center-block text-center" style="width:200px">
                 <img ng-src="{{model.user.image_url}}" width = "100%">
-                <input id="myFile" name="myFile" type="file" class="file-loading" required>
+                <input id="myFile" name="myFile" type="file" class="file-loading image-margin" required>
                 <input  name="userId" value="{{model.user._id}}"   style="display: none"/>
-                <button type="submit" class="btn btn-sucess btn-block">Upload Profile Pic</button>
-            </div>
-			<div class="kv-avatar center-block text-center" style="width:200px">
+                <button type="submit" class="btn btn-success btn-block">Upload Profile Pic</button>
                 <button
                         type="button"
-                        class="btn btn-danger btn-medium"
+                        class="btn btn-danger btn-block"
                         ng-click = "model.getSellersList()">
                     Product Sellers
                 </button>
             </div>
+
             </form>
         </div>
         <div class="col-sm-9">

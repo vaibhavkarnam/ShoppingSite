@@ -9,6 +9,7 @@
     
     function productDetailsController($routeParams,productService,userobject,userService, $route,$location) {
         var model = this;
+        model.curretLoggedUser = userobject;
         model.productId = $routeParams.productId;
         model.updateProduct = updateProduct;
         model.deleteProduct = deleteProduct;
@@ -18,6 +19,7 @@
         model.createProduct = createProduct;
         model.postNewQuestion = postNewQuestion;
         model.getAllUserQuestions =getAllUserQuestions;
+        model.searchProductByName = searchProductByName;
         function init() {
             getAllUserReviews(model.productId);
             getAllUserQuestions(model.productId);
@@ -83,6 +85,13 @@
                 .then(function (){
                 $location.url('/');
             });
+        }
+
+        function searchProductByName(product) {
+            $location.path("/list-products/"+product).search({searchInput: product});
+            /*productService
+             .searchProductByName(product)
+             .then(productNames);*/
         }
 
         function postNewReview(review) {

@@ -3,10 +3,12 @@
         .module("omdbApp")
         .controller("productListController", productListController);
 
-    function productListController($routeParams, $location, productService) {
+    function productListController(userobject,$routeParams, $location, productService) {
 
         var model = this;
+        model.curretLoggedUser = userobject;
         this.getProductDetails = getProductDetails;
+        model.searchProductByName = searchProductByName;
         //this.getRestaurantDetails = getRestaurantDetails;
 
         //model.websiteId = $routeParams.wid;
@@ -44,6 +46,12 @@
         }*/
         function getProductDetails(productId){
             $location.url("/product-details/"+productId);
+        }
+        function searchProductByName(product) {
+            $location.path("/list-products/"+product).search({searchInput: product});
+            /*productService
+             .searchProductByName(product)
+             .then(productNames);*/
         }
     }
 
