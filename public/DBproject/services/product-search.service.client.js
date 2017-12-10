@@ -20,6 +20,16 @@
         this.deleteProduct= deleteProduct;
         this.createQuestion = createQuestion;
         this.getUserQuestions = getUserQuestions;
+        this.deleteReview = deleteReview;
+        this.updateUserReview = updateUserReview;
+        this.updateUserAnswer = updateUserAnswer;
+        this.getReviewById = getReviewById;
+        this.getAnswerById = getAnswerById;
+        this.getAllUserReviews = getAllUserReviews;
+        this.getAllUserQuestions = getAllUserQuestions;
+        this.getAllQuestions = getAllQuestions;
+
+
         function updateProduct(productId,product){
             var url = "/api/product/"+productId;
             return $http.put(url,product)
@@ -119,6 +129,7 @@
             return $http.get(url)
                 .then(function (response)
                     {
+                        console.log(response);
                         return response.data;
                     }
                 );
@@ -135,6 +146,91 @@
             return $http.post("/api/project/user/"+userId+"/question", question);
         }
 
+
+        function deleteReview(Id)
+        {
+            var url ="/api/project/Review/"+Id;
+            return $http
+                .delete(url)
+                .then(function (response)
+                {
+                    return response;
+                });
+        }
+
+        function updateUserReview(reviewId,review)
+        {
+            var url="/api/project/Review/"+reviewId;
+            return $http
+                .put(url,review)
+                .then(function (response)
+                {
+                    return response.data;
+                });
+        }
+
+        function updateUserAnswer(answerId,answer)
+        {
+            var url="/api/project/Answer/"+answerId;
+            return $http
+                .put(url,answer)
+                .then(function (response)
+                {
+                    return response.data;
+                });
+        }
+
+        function getReviewById(reviewId)
+        {
+            console.log("getting");
+            var url="/api/project/getReviewId/"+reviewId;
+            return $http.get(url)
+                .then(function (response)
+                {
+                    return response.data;
+                });
+        }
+
+
+        function getAnswerById(answerId)
+        {
+            var url="/api/project/getAnswerId/"+answerId;
+            return $http.get(url)
+                .then(function (response)
+                {
+                    return response.data;
+                });
+        }
+
+        function getAllUserReviews(userId)
+        {
+            var url="/api/project/getReviewForUser/"+userId;
+            return $http.get(url)
+                .then(function (response)
+                {
+                    return response.data;
+                });
+        }
+
+        function getAllUserQuestions(userId)
+        {
+            var url="/api/project/getQuestionsForUser/"+userId;
+            return $http.get(url)
+                .then(function (response)
+                {
+                    return response.data;
+                });
+        }
+
+        function getAllQuestions(userId)
+        {
+            var url="/api/project/getQuestions/"+userId;
+            return $http.get(url)
+                .then(function (response)
+                {
+                    return response.data;
+                });
+        }
     }
 
 })();
