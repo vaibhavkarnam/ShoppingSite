@@ -196,15 +196,15 @@
 
                 <ul class="nav nav-tabs nav-justified" id="myTab">
                     <li class="active"><a data-target="#profile" data-toggle="tab">Profile</a></li>
-                    <li ><a data-target="#products" data-toggle="tab">Liked Products</a></li>
-                    <li><a data-target="#reviews" data-toggle="tab">Your Reviews</a></li>
-                    <li><a data-target="#queries" data-toggle="tab">Your Queries</a></li>
-                    <li><a data-target="#userqueries" data-toggle="tab">User Queries</a></li>
-                    <li><a data-target="#Orders" data-toggle="tab">Your Orders</a></li>
-                    <li><a data-target="#Sellers" data-toggle="tab">Following</a></li>
-                    <li><a data-target="#followed" data-toggle="tab">Followed</a></li>
-                    <li><a data-target="#Returns" data-toggle="tab">Returned Orders</a></li>
-                    <li><a data-target="#yourproducts" data-toggle="tab">Your Products</a></li>
+                    <li ng-show="model.user.roles.indexOf('CUSTOMER') > -1"><a data-target="#products" data-toggle="tab">Liked Products</a></li>
+                    <li ng-show="model.user.roles.indexOf('CUSTOMER') > -1" ><a data-target="#reviews" data-toggle="tab">Your Reviews</a></li>
+                    <li ng-show="model.user.roles.indexOf('CUSTOMER') > -1"><a data-target="#queries" data-toggle="tab">Your Queries</a></li>
+                    <li ng-show="model.user.roles.indexOf('TECHNICIAN') > -1"><a data-target="#userqueries" data-toggle="tab">User Queries</a></li>
+                    <li ng-show="model.user.roles.indexOf('CUSTOMER') > -1"><a data-target="#Orders" data-toggle="tab">Your Orders</a></li>
+                    <li ng-show="model.user.roles.indexOf('CUSTOMER') > -1"><a data-target="#Sellers" data-toggle="tab">Following</a></li>
+                    <li ng-show="model.user.roles.indexOf('SELLER') > -1"><a data-target="#followed" data-toggle="tab">Followed</a></li>
+                    <li ng-show="model.user.roles.indexOf('CUSTOMER') > -1"><a data-target="#Returns" data-toggle="tab">Returned Orders</a></li>
+                    <li ng-show="model.user.roles.indexOf('SELLER') > -1"><a data-target="#yourproducts" data-toggle="tab">Your Products</a></li>
 
                 </ul>
 

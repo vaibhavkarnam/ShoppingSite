@@ -91,8 +91,12 @@
 				<h4><strong>Price: $</strong><strong ng-bind="model.product.price"></strong></h4>
 			</div>
 			<div class="span5">
-					<button class="btn btn-inverse form-control product-detail-button-space" ng-click="model.updateProduct(model.productId)">Update</button>
-					<button class="btn btn-inverse form-control product-detail-button-space" ng-click="model.deleteProduct(model.productId)">Delete</button>
+					<button class="btn btn-inverse form-control product-detail-button-space"
+							ng-show="model.curretLoggedUser.roles.indexOf('ADMIN') > -1 || model.curretLoggedUser.roles.indexOf('SELLER') > -1"
+							ng-click="model.updateProduct(model.productId)">Update</button>
+					<button class="btn btn-inverse form-control product-detail-button-space"
+							ng-show="model.curretLoggedUser.roles.indexOf('ADMIN') > -1 || model.curretLoggedUser.roles.indexOf('SELLER') > -1"
+							ng-click="model.deleteProduct(model.productId)">Delete</button>
 					<button class="btn btn-inverse form-control product-detail-button-space"
 							ng-click = "model.createProductForOrder(model.product)" type="submit">Order</button>
 					<button class="btn btn-inverse form-control product-detail-button-space"
@@ -124,7 +128,7 @@
 					<div class="carousel-inner">
 						<div class="active item">
 							<ul class="thumbnails listing-products">
-								<li ng-repeat="product in model.productList" class="span3 list-group-item productlistli">
+								<li ng-repeat="product in model.productList | limitTo:3" class="span3 list-group-item productlistli">
 									<div class="product-box">
 										<span class="sale_tag"></span>
 										<a href="" ng-click="model.getProductDetails(product.itemId)"><img class= "productlistliimage" alt="" src="{{product.imageEntities[0].mediumImage}}"></a><br/>

@@ -19,7 +19,8 @@
         model.createProduct = createProduct;
         model.postNewQuestion = postNewQuestion;
         model.getAllUserQuestions =getAllUserQuestions;
-
+        model.getProductDetails = getProductDetails;
+        model.logout = logout;
         model.searchProductByName = searchProductByName;
         model.createProductForOrder = createProductForOrder;
         model.createProductForReturn = createProductForReturn;
@@ -200,6 +201,17 @@
                             if(question.answered === 0)
                             model.userQuestions.push(question);
                         });
+                });
+        }
+        function getProductDetails(productId){
+            console.log(model.searchInput);
+            $location.url("/product-details/"+productId+"?searchInput="+model.searchInput);
+        }
+        function logout(){
+            userService
+                .logout()
+                .then(function (){
+                    $location.url('/login');
                 });
         }
     }

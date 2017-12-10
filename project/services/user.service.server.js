@@ -179,12 +179,17 @@ function checkLoggedIn(req,res){
 function deleteUser(req, res) {
     var userId = req.params.userId;
     userModel
-        .deleteUser(userId)
-        .then(function (status){
-            res.json(status);
-        },function (err) {
-            res.sendStatus(404).send(err);
+        .findUserById(userId)
+        .then(function (user) {
+               userModel
+                   .deleteUser(userId)
+                   .then(function (status){
+                       res.json(status);
+                   },function (err) {
+                       res.sendStatus(404).send(err);
+                   });
         });
+
 
     // for(var u in users) {
     //         if (users[u]._id === userId) {
