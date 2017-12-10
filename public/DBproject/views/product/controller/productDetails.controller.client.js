@@ -19,7 +19,9 @@
         model.createProduct = createProduct;
         model.postNewQuestion = postNewQuestion;
         model.getAllUserQuestions =getAllUserQuestions;
+
         model.searchProductByName = searchProductByName;
+
         function init() {
             getAllUserReviews(model.productId);
             getAllUserQuestions(model.productId);
@@ -35,7 +37,7 @@
                                 model.product = {};
                                 model.product.brand=response.brandName;
                                 model.product.name=response.name;
-                                model.product.description=response.longDescription;
+                                model.product.description= response.longDescription;
                                 model.product.price=response.salePrice;
                                 model.product.color=response.color;
                                 model.product.category=response.categoryPath;
@@ -62,6 +64,15 @@
                             });
                     }
                 });
+            model.searchInput = $routeParams.searchInput;
+            productService
+                .searchProductByName(model.searchInput)
+                .then(productNames);
+
+            function productNames(pronames){
+                console.log(pronames.data);
+                model.productList = pronames.items;
+            }
         }
         init();
 

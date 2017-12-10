@@ -121,30 +121,14 @@
 					<div class="carousel-inner">
 						<div class="active item">
 							<ul class="thumbnails listing-products">
-								<li class="span3">
+								<li ng-repeat="product in model.productList" class="span3 list-group-item productlistli">
 									<div class="product-box">
 										<span class="sale_tag"></span>
-										<a href="product-details.view.client.html"><img alt="" src="themes/images/ladies/6.jpg"></a><br/>
-										<a href="product-details.view.client.html" class="title">Wuam ultrices rutrum</a><br/>
-										<a href="#" class="category">Suspendisse aliquet</a>
-										<p class="price">$341</p>
-									</div>
-								</li>
-								<li class="span3">
-									<div class="product-box">
-										<span class="sale_tag"></span>
-										<a href="product-details.view.client.html"><img alt="" src="themes/images/ladies/5.jpg"></a><br/>
-										<a href="product-details.view.client.html" class="title">Fusce id molestie massa</a><br/>
-										<a href="#" class="category">Phasellus consequat</a>
-										<p class="price">$341</p>
-									</div>
-								</li>
-								<li class="span3">
-									<div class="product-box">
-										<a href="product-details.view.client.html"><img alt="" src="themes/images/ladies/4.jpg"></a><br/>
-										<a href="product-details.view.client.html" class="title">Praesent tempor sem</a><br/>
-										<a href="#" class="category">Erat gravida</a>
-										<p class="price">$28</p>
+										<a href="" ng-click="model.getProductDetails(product.itemId)"><img class= "productlistliimage" alt="" src="{{product.imageEntities[0].mediumImage}}"></a><br/>
+										<a href="" ng-click="model.getProductDetails(product.itemId)" class="title">{{product.name}}</a><br/>
+										<a><img alt="" src="{{product.customerRatingImage}}" height="140px"></a><br/>
+										<!--<a href="#" class="category">Phasellus consequat</a>-->
+										<p class="price">$ {{product.salePrice}}</p>
 									</div>
 								</li>
 							</ul>
@@ -185,11 +169,6 @@
 			<div class="product-detail-margin">
 				<h4 class="title">
 					<span class="pull-left"><span class="text"><strong>Product</strong> Reviews</span></span>
-
-
-
-
-
 
 
 					<div id="reviewtab">

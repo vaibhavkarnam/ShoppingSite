@@ -45,7 +45,7 @@
             $location.url("/restaurant-details/"+restaurantId);
         }*/
         function getProductDetails(productId){
-            $location.url("/product-details/"+productId);
+            $location.url("/product-details/"+productId+"?searchInput="+model.product);
         }
         function searchProductByName(product) {
             $location.path("/list-products/"+product).search({searchInput: product});
