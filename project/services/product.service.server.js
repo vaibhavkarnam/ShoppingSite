@@ -22,6 +22,10 @@ app.post("/api/project/user/:userId/review", createReview);
 app.post("/api/project/user/:userId/question", createQuestion);
 app.get("/api/project/getReview/:productId",getReviewByProductId);
 app.get("/api/project/getQuestion/:productId",getQuestionByProductId);
+app.post("/api/productForOrder",createProductForOrder);
+app.delete("/api/productForOrder/:productId",deleteProductForOrder);
+app.post("/api/productForReturn",createProductForReturn);
+app.delete("/api/productForReturn/:productId",deleteProductForReturn);
 app.get("/api/project/Review/:userId",findReviewforUserId);
 app.delete("/api/project/Review/:reviewId", deleteReview);
 app.put("/api/project/Review/:reviewId", updateReview);
@@ -33,6 +37,85 @@ app.get("/api/project/getQuestionsForUser/:userId",findQuestionforUserId);
 app.get("/api/project/getQuestions/:userId",findQuestion);
 
 
+function deleteProductForReturn(req,res){
+    var productId = req.params.productId;
+
+    return productModel
+        .findProductById(productId)
+        .then(function (product) {
+            userModel
+                .removeReturnFromUser(product._user, productId)
+                .then (function (order){
+                    res.json(order);
+                    //return order;
+                });
+        });
+}
+
+function createProductForReturn(req, res) {
+    var body = req.body;
+    var userId = body.userId;
+    var product = body.product;
+    product._user = userId;
+    userModel
+        .findUserById(userId)
+        .then(function (user){
+            if(user.roles.indexOf('SELLER') > -1){
+                productModel
+                    .createSellerProductForReturn(userId,product)
+                    .then(function (product){
+                        res.json(product);
+                    });
+            }
+            else{
+                productModel
+                    .createProductForReturn(product)
+                    .then(function (product){
+                        res.json(product);
+                    });
+            }
+        });
+}
+
+function deleteProductForOrder(req,res){
+    var productId = req.params.productId;
+
+    return productModel
+        .findProductById(productId)
+        .then(function (product) {
+                    userModel
+                        .removeOrderFromUser(product._user, productId)
+                        .then (function (order){
+                            res.json(order);
+                            //return order;
+                        });
+        });
+}
+
+function createProductForOrder(req, res) {
+    var body = req.body;
+    var userId = body.userId;
+    var product = body.product;
+    product._user = userId;
+    userModel
+        .findUserById(userId)
+        .then(function (user){
+            if(user.roles.indexOf('SELLER') > -1){
+                productModel
+                    .createSellerProductForOrder(userId,product)
+                    .then(function (product){
+                        res.json(product);
+                    });
+            }
+            else{
+                productModel
+                    .createProductForOrder(product)
+                    .then(function (product){
+                        res.json(product);
+                    });
+            }
+        });
+}
 function walmartProductSearch(req, res){
     var product = req.params.product;
 

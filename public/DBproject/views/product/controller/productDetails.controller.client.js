@@ -21,7 +21,8 @@
         model.getAllUserQuestions =getAllUserQuestions;
 
         model.searchProductByName = searchProductByName;
-
+        model.createProductForOrder = createProductForOrder;
+        model.createProductForReturn = createProductForReturn;
         function init() {
             getAllUserReviews(model.productId);
             getAllUserQuestions(model.productId);
@@ -75,6 +76,23 @@
             }
         }
         init();
+
+        function createProductForReturn(product){
+            productService
+                .createProductForReturn(model.userId,product)
+                .then(function (product){
+                    $location.url('/product-details/'+product._id);
+                });
+        }
+
+        function createProductForOrder(product){
+            console.log(product);
+            productService
+                .createProductForOrder(model.userId,product)
+                .then(function (product){
+                    $location.url('/product-details/'+product._id);
+                });
+        }
 
         function createProduct(product){
             console.log(product);
