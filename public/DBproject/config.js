@@ -54,6 +54,22 @@
                     userobject: checkLoggedIn
                 }
             })
+            .when("/admin", {
+                templateUrl: "./views/user/templates/admin.view.client.html",
+                controller: "adminController",
+                controllerAs: "model",
+                resolve:{
+                    userobject: checkAdmin
+                }
+            })
+            .when("/profile-for-admin/:userId", {
+                templateUrl: "./views/user/templates/adminprofile.view.client.html",
+                controller: "adminProfileController",
+                controllerAs: "model",
+                resolve:{
+                    userobject: checkAdmin
+                }
+            })
             .when('/updateproduct/:productId', {
                 templateUrl: 'views/product/templates/updateproduct.view.client.html',
                 controller  : 'UpdateProductController',

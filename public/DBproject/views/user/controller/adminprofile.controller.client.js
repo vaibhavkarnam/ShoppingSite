@@ -9,25 +9,34 @@
     //iife immediately invoked function expression
     angular
         .module("omdbApp")
-        .controller("profileController",profileController);
+        .controller("adminProfileController",adminProfileController);
 
-    function profileController(userobject,$location,productService,userService) {
+    function adminProfileController($routeParams,userobject,$location,productService,userService) {
 
         var model = this;
 
         model.updateUser = updateUser;
+        model.deleteUser = deleteUser;
         model.unRegisterUser = unRegisterUser;
         model.logout = logout;
         model.updateProduct = updateProduct;
         model.deleteProduct = deleteProduct;
         model.getSellersList = getSellersList;
+        model.userId = $routeParams.userId;
+        model.curretLoggedUser = userobject;
 
         function init() {
-                    var usr = userobject;
-                    usr.dob = new Date(usr.dob);
-                    model.user = usr;
-                    model.products = usr.products;
-                    model.following = model.user.following;
+
+                    userService
+                        .findUserById(model.userId)
+                        .then(function (response) {
+                            var usr = response.data;
+                            usr.dob = new Date(usr.dob);
+                            model.user = usr;
+                            model.products = usr.products;
+                            model.following = model.user.following;
+                        });
+
                     // if (typeof model.user.dob !== 'undefined') {
                     //     model.user.dob = setDate(model.user.dob);
                     // }
@@ -35,13 +44,21 @@
     }
         init();
 
+        function deleteUser(userId){
+            userService
+                .deleteUser(userId)
+                .then(function (){
+                    $location.url("/admin");
+                });
+        }
+
         function getSellersList(){
             $location.url("/sellers");
         }
 
         function updateUser(user) {
             userService
-                .updateUser(user._id,user)
+                .updateUser(model.userId,user)
                 .then(function (response){
                     // console.log(model.user);
                     var usr = response.data;

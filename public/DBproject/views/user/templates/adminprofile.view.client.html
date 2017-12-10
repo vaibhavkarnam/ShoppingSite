@@ -11,8 +11,8 @@
                 <!--</a>-->
                 <!--</div>-->
                 <div class="col-website-position">
-                    <a class="navbar-brand"
-                       href="#!/profile">Profile</a>
+                    <a class="navbar-brand "
+                       href="#!/profile-for-admin/:userId">Profile</a>
                 </div>
             </div>
         </div>
@@ -20,15 +20,15 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <!--<div class="span8 homespan8li">-->
-                <!--<div class="account pull-right">-->
-                    <ul class="nav navbar-nav navbar-right">
-                        <li ng-if="!model.user._id"><a href="#!/login">Login</a></li>
-                        <li ng-if="!model.user._id"><a href="#!/register" class="a-white">Register</a></li>
-                        <li ng-if="model.user._id"><a href="#!/profile">My Account</a></li>
-                        <li ng-if="model.user._id"><a ng-click="model.logout()" class= "pointer">Logout</a></li>
-                        <li ng-if="model.user.roles.indexOf('ADMIN') > -1"><a href="#!/admin">Admin</a></li>
-                    </ul>
-                <!--</div>-->
+            <!--<div class="account pull-right">-->
+            <ul class="nav navbar-nav navbar-right">
+                <li ng-if="!model.user._id"><a href="#!/login">Login</a></li>
+                <li ng-if="!model.user._id"><a href="#!/register" class="a-white">Register</a></li>
+                <li ng-if="model.user._id"><a href="#!/profile">My Account</a></li>
+                <li ng-if="model.user._id"><a ng-click="model.logout()" class= "pointer">Logout</a></li>
+                <li ng-if="model.user.roles.indexOf('ADMIN') > -1"><a href="#!/admin">Admin</a></li>
+            </ul>
+            <!--</div>-->
             <!--</div>-->
         </div><!-- /.navbar-collapse -->
 
@@ -262,8 +262,8 @@
                                ng-click="model.updateUser(model.user)"
                                role="button">Update</a>
                             <a class="btn btn-default btn-danger btn-block"
-                               data-ng-click="model.unRegisterUser()"
-                               role="button">Unregister</a>
+                               data-ng-click="model.deleteUser(model.userId)"
+                               role="button">Delete</a>
                             <a class="btn btn-default btn-danger btn-block"
                                data-ng-click="model.logout()"
                                role="button">Logout</a>

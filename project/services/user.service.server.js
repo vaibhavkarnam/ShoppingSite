@@ -36,6 +36,7 @@ app.get("/api/users",isAdmin,getAllUsers);
 app.get("/api/user/:userId",getUserById);
 app.get("/api/user",findUser);
 app.post("/api/user",registerUser);
+app.post("/api/user/create", createUser);
 app.put("/api/user/:userId",updateUser);
 app.delete("/api/unregister",unRegisterUser);
 app.delete("/api/user/:userId",isAdmin,deleteUser);
@@ -355,6 +356,7 @@ function getAllUsers(req,response) {
 }
 
 function isAdmin(req,res,next) {
+    console.log(req.user);
     if (req.isAuthenticated()&& req.user.roles.indexOf('ADMIN') > -1){
         next();
     } else{
@@ -385,5 +387,20 @@ function getUserById(req,response){
     //         response.send(users[u]);
     //     }
     // }
+}
+
+function createUser(request, response) {
+    var newuser = request.body;
+    //console.log("user service")
+    //console.log(newuser);
+
+    userModel
+        .createUser(newuser)
+        .then(function (user){
+            console.log(user);
+            response.json(user);
+            // $http.post("/api/login", {username:user.data.username, password:user.data.password});
+        });
+    //return;
 }
 

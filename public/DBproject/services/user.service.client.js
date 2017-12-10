@@ -21,7 +21,8 @@
             "findAllUsers": findAllUsers,
             "unRegisterUser":unRegisterUser,
             "getSellersList":getSellersList,
-            "followMe":followMe
+            "followMe":followMe,
+            "createUser":createUser
         };
         return api;
 
@@ -66,6 +67,10 @@
                 });
         }
 
+        function createUser(newuser)   {
+            //console.log(newuser);
+            return $http.post("/api/user/create", newuser);
+        }
 
         function logout(){
             var url = "/api/logout";

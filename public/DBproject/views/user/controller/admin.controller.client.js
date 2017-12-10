@@ -6,33 +6,30 @@
 
 (function ()   {
     angular
-        .module("WamApp")
+        .module("omdbApp")
         .controller("adminController", adminController);
 
-    function adminController($routeParams, $location, userService, $rootScope, userobject) {
+    function adminController($routeParams, $location, userService, userobject) {
 
 
         var model = this;
         var uId = userobject._id;
-        model.curretLoggedUser = userobject;
-
+        model.user = userobject;
         var user;
         var userWithInsurance;
-
         model.newUser;
         model.editUser = editUser;
         model.deleteUser = deleteUser;
         model.createNewUser = createNewUser;
-        model.changeUserType = changeUserType;
+        model.updateUser = updateUser;
 
 
         function init() {
             //alert("inside profile service!")
-            model.users;
             userService
                 .findAllUsers()
                 .then(function (response) {
-                    model.userList =response.data;
+                    model.userList =response;
                 });
 
 
@@ -66,13 +63,14 @@
             $location("/admin/user/" + userId +"/edit");
         }
 
-        function createNewUser(newUser) {
+        function createNewUser(usernew) {
             console.log("create");
             var newUser = {
-                username:newUser.username,
-                password:newUser.password,
-                userType:newUser.userType
+                username:usernew.username,
+                password:usernew.password,
+                roles:[]
             } ;
+            newUser.roles.push(usernew.userType);
             console.log(newUser);
             userService
                 .createUser(newUser)
@@ -80,64 +78,34 @@
                     var user = response.data;
                     console.log("created");
                     console.log(user);
-                    model.users;
                     userService
                         .findAllUsers()
                         .then(function (response) {
-                            model.userList = response.data;
-                            $location.url("/admin/user/" + user._id +"/edit");
+                            model.userList = response;
+                            model.newUser={}
                         });
-                    alert("Created user sucessfully.");
+                    // alert("Created user sucessfully.");
                 });
 
         }
 
-        function changeUserType(userId, uType) {
-            console.log(userId, uType);
-            userService
-                .findUserById(userId)
-                .then(function (response) {
-                    console.log(response);
-                    var newUser = response.data;
-                    newUser.userType = uType;
-                    if (uType === 'admin')   {
-                        newUser.isAdmin ="True";
-                    }
-                    else {
-                        newUser.isAdmin ="False";
-                    }
-                    userService
-                        .updateUserByUserId(newUser, userId)
-                        .then(function (status) {
-                            console.log(status);
-                            alert("Updated user sucessfully.");
-                            userService
-                                .findAllUsers()
-                                .then(function (response) {
-                                    model.userList =response.data;
-                                });
-                        });
-                });
+        function updateUser(userId) {
+            $location.url('/profile-for-admin/'+userId);
         }
 
         function deleteUser(userId) {
             userService
-                .deleteUserByUserId(userId)
+                .deleteUser(userId)
                 .then(function (status) {
                     console.log(status);
-                    alert("Deleted user sucessfully.");
-
+                    // alert("Deleted user sucessfully.");
                     userService
                         .findAllUsers()
                         .then(function (response) {
-                            model.userList =response.data;
+                            model.userList =response;
                         });
                 });
         }
-
-
-
-
     }
 
 })();

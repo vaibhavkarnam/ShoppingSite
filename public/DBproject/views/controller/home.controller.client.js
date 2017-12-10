@@ -7,13 +7,14 @@
         .module("omdbApp")
         .controller("homeController", homeController);
 
-    function homeController($location, $routeParams, productService)   {
+    function homeController(userobject,$location, $routeParams, productService,userService)   {
 
         var model = this;
         model.showDoctorDetails = showDoctorDetails;
         model.createAppointment = createAppointment;
         model.searchProductByName = searchProductByName;
-        // model.curretLoggedUser = userobject;
+        model.curretLoggedUser = userobject;
+        model.logout = logout;
 
 
         function init() {
@@ -149,6 +150,14 @@
                 $location.url("/login");
             };
          }
+
+        function logout(){
+            userService
+                .logout()
+                .then(function (){
+                    $location.url('/login');
+                });
+        }
 
     }
 })();

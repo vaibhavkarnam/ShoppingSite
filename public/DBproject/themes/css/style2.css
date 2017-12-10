@@ -68,7 +68,7 @@ body{
     }
 }
 
-.glyphicon-ok,.glyphicon-user {
+.glyphicon-user {
     color: white;
     font-size: 20px;
 }
@@ -155,4 +155,19 @@ body{
 .homespan8li{
     margin-right: -20px;
     padding-right: 8px;
+}
+
+.admin-white {
+    color: white;
+    display:none;
+}
+
+.navbar-default .navbar-nav>li>a{
+    color: white;
+}
+.navbar-default .navbar-nav>li>a:visited{
+    color: white;
+}
+.navbar-default .navbar-nav>li>a:hover{
+    color: black;
 }
