@@ -179,7 +179,7 @@ Product Sellers
             ng-click = "#!/createproduct">
         Create Product
     </button>-->
-    <div>
+    <div ng-if="model.user.roles.indexOf('SELLER') > -1">
         <a href="#!/createproduct">Create Product</a>
     </div>
 
