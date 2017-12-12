@@ -35,6 +35,9 @@
             var usr = userobject;
             usr.dob = new Date(usr.dob);
             model.user = usr;
+            if(model.user.roles.indexOf('TECHNICIAN') > -1){
+                getAllProductsForTechinician()
+            }
             model.products = usr.products;
             model.following = model.user.following;
             // if (typeof model.user.dob !== 'undefined') {
@@ -47,9 +50,9 @@
         }
         init();
 
-        function deleteProductForReturn(productId) {
+        function deleteProductForReturn(productId,returnId) {
             productService
-                .deleteProductForReturn(productId)
+                .deleteProductForReturn(productId,returnId)
                 .then(function (){
                     $location.url('/');
                 });
@@ -65,6 +68,14 @@
 
         function getSellersList(){
             $location.url("/sellers");
+        }
+
+        function getAllProductsForTechinician(){
+            productService
+                .getAllReturnedProducts()
+                .then(function (products){
+                    model.returnedproducts= products;
+                });
         }
 
         function updateUser(user) {

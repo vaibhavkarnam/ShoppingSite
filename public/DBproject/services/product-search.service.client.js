@@ -29,14 +29,24 @@
         this.getAllUserReviews = getAllUserReviews;
         this.getAllUserQuestions = getAllUserQuestions;
         this.getAllQuestions = getAllQuestions;
+        this.getAllReturnedProducts = getAllReturnedProducts;
 
         this.createProductForOrder = createProductForOrder;
         this.deleteProductForOrder= deleteProductForOrder;
         this.createProductForReturn = createProductForReturn;
         this.deleteProductForReturn= deleteProductForReturn;
+        this.createReturnInTable = createReturnInTable;
 
-        function deleteProductForReturn(productId){
-            var url = "/api/productForReturn/"+productId;
+        function getAllReturnedProducts() {
+            var url = "/api/returnAllProducts";
+            return $http.get(url)
+                .then(function (response){
+                    return response.data;
+                });
+        }
+
+        function deleteProductForReturn(productId,returnId){
+            var url = "/api/productForReturn/"+productId+"/return/"+returnId;
             return $http.delete(url)
                 .then(function (response){
                     return response.data;
@@ -45,6 +55,14 @@
 
         function createProductForReturn(userId, product){
             var url = "/api/productForReturn";
+            return $http.post(url,{userId :userId, product : product})
+                .then(function (response){
+                    return response.data;
+                });
+        }
+
+        function createReturnInTable(userId, product){
+            var url = "/api/returnToTable";
             return $http.post(url,{userId :userId, product : product})
                 .then(function (response){
                     return response.data;

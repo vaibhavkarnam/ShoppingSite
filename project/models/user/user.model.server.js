@@ -170,7 +170,7 @@ function findAllUsers(){
 function findUserByCredentials(username,password){
     // console.log(userModel.findOne({username:username,password:password}));
     return userModel.findOne({username:username,password:password})
-        .populate('createdProducts products orders returns')
+        .populate('createdProducts products orders returns returnstatus')
         .exec();
 }
 

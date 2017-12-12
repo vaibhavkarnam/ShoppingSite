@@ -3,6 +3,7 @@ var productModel = require("../models/product/product.model.server");
 var userModel = require("../models/user/user.model.server");
 var reviewModel = require("../models/reviews/review.model.server");
 var queryModel = require("../models/queries/query.model.server");
+var returnModel = require("../models/returns/return.model.server");
 var mongoose = require("mongoose");
 const http = require('http');
 'use strict';
@@ -25,7 +26,7 @@ app.get("/api/project/getQuestion/:productId",getQuestionByProductId);
 app.post("/api/productForOrder",createProductForOrder);
 app.delete("/api/productForOrder/:productId",deleteProductForOrder);
 app.post("/api/productForReturn",createProductForReturn);
-app.delete("/api/productForReturn/:productId",deleteProductForReturn);
+app.delete("/api/productForReturn/:productId/return/:returnId",deleteProductForReturn);
 app.get("/api/project/Review/:userId",findReviewforUserId);
 app.delete("/api/project/Review/:reviewId", deleteReview);
 app.delete("/api/project/Question/:questionId", deleteQuestion);
@@ -36,10 +37,20 @@ app.get("/api/project/getReviewId/:reviewId", findReviewByReviewId);
 app.get("/api/project/getAnswerId/:answerId", findQuestionById);
 app.get("/api/project/getQuestionsForUser/:userId",findQuestionforUserId);
 app.get("/api/project/getQuestions/:userId",findQuestion);
+app.post("/api/returnToTable",createReturnInTable);
+app.get("/api/returnAllProducts",getAllReturnedProducts);
 
+function getAllReturnedProducts(req,res){
+    returnModel
+        .findAllReturnedProducts()
+        .then(function (products) {
+            res.json(products);
+        });
+}
 
 function deleteProductForReturn(req,res){
     var productId = req.params.productId;
+    var returnId = req.params.returnId;
 
     return productModel
         .findProductById(productId)
@@ -47,9 +58,25 @@ function deleteProductForReturn(req,res){
             userModel
                 .removeReturnFromUser(product._user, productId)
                 .then (function (order){
-                    res.json(order);
+                    returnModel.deleteReturn(returnId)
+                        .then(function(status){
+                            res.json(status);
+                            });
                     //return order;
                 });
+        });
+}
+
+function createReturnInTable(req,res) {
+    var body = req.body;
+    var userId = body.userId;
+    var product = body.product;
+    var onereturn = {user:userId,name:product.name,brand:product.brand,price:product.price,isApproved:false,returnedproduct:product._id};
+    console.log(onereturn);
+    return returnModel
+        .createReturn(onereturn)
+        .then(function (createdreturn){
+           res.json(createdreturn);
         });
 }
 

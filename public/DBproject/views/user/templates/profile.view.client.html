@@ -203,7 +203,8 @@ Product Sellers
 <li ng-show="model.user.roles.indexOf('CUSTOMER') > -1"><a data-target="#Orders" data-toggle="tab">Your Orders</a></li>
 <li ng-show="model.user.roles.indexOf('CUSTOMER') > -1"><a data-target="#Sellers" data-toggle="tab">Following</a></li>
 <li ng-show="model.user.roles.indexOf('SELLER') > -1"><a data-target="#followed" data-toggle="tab">Followed</a></li>
-<li ng-show="model.user.roles.indexOf('CUSTOMER') > -1"><a data-target="#Returns" data-toggle="tab">Returned Orders</a></li>
+<li ng-show="model.user.roles.indexOf('CUSTOMER') > -1"><a data-target="#Returns" data-toggle="tab">Your Returned Orders</a></li>
+<li ng-show="model.user.roles.indexOf('TECHNICIAN') > -1"><a data-target="#ReturnOrders" data-toggle="tab">Returned Orders</a></li>
 <li ng-show="model.user.roles.indexOf('SELLER') > -1"><a data-target="#yourproducts" data-toggle="tab">Your Products</a></li>
 
 </ul>
@@ -394,7 +395,7 @@ Product Sellers
                     <a href="#!/product-details/{{order._id}}">$ {{order.price}}</a>
                 </div>
                 <div class ="col-xs-2">
-                    <a class="btn btn-default btn-danger btn-block"
+                    <a ng-show="model.user.roles.indexOf('TECHNICIAN') > -1" class="btn btn-default btn-danger btn-block"
                        data-ng-click="model.deleteProductForOrder(order._id)"
                        role="button">Delete</a></div>
             </div>
@@ -448,7 +449,7 @@ Product Sellers
     <ul class="list-group">
         <li class="list-group-item active">
             <div class="row">
-                <div class="col-xs-12">Returned Products</div>
+                <div class="col-xs-12">Your Returned Products</div>
             </div>
         </li>
         <li class="list-group-item profile-list-gray">
@@ -456,7 +457,8 @@ Product Sellers
                 <div class="col-xs-6">Product Name</div>
                 <div class="col-xs-2">Brand</div>
                 <div class="col-xs-2">Price</div>
-
+                <!--<div class="col-xs-2">Status</div>-->
+                <!--<div class="col-xs-1"></div>-->
             </div>
         </li>
         <li ng-repeat="return in model.user.returns" class="list-group-item">
@@ -471,13 +473,49 @@ Product Sellers
                     <a href="#!/product-details/{{return._id}}">$ {{return.price}}</a>
                 </div>
                 <div class ="col-xs-2">
-                    <a class="btn btn-default btn-danger btn-block"
+                    <!--<label ng-if="" class="btn-success"></label>-->
+                    <!--<label ng-if="" class="btn-info"></label>-->
+                    <a ng-show="" class="btn btn-default btn-danger btn-block"
                        data-ng-click="model.deleteProductForReturn(return._id)"
                        role="button">Delete</a></div>
-            </div>
+            <!--</div>-->
         </li>
     </ul>
 </div>
+    <div class="tab-pane" id="ReturnOrders">
+        <ul class="list-group">
+            <li class="list-group-item active">
+                <div class="row">
+                    <div class="col-xs-12">Returned Products</div>
+                </div>
+            </li>
+            <li class="list-group-item profile-list-gray">
+                <div class="row">
+                    <div class="col-xs-6">Product Name</div>
+                    <div class="col-xs-2">Brand</div>
+                    <div class="col-xs-2">Price</div>
+
+                </div>
+            </li>
+            <li ng-repeat="return in model.returnedproducts" class="list-group-item">
+                <div class="row">
+                    <div class="col-xs-6">
+                        <a href="#!/product-details/{{return._id}}">{{return.name}}</a>
+                    </div>
+                    <div class="col-xs-2">
+                        <a href="#!/product-details/{{return._id}}">{{return.brand}}</a>
+                    </div>
+                    <div class="col-xs-2">
+                        <a href="#!/product-details/{{return._id}}">$ {{return.price}}</a>
+                    </div>
+                    <div class ="col-xs-2">
+                        <a class="btn btn-default btn-danger btn-block"
+                           data-ng-click="model.deleteProductForReturn(return.returnedproduct,return._id)"
+                           role="button">Delete</a></div>
+                </div>
+            </li>
+        </ul>
+    </div>
 <div class="tab-pane" id="yourproducts">
     <ul class="list-group">
         <li class="list-group-item active">

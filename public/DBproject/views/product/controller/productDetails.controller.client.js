@@ -82,7 +82,11 @@
             productService
                 .createProductForReturn(model.userId,product)
                 .then(function (product){
-                    $location.url('/product-details/'+product._id);
+                    productService
+                        .createReturnInTable(model.userId,product)
+                        .then(function (returnproduct){
+                            $location.url('/product-details/'+product._id);
+                    });
                 });
         }
 
