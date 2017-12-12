@@ -98,10 +98,13 @@
 				ng-show="model.curretLoggedUser.roles.indexOf('ADMIN') > -1 || model.curretLoggedUser.roles.indexOf('SELLER') > -1"
 				ng-click="model.deleteProduct(model.productId)">Delete</button>
 		<button class="btn btn-inverse form-control product-detail-button-space"
+				ng-show="model.curretLoggedUser.roles.indexOf('ADMIN') > -1 || model.curretLoggedUser.roles.indexOf('CUSTOMER') > -1"
 				ng-click = "model.createProductForOrder(model.product)" type="submit">Order</button>
 		<button class="btn btn-inverse form-control product-detail-button-space"
+				ng-show="model.curretLoggedUser.roles.indexOf('ADMIN') > -1 || model.curretLoggedUser.roles.indexOf('CUSTOMER') > -1"
 				ng-click = "model.createProduct(model.product)" type="submit">Add to Favorite</button>
 	<button class="btn btn-inverse form-control product-detail-button-space"
+			ng-show="model.curretLoggedUser.roles.indexOf('ADMIN') > -1 || model.curretLoggedUser.roles.indexOf('CUSTOMER') > -1"
 			ng-click = "model.createProductForReturn(model.product)" type="submit">Return Product</button>
 </div>
 </div>
@@ -113,11 +116,6 @@
 	<div class="tab-content">
 		<div class="tab-pane active" id="home" ng-bind="model.product.description"></div>
 	</div>
-</div>
-<div class="product-detail-margin">
-	<h4 class="title">
-		<span class="pull-left"><span class="text"><strong>Customer</strong> Queries</span></span>
-	</h4>
 </div>
 <div class="span9">
 	<br>
@@ -180,8 +178,8 @@
 
 		<div id="reviewtab">
 <ul class="nav nav-tabs nav-justified" id="myTab">
-	<li><a data-target="#products" data-toggle="tab">Reviews</a></li>
-	<li><a data-target="#Reviews" data-toggle="tab">Write a Review</a></li>
+	<li><a data-target="#products" data-toggle="tab" ng-show="model.curretLoggedUser._id">Reviews</a></li>
+	<li><a data-target="#Reviews" data-toggle="tab" ng-show="model.curretLoggedUser.roles.indexOf('ADMIN') > -1 || model.curretLoggedUser.roles.indexOf('CUSTOMER') > -1">Write a Review</a></li>
 </ul>
 
 <h4 class="tab-content">
@@ -218,8 +216,8 @@
 
 		<div id="questiontab">
 			<ul class="nav nav-tabs nav-justified" id="myqTab">
-				<li><a data-target="#questions" data-toggle="tab">Answered Questions</a></li>
-				<li><a data-target="#postquestion" data-toggle="tab">Ask a Question?</a></li>
+				<li><a data-target="#questions" data-toggle="tab" ng-show="model.curretLoggedUser._id">Answered Questions</a></li>
+				<li><a data-target="#postquestion" data-toggle="tab" ng-show="model.curretLoggedUser.roles.indexOf('ADMIN') > -1 || model.curretLoggedUser.roles.indexOf('CUSTOMER') > -1">Ask a Question?</a></li>
 			</ul>
 
 			<h4 class="tab-content">
