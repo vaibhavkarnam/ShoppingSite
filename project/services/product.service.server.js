@@ -28,6 +28,7 @@ app.post("/api/productForReturn",createProductForReturn);
 app.delete("/api/productForReturn/:productId",deleteProductForReturn);
 app.get("/api/project/Review/:userId",findReviewforUserId);
 app.delete("/api/project/Review/:reviewId", deleteReview);
+app.delete("/api/project/Question/:questionId", deleteQuestion);
 app.put("/api/project/Review/:reviewId", updateReview);
 app.put("/api/project/Answer/:answerId", answerQuestion);
 app.get("/api/project/getReviewForUser/:userId",findReviewforUserId);
@@ -337,7 +338,8 @@ function deleteReview(req, res)
 
 function deleteQuestion(req, res)
 {
-    var Id = req.params.answerId;
+    var Id = req.params.questionId;
+    console.log(Id);
     queryModel
         .deleteQuery(Id)
         .then(function (status)

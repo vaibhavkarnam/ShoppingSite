@@ -7,50 +7,50 @@
 <link href="themes/css/style.css" rel="stylesheet"/>
 <link href="themes/css/main.css" rel="stylesheet"/>
 <div id="top-bar" class="container">
-	<div class="row">
-		<div class="span4">
-			<!--<form method="POST" class="search_form">-->
-			<!--<input type="text" class="input-block-level search-query" Placeholder="eg. T-sirt">-->
-			<!--</form>-->
-			<input type="text"
-				   class="input-block-level search-query"
-				   id = "TextBoxId"
-				   ng-keyup="$event.keyCode == 13 ? model.searchProductByName(productName) : null"
-				   ng-model="productName"
-				   placeholder="eg. T-shirt">
-			<!--<span class="input-group-btn">-->
-			<!--<button class="btn btn-default"-->
-			<!--ng-click="model.searchProductByName(productName)"-->
-			<!--id = "linkadd"-->
-			<!--type="button">Go!-->
-			<!--</button>-->
-			<!--</span>-->
-		</div>
-		<div class="span8 homespan8li">
-			<div class="account pull-right">
-				<ul class="user-menu">
-					<li ng-if="!model.curretLoggedUser._id"><a href="#!/login">Login</a></li>
-					<li ng-if="!model.curretLoggedUser._id"><a href="#!/register">Register</a></li>
-					<li ng-if="model.curretLoggedUser._id"><a href="#!/profile">My Account</a></li>
-					<li ng-if="model.curretLoggedUser._id"><a ng-click="model.logout()" class= "pointer">Logout</a></li>
-					<li ng-if="model.curretLoggedUser.roles.indexOf('ADMIN') > -1"><a href="#!/admin">Admin</a></li>
-				</ul>
-			</div>
-		</div>
-	</div>
+<div class="row">
+<div class="span4">
+<!--<form method="POST" class="search_form">-->
+<!--<input type="text" class="input-block-level search-query" Placeholder="eg. T-sirt">-->
+<!--</form>-->
+<input type="text"
+	   class="input-block-level search-query"
+	   id = "TextBoxId"
+	   ng-keyup="$event.keyCode == 13 ? model.searchProductByName(productName) : null"
+	   ng-model="productName"
+	   placeholder="eg. T-shirt">
+<!--<span class="input-group-btn">-->
+<!--<button class="btn btn-default"-->
+<!--ng-click="model.searchProductByName(productName)"-->
+<!--id = "linkadd"-->
+<!--type="button">Go!-->
+<!--</button>-->
+<!--</span>-->
+</div>
+<div class="span8 homespan8li">
+<div class="account pull-right">
+	<ul class="user-menu">
+		<li ng-if="!model.curretLoggedUser._id"><a href="#!/login">Login</a></li>
+		<li ng-if="!model.curretLoggedUser._id"><a href="#!/register">Register</a></li>
+		<li ng-if="model.curretLoggedUser._id"><a href="#!/profile">My Account</a></li>
+		<li ng-if="model.curretLoggedUser._id"><a ng-click="model.logout()" class= "pointer">Logout</a></li>
+		<li ng-if="model.curretLoggedUser.roles.indexOf('ADMIN') > -1"><a href="#!/admin">Admin</a></li>
+	</ul>
+</div>
+</div>
+</div>
 </div>
 <div id="wrapper" class="container">
 <section class="navbar main-menu"
 >
 <div class="navbar-inner main-menu">
-	<a href="#!/" class="logo pull-left"><img src="https://github.com/vaibhavkarnam/ShoppingSite/blob/master/public/DBproject/themes/images/logo.png?raw=true" class="site_logo" alt=""></a>
-	<nav id="menu" class="pull-right">
-		<ul>
-			<li><a ng-click="model.searchProductByName('Clothing')" class= "pointer">Clothing</a></li>
-			<li><a ng-click="model.searchProductByName('Electronics')" class= "pointer">Electronics</a></li>
-			<li><a ng-click="model.searchProductByName('Books')" class= "pointer">Books</a></li>
-		</ul>
-	</nav>
+<a href="#!/" class="logo pull-left"><img src="https://github.com/vaibhavkarnam/ShoppingSite/blob/master/public/DBproject/themes/images/logo.png?raw=true" class="site_logo" alt=""></a>
+<nav id="menu" class="pull-right">
+<ul>
+<li><a ng-click="model.searchProductByName('Clothing')" class= "pointer">Clothing</a></li>
+<li><a ng-click="model.searchProductByName('Electronics')" class= "pointer">Electronics</a></li>
+<li><a ng-click="model.searchProductByName('Books')" class= "pointer">Books</a></li>
+</ul>
+</nav>
 </div>
 </section>
 <section class="header_text sub">
@@ -59,205 +59,203 @@
 </section>
 <section class="main-content">
 <div class="row">
-	<div class="span9">
-		<div class="row">
-			<div class="span4">
-				<a href="{{model.product.primaryimageurl}}" class="thumbnail" data-fancybox-group="group1" title="Description 1"><img alt="" ng-src="{{model.product.primaryimageurl}}"></a>
-				<ul class="thumbnails small">
-					<li class="span1">
-						<a href="{{model.product.imageurl[0]}}" class="thumbnail" data-fancybox-group="group1" title="Description 2"><img src="{{model.product.imageurl[0]}}" alt=""></a>
-					</li>
-					<li class="span1">
-						<a href="{{model.product.imageurl[1]}}" class="thumbnail" data-fancybox-group="group1" title="Description 3"><img src="{{model.product.imageurl[1]}}" alt=""></a>
-					</li>
-					<li class="span1">
-						<a href="{{model.product.imageurl[2]}}" class="thumbnail" data-fancybox-group="group1" title="Description 4"><img src="{{model.product.imageurl[2]}}" alt=""></a>
-					</li>
-					<li class="span1">
-						<a href="{{model.product.imageurl[3]}}" class="thumbnail" data-fancybox-group="group1" title="Description 5"><img src="{{model.product.imageurl[3]}}" alt=""></a>
+<div class="span9">
+<div class="row">
+<div class="span4">
+	<a href="{{model.product.primaryimageurl}}" class="thumbnail" data-fancybox-group="group1" title="Description 1"><img alt="" ng-src="{{model.product.primaryimageurl}}"></a>
+	<ul class="thumbnails small">
+		<li class="span1">
+			<a href="{{model.product.imageurl[0]}}" class="thumbnail" data-fancybox-group="group1" title="Description 2"><img src="{{model.product.imageurl[0]}}" alt=""></a>
+		</li>
+		<li class="span1">
+			<a href="{{model.product.imageurl[1]}}" class="thumbnail" data-fancybox-group="group1" title="Description 3"><img src="{{model.product.imageurl[1]}}" alt=""></a>
+		</li>
+		<li class="span1">
+			<a href="{{model.product.imageurl[2]}}" class="thumbnail" data-fancybox-group="group1" title="Description 4"><img src="{{model.product.imageurl[2]}}" alt=""></a>
+		</li>
+		<li class="span1">
+			<a href="{{model.product.imageurl[3]}}" class="thumbnail" data-fancybox-group="group1" title="Description 5"><img src="{{model.product.imageurl[3]}}" alt=""></a>
+		</li>
+	</ul>
+</div>
+<div class="span5">
+	<address>
+		<strong>Brand:</strong> <span ng-bind="model.product.brand"></span><br>
+		<strong>Name:</strong> <span ng-bind="model.product.name"></span><br>
+		<strong>Color:</strong> <span ng-bind="model.product.color"></span><br>
+		<strong>Stock:</strong> <span ng-bind="model.product.stock"></span><br>
+		<strong>Category:</strong> <span ng-bind="model.product.category"></span><br>
+		<strong>Customer Rating:</strong> <span ng-bind="model.product.customerrating"></span><br>
+		<a href="{{model.product.customerratingurl}}"><img src="{{model.product.customerratingurl}}" alt=""></a>
+	</address>
+	<h4><strong>Price: $</strong><strong ng-bind="model.product.price"></strong></h4>
+</div>
+<div class="span5">
+		<button class="btn btn-inverse form-control product-detail-button-space"
+				ng-show="model.curretLoggedUser.roles.indexOf('ADMIN') > -1 || model.curretLoggedUser.roles.indexOf('SELLER') > -1"
+				ng-click="model.updateProduct(model.productId)">Update</button>
+		<button class="btn btn-inverse form-control product-detail-button-space"
+				ng-show="model.curretLoggedUser.roles.indexOf('ADMIN') > -1 || model.curretLoggedUser.roles.indexOf('SELLER') > -1"
+				ng-click="model.deleteProduct(model.productId)">Delete</button>
+		<button class="btn btn-inverse form-control product-detail-button-space"
+				ng-click = "model.createProductForOrder(model.product)" type="submit">Order</button>
+		<button class="btn btn-inverse form-control product-detail-button-space"
+				ng-click = "model.createProduct(model.product)" type="submit">Add to Favorite</button>
+	<button class="btn btn-inverse form-control product-detail-button-space"
+			ng-click = "model.createProductForReturn(model.product)" type="submit">Return Product</button>
+</div>
+</div>
+<div class="row">
+<div class="span9 product-detail-button-space">
+	<ul class="nav nav-tabs" id="newTab">
+		<li class="active"><a href="#home">Description</a></li>
+	</ul>
+	<div class="tab-content">
+		<div class="tab-pane active" id="home" ng-bind="model.product.description"></div>
+	</div>
+</div>
+<div class="product-detail-margin">
+	<h4 class="title">
+		<span class="pull-left"><span class="text"><strong>Customer</strong> Queries</span></span>
+	</h4>
+</div>
+<div class="span9">
+	<br>
+	<h4 class="title">
+		<span class="pull-left"><span class="text"><strong>Related</strong> Products</span></span>
+	</h4>
+	<div id="myCarousel-1" class="carousel slide">
+		<div class="carousel-inner">
+			<div class="active item">
+				<ul class="thumbnails listing-products">
+					<li ng-repeat="product in model.productList | limitTo:3" class="span3 list-group-item productlistli">
+						<div class="product-box">
+							<span class="sale_tag"></span>
+							<a href="" ng-click="model.getProductDetails(product.itemId)"><img class= "productlistliimage" alt="" src="{{product.imageEntities[0].mediumImage}}"></a><br/>
+							<a href="" ng-click="model.getProductDetails(product.itemId)" class="title">{{product.name}}</a><br/>
+							<a><img alt="" src="{{product.customerRatingImage}}" height="140px"></a><br/>
+							<!--<a href="#" class="category">Phasellus consequat</a>-->
+							<p class="price">$ {{product.salePrice}}</p>
+						</div>
 					</li>
 				</ul>
 			</div>
-			<div class="span5">
-				<address>
-					<strong>Brand:</strong> <span ng-bind="model.product.brand"></span><br>
-					<strong>Name:</strong> <span ng-bind="model.product.name"></span><br>
-					<strong>Color:</strong> <span ng-bind="model.product.color"></span><br>
-					<strong>Stock:</strong> <span ng-bind="model.product.stock"></span><br>
-					<strong>Category:</strong> <span ng-bind="model.product.category"></span><br>
-					<strong>Customer Rating:</strong> <span ng-bind="model.product.customerrating"></span><br>
-					<a href="{{model.product.customerratingurl}}"><img src="{{model.product.customerratingurl}}" alt=""></a>
-				</address>
-				<h4><strong>Price: $</strong><strong ng-bind="model.product.price"></strong></h4>
-			</div>
-			<div class="span5">
-					<button class="btn btn-inverse form-control product-detail-button-space"
-							ng-show="model.curretLoggedUser.roles.indexOf('ADMIN') > -1 || model.curretLoggedUser.roles.indexOf('SELLER') > -1"
-							ng-click="model.updateProduct(model.productId)">Update</button>
-					<button class="btn btn-inverse form-control product-detail-button-space"
-							ng-show="model.curretLoggedUser.roles.indexOf('ADMIN') > -1 || model.curretLoggedUser.roles.indexOf('SELLER') > -1"
-							ng-click="model.deleteProduct(model.productId)">Delete</button>
-					<button class="btn btn-inverse form-control product-detail-button-space"
-							ng-click = "model.createProductForOrder(model.product)" type="submit">Order</button>
-					<button class="btn btn-inverse form-control product-detail-button-space"
-							ng-click = "model.createProduct(model.product)" type="submit">Add to Favorite</button>
-				<button class="btn btn-inverse form-control product-detail-button-space"
-						ng-click = "model.createProductForReturn(model.product)" type="submit">Return Product</button>
+			<div class="item">
+				<ul class="thumbnails listing-products">
+					<li class="span3">
+						<div class="product-box">
+							<span class="sale_tag"></span>
+							<a href="product-details.view.client.html"><img alt="" src="themes/images/ladies/1.jpg"></a><br/>
+							<a href="product-details.view.client.html" class="title">Fusce id molestie massa</a><br/>
+							<a href="#" class="category">Phasellus consequat</a>
+							<p class="price">$341</p>
+						</div>
+					</li>
+					<li class="span3">
+						<div class="product-box">
+							<a href="product-details.view.client.html"><img alt="" src="themes/images/ladies/2.jpg"></a><br/>
+							<a href="product-details.view.client.html">Praesent tempor sem</a><br/>
+							<a href="#" class="category">Erat gravida</a>
+							<p class="price">$28</p>
+						</div>
+					</li>
+					<li class="span3">
+						<div class="product-box">
+							<span class="sale_tag"></span>
+							<a href="product-details.view.client.html"><img alt="" src="themes/images/ladies/3.jpg"></a><br/>
+							<a href="product-details.view.client.html" class="title">Wuam ultrices rutrum</a><br/>
+							<a href="#" class="category">Suspendisse aliquet</a>
+							<p class="price">$341</p>
+						</div>
+					</li>
+				</ul>
 			</div>
 		</div>
-		<div class="row">
-			<div class="span9 product-detail-button-space">
-				<ul class="nav nav-tabs" id="newTab">
-					<li class="active"><a href="#home">Description</a></li>
-				</ul>
-				<div class="tab-content">
-					<div class="tab-pane active" id="home" ng-bind="model.product.description"></div>
-				</div>
-			</div>
-			<div class="product-detail-margin">
-				<h4 class="title">
-					<span class="pull-left"><span class="text"><strong>Customer</strong> Queries</span></span>
-				</h4>
-			</div>
-			<div class="span9">
-				<br>
-				<h4 class="title">
-					<span class="pull-left"><span class="text"><strong>Related</strong> Products</span></span>
-				</h4>
-				<div id="myCarousel-1" class="carousel slide">
-					<div class="carousel-inner">
-						<div class="active item">
-							<ul class="thumbnails listing-products">
-								<li ng-repeat="product in model.productList | limitTo:3" class="span3 list-group-item productlistli">
-									<div class="product-box">
-										<span class="sale_tag"></span>
-										<a href="" ng-click="model.getProductDetails(product.itemId)"><img class= "productlistliimage" alt="" src="{{product.imageEntities[0].mediumImage}}"></a><br/>
-										<a href="" ng-click="model.getProductDetails(product.itemId)" class="title">{{product.name}}</a><br/>
-										<a><img alt="" src="{{product.customerRatingImage}}" height="140px"></a><br/>
-										<!--<a href="#" class="category">Phasellus consequat</a>-->
-										<p class="price">$ {{product.salePrice}}</p>
-									</div>
-								</li>
-							</ul>
-						</div>
-						<div class="item">
-							<ul class="thumbnails listing-products">
-								<li class="span3">
-									<div class="product-box">
-										<span class="sale_tag"></span>
-										<a href="product-details.view.client.html"><img alt="" src="themes/images/ladies/1.jpg"></a><br/>
-										<a href="product-details.view.client.html" class="title">Fusce id molestie massa</a><br/>
-										<a href="#" class="category">Phasellus consequat</a>
-										<p class="price">$341</p>
-									</div>
-								</li>
-								<li class="span3">
-									<div class="product-box">
-										<a href="product-details.view.client.html"><img alt="" src="themes/images/ladies/2.jpg"></a><br/>
-										<a href="product-details.view.client.html">Praesent tempor sem</a><br/>
-										<a href="#" class="category">Erat gravida</a>
-										<p class="price">$28</p>
-									</div>
-								</li>
-								<li class="span3">
-									<div class="product-box">
-										<span class="sale_tag"></span>
-										<a href="product-details.view.client.html"><img alt="" src="themes/images/ladies/3.jpg"></a><br/>
-										<a href="product-details.view.client.html" class="title">Wuam ultrices rutrum</a><br/>
-										<a href="#" class="category">Suspendisse aliquet</a>
-										<p class="price">$341</p>
-									</div>
-								</li>
-							</ul>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="product-detail-margin">
-				<h4 class="title">
-					<span class="pull-left"><span class="text"><strong>Product</strong> Reviews</span></span>
+	</div>
+</div>
+<div class="product-detail-margin">
+	<h4 class="title">
+		<span class="pull-left"><span class="text"><strong>Product</strong> Reviews</span></span>
 
 
-					<div id="reviewtab">
-			<ul class="nav nav-tabs nav-justified" id="myTab">
-				<li><a data-target="#products" data-toggle="tab">Reviews</a></li>
-				<li><a data-target="#Reviews" data-toggle="tab">Write a Review</a></li>
+		<div id="reviewtab">
+<ul class="nav nav-tabs nav-justified" id="myTab">
+	<li><a data-target="#products" data-toggle="tab">Reviews</a></li>
+	<li><a data-target="#Reviews" data-toggle="tab">Write a Review</a></li>
+</ul>
+
+<h4 class="tab-content">
+	<div class="tab-pane" id="products">
+		<div ng-repeat="userReview in model.userReviews">
+			<p><span class="glyphicon glyphicon-user"></span> USER : {{userReview.userName}}</p>
+			<p>	<span class="glyphicon glyphicon-user"></span>REVIEW : {{userReview.description}}</p>
+		</div>
+	</div>
+	<div class="tab-pane" id="Reviews">
+		<div class="col-md-8">
+		<div class="form-group">
+		<div class="page-header">
+		Post a Review
+		</div>
+		<textarea id="reviewdes" ng-model="model.userReview.description"
+		placeholder="Description" rows="5" class="col-xs-12"></textarea>
+		</div>
+		<a class="btn btn-success form-control" id="post"
+		ng-click="model.postNewReview(model.userReview)" data-dismiss="modal">Post</a>
+		</div>
+	</div>
+
+
+</h4>
+		</div>
+	</h4><!--</div>-->
+</div>
+
+
+<div class="product-detail-margin">
+	<h4 class="title">
+		<span class="pull-left"><span class="text"><strong>Have a question?</strong></span></span>
+
+		<div id="questiontab">
+			<ul class="nav nav-tabs nav-justified" id="myqTab">
+				<li><a data-target="#questions" data-toggle="tab">Ansewered Questions</a></li>
+				<li><a data-target="#postquestion" data-toggle="tab">Ask a Question?</a></li>
 			</ul>
 
 			<h4 class="tab-content">
-				<div class="tab-pane" id="products">
-					<div ng-repeat="userReview in model.userReviews">
-					<span class="glyphicon glyphicon-user"></span> USER :<a href="#!/profile/visitor/{{userReview.userID}}" class="btn btn-link">
-					{{userReview.userName}}</a>
-					<p>REVIEW : {{userReview.description}}</p>
+				<div class="tab-pane" id = "questions">
+					<div ng-repeat="userQuestion in model.userQuestions">
+						<p><span class="glyphicon glyphicon-user"></span> USER :{{userQuestion.userName}}</p>
+						<p><span class="glyphicon glyphicon-user"></span>Question : {{userQuestion.description}}</p>
+						<p><span class="glyphicon glyphicon-user"></span>Answer : {{userQuestion.answer}}</p>
 					</div>
 				</div>
-				<div class="tab-pane" id="Reviews">
+				<div class="tab-pane" id="postquestion">
 					<div class="col-md-8">
-					<div class="form-group">
-					<div class="page-header">
-					Post a Review
-					</div>
-					<textarea id="reviewdes" ng-model="model.userReview.description"
-					placeholder="Description" rows="5" class="col-xs-12"></textarea>
-					</div>
-					<a class="btn btn-success form-control" id="post"
-					ng-click="model.postNewReview(model.userReview)" data-dismiss="modal">Post</a>
+						<div class="form-group">
+							<div class="page-header">
+								Ask a Question?
+							</div>
+							<textarea ng-model="model.userQuestion.description"
+									  placeholder="Description" rows="5" class="col-xs-12"></textarea>
+						</div>
+						<a class="btn btn-success form-control"
+						   ng-click="model.postNewQuestion(model.userQuestion)" data-dismiss="modal">Post</a>
 					</div>
 				</div>
 
 
 			</h4>
-					</div>
-				</h4><!--</div>-->
-			</div>
-
-
-			<div class="product-detail-margin">
-				<h4 class="title">
-					<span class="pull-left"><span class="text"><strong>Have a question?</strong></span></span>
-
-					<div id="questiontab">
-						<ul class="nav nav-tabs nav-justified" id="myqTab">
-							<li><a data-target="#questions" data-toggle="tab">Ansewered Questions</a></li>
-							<li><a data-target="#postquestion" data-toggle="tab">Ask a Question?</a></li>
-						</ul>
-
-						<h4 class="tab-content">
-							<div class="tab-pane" id = "questions">
-								<div ng-repeat="userQuestion in model.userQuestions">
-									<span class="glyphicon glyphicon-user"></span> USER :<a href="#!/profile/visitor/{{userQuestion.userID}}" class="btn btn-link">
-									{{userQuestion.userName}}</a>
-									<p>Question : {{userQuestion.description}}</p>
-									<p>Question : {{userQuestion.answer}}</p>
-								</div>
-							</div>
-							<div class="tab-pane" id="postquestion">
-								<div class="col-md-8">
-									<div class="form-group">
-										<div class="page-header">
-											Ask a Question?
-										</div>
-										<textarea ng-model="model.userQuestion.description"
-												  placeholder="Description" rows="5" class="col-xs-12"></textarea>
-									</div>
-									<a class="btn btn-success form-control"
-									   ng-click="model.postNewQuestion(model.userQuestion)" data-dismiss="modal">Post</a>
-								</div>
-							</div>
-
-
-						</h4>
-					</div>
-				</h4><!--</div>-->
-			</div>
-
-
-
-
-
 		</div>
-	</div>
+	</h4><!--</div>-->
+</div>
+
+
+
+
+
+</div>
+</div>
 
 
 </div>
@@ -277,18 +275,18 @@ jQuery('#newTab a:last').tab('show')
 $(function () {
 $('#myTab a:first').tab('show');
 $('#myTab a').click(function (e) {
-	e.preventDefault();
-	$(this).tab('show');
+e.preventDefault();
+$(this).tab('show');
 })
 })
 $(document).ready(function() {
 $('.thumbnail').fancybox({
-	openEffect  : 'none',
-	closeEffect : 'none'
+openEffect  : 'none',
+closeEffect : 'none'
 });
 
 $('#myCarousel-2').carousel({
-	interval: 2500
+interval: 2500
 });
 });
 </script>

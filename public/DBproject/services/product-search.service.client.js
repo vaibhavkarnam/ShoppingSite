@@ -21,6 +21,7 @@
         this.createQuestion = createQuestion;
         this.getUserQuestions = getUserQuestions;
         this.deleteReview = deleteReview;
+        this.deleteQuestion = deleteQuestion;
         this.updateUserReview = updateUserReview;
         this.updateUserAnswer = updateUserAnswer;
         this.getReviewById = getReviewById;
@@ -185,6 +186,18 @@
         function deleteReview(Id)
         {
             var url ="/api/project/Review/"+Id;
+            return $http
+                .delete(url)
+                .then(function (response)
+                {
+                    return response;
+                });
+        }
+
+        function deleteQuestion(Id)
+        {
+            console.log("del ques");
+            var url ="/api/project/Question/"+Id;
             return $http
                 .delete(url)
                 .then(function (response)

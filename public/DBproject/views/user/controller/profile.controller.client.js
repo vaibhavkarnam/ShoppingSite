@@ -24,6 +24,7 @@
         model.getAllUserReviews = getAllUserReviews;
         model.updateUserReview = updateUserReview;
         model.reviewDelete = reviewDelete;
+        model.questionDelete = questionDelete;
         model.getReviewById = getReviewById;
         model.getAllUserQuestions = getAllUserQuestions;
         model.getAllQuestions = getAllQuestions;
@@ -152,6 +153,7 @@
             productService
                 .getAllQuestions(userId)
                 .then(function (response) {
+                    console.log("question response");
                     console.log(response);
                     model.allQuestions = response;
                 });
@@ -168,15 +170,27 @@
 
 
         function reviewDelete(reviewId) {
-            console.log("deleting review");
+            console.log("del review");
             productService
                 .deleteReview(reviewId)
                 .then(function (status)
                 {
                     $route.reload();
-                });
+                }
+                );
         }
 
+
+        function questionDelete(questionId) {
+            console.log("del que");
+            productService
+                .deleteQuestion(questionId)
+                .then(function (status)
+                    {
+                        $route.reload();
+                    }
+                );
+        }
 
         function getReviewById(reviewId) {
             productService

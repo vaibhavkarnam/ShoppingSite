@@ -10,6 +10,7 @@ var reviewSchema = mongoose.Schema({
     description: String,
     color:String,
     productid: Number,
+    productName: String,
     _user : {type : mongoose.Schema.Types.ObjectId, ref : "UserModel"}
 
 },{collection: "review"});
