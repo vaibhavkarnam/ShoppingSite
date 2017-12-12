@@ -1,6 +1,4 @@
-/**
-* Created by vaibhav on 14-08-2017.
-*/
+
 (function () {
 angular
 .module("omdbApp")
@@ -29,9 +27,8 @@ function getAnswerById(answerId)
 {
 
     model.answerForUpdate = angular.copy(response[0]);
-    console.log("answer")
+    console.log("answer");
     console.log(model.answerForUpdate);
-    // console.log(model.reviewForUpdate.description);
 });
 }
 
@@ -51,7 +48,8 @@ function logout()
 {
 userService
 .logout()
-.then(function () {
+.then(function ()
+{
     $location.url('/login');
 });
 }

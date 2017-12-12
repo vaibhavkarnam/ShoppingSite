@@ -1,38 +1,32 @@
 
 <nav class="navbar navbar-default navbar-fixed-top">
 <div class="container-fluid">
-<!-- Brand and toggle get grouped for better mobile display -->
+
+
 <div class="navbar-header col-xs-6">
 <div class="row">
-<!--<div class="col-glyphicon-position">-->
-<!--<a class= "wdc-anchor-new"-->
-<!--hrprofile.view.client.htmlhtml">-->
-<!--<span class="glyphicon glyphicon-chevron-left"></span>-->
-<!--</a>-->
-<!--</div>-->
 <div class="col-website-position">
 <a class="navbar-brand"
-   href="#!/profile">Profile</a>
+href="#!/profile">Profile</a>
 </div>
 </div>
 </div>
 
-<!-- Collect the nav links, forms, and other content for toggling -->
 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-<!--<div class="span8 homespan8li">-->
-<!--<div class="account pull-right">-->
 <ul class="nav navbar-nav navbar-right">
-    <li ng-if="!model.user._id"><a href="#!/login">Login</a></li>
-    <li ng-if="!model.user._id"><a href="#!/register" class="a-white">Register</a></li>
-    <li ng-if="model.user._id"><a href="#!/profile">My Account</a></li>
-    <li ng-if="model.user._id"><a ng-click="model.logout()" class= "pointer">Logout</a></li>
-    <li ng-if="model.user.roles.indexOf('ADMIN') > -1"><a href="#!/admin">Admin</a></li>
+<li ng-if="!model.user._id"><a href="#!/login">Login</a></li>
+<li ng-if="!model.user._id"><a href="#!/register" class="a-white">Register</a></li>
+<li ng-if="model.user._id"><a href="#!/profile">My Account</a></li>
+<li ng-if="model.user._id"><a ng-click="model.logout()" class= "pointer">Logout</a></li>
+<li ng-if="model.user.roles.indexOf('ADMIN') > -1"><a href="#!/admin">Admin</a></li>
 </ul>
-<!--</div>-->
-<!--</div>-->
-</div><!-- /.navbar-collapse -->
 
-</div><!-- /.container-fluid -->
+</div>
+
+</div>
+
+
+
 </nav>
 
 
@@ -168,22 +162,22 @@ jQuery('#myTab a:last').tab('show')
 <input  name="userId" value="{{model.user._id}}"   style="display: none"/>
 <button type="submit" class="btn btn-success btn-block">Upload Profile Pic</button>
 <button
-    type="button"
-    class="btn btn-danger btn-block"
-    ng-click = "model.getSellersList()">
+type="button"
+class="btn btn-danger btn-block"
+ng-click = "model.getSellersList()">
 Product Sellers
 </button>
 <!--    <button
-            type="button"
-            class="btn btn-success btn-block"
-            ng-click = "#!/createproduct">
-        Create Product
-    </button>-->
-    <div ng-if="model.user.roles.indexOf('SELLER') > -1" class="button-placement">
-        <a href="#!/createproduct" class="btn btn-block btn-primary image-margin">
-            Create Product
-        </a>
-    </div>
+    type="button"
+    class="btn btn-success btn-block"
+    ng-click = "#!/createproduct">
+Create Product
+</button>-->
+<div ng-if="model.user.roles.indexOf('SELLER') > -1" class="button-placement">
+<a href="#!/createproduct" class="btn btn-block btn-primary image-margin">
+    Create Product
+</a>
+</div>
 
 
 </div>
@@ -192,20 +186,8 @@ Product Sellers
 </div>
 <div class="col-sm-9">
 <div class="tabbable tabs-below" ng-init="selectedTab = 1;">
-<!--<ul class="nav nav-tabs nav-justified">-->
-<!--<li ng-class="{active: selectedTab == 1}">-->
-    <!--<a data-target="#" data-ng-click="selectedTab = 1;">Reviews</a>-->
-<!--</li>-->
-<!--<li ng-class="{active: selectedTab == 2}">-->
-    <!--<a data-target="#" data-ng-click="selectedTab = 2;">Profile</a>-->
-<!--</li>-->
-<!--<li ng-class="{active: selectedTab == 3}">-->
-    <!--<a data-target="#" data-ng-click="selectedTab = 3;">Following</a>-->
-<!--</li>-->
-<!--<li ng-class="{active: selectedTab == 4}">-->
-    <!--<a data-target="#" data-ng-click="selectedTab = 4;">Followers</a>-->
-<!--</li>-->
-<!--</ul>-->
+
+
 
 <ul class="nav nav-tabs nav-justified" id="myTab">
 <li class="active"><a data-target="#profile" data-toggle="tab">Profile</a></li>
@@ -224,356 +206,347 @@ Product Sellers
 
 <div class="tab-content">
 <div class="tab-pane active" id="profile">
-    <div class="tab-content">
-        <div ng-show="model.message" class="alert alert-info">
-            {{model.message}}
-        </div>
-        <form>
-            <div class="form-group">
-                <label for="firstName">First Name</label>
-                <input name="firstName"
-                       ng-model="model.user.firstName"
-                       class="form-control"
-                       id="firstName"
-                       placeholder="First Name"/>
-            </div>
-            <div class="form-group">
-                <label for="lastName">Last Name</label>
-                <input name="lastName"
-                       ng-model="model.user.lastName"
-                       class="form-control"
-                       id="lastName"
-                       placeholder="Last Name"/>
-            </div>
-            <div class="form-group">
-                <label for="username">Username</label>
-                <input name="username"
-                       ng-model="model.user.username"
-                       readonly
-                       class="form-control"
-                       id="username"
-                       value="alice"/>
-            </div>
-            <div class="form-group">
-                <label for="email">Email</label>
-                <input name="email"
-                       ng-model="model.user.email"
-                       type="email"
-                       class="form-control"
-                       id="email"
-                       placeholder="alice@wonderland.com"/>
-            </div>
-            <div class="form-group">
-                <label for="dob">Date Of Birth</label>
-                <input name="dob"
-                       ng-model="model.user.dob"
-                       type="date"
-                       class="form-control"
-                       id="dob"
-                       placeholder="11/12/2017"/>
-            </div>
-        </form>
-        <a class="btn btn-default btn-primary btn-block"
-           ng-click="model.updateUser(model.user)"
-           role="button">Update</a>
-        <a class="btn btn-default btn-danger btn-block"
-           data-ng-click="model.unRegisterUser()"
-           role="button">Unregister</a>
-        <a class="btn btn-default btn-danger btn-block"
-           data-ng-click="model.logout()"
-           role="button">Logout</a>
-
+<div class="tab-content">
+<div ng-show="model.message" class="alert alert-info">
+    {{model.message}}</div>
+<form>
+    <div class="form-group">
+        <label for="firstName">First Name</label>
+        <input name="firstName"
+               ng-model="model.user.firstName"
+               class="form-control"
+               id="firstName"
+               placeholder="First Name"/>
     </div>
+    <div class="form-group">
+        <label for="lastName">Last Name</label>
+        <input name="lastName"
+               ng-model="model.user.lastName"
+               class="form-control"
+               id="lastName"
+               placeholder="Last Name"/></div>
+    <div class="form-group">
+        <label for="username">Username</label>
+        <input name="username"
+               ng-model="model.user.username"
+               readonly
+               class="form-control"
+               id="username"
+               value="alice"/>
+    </div>
+    <div class="form-group">
+        <label for="email">Email</label>
+        <input name="email"
+               ng-model="model.user.email"
+               type="email"
+               class="form-control"
+               id="email"
+               placeholder="alice@wonderland.com"/></div>
+    <div class="form-group">
+        <label for="dob">Date Of Birth</label>
+        <input name="dob"
+               ng-model="model.user.dob"
+               type="date"
+               class="form-control"
+               id="dob"
+               placeholder="11/12/2017"/>
+    </div>
+
+
+</form>
+<a class="btn btn-default btn-primary btn-block"
+   ng-click="model.updateUser(model.user)"
+   role="button">Update</a>
+<a class="btn btn-default btn-danger btn-block"
+   data-ng-click="model.unRegisterUser()"
+   role="button">Unregister</a>
+<a class="btn btn-default btn-danger btn-block"
+   data-ng-click="model.logout()"
+   role="button">Logout</a>
+
+</div>
 </div>
 <div class="tab-pane" id="products">
 <ul class="list-group">
-    <li class="list-group-item active">
-        <div class="row">
-            <div class="col-xs-12">Liked Products
-                <ul class="list-group">
-                    <li class="list-group-item profile-list-gray">
-                        <div class="row">
-                            <div class="col-xs-6">Product Name</div>
-                            <div class="col-xs-3">Brand</div>
-                            <div class="col-xs-3">Price</div>
-
-                        </div>
-                    </li>
-                    <li ng-repeat="product in model.user.products" class="list-group-item">
-                        <div class="row">
-                            <div class="col-xs-6">
-                                <a href="#!/product-details/{{product._id}}">{{product.name}}</a>
-                            </div>
-                            <div class="col-xs-3">
-                                <a href="#!/product-details/{{product._id}}">{{product.brand}}</a>
-                            </div>
-                            <div class="col-xs-3">
-                                <a href="#!/product-details/{{product._id}}">$ {{product.price}}</a>
-                            </div>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </li>
-    <li ng-repeat="website in model.websites" class="list-group-item">
-        <div class="row">
-            <div class="col-xs-12">
-                <a href="#!/user/{{model.userId}}/website/{{website._id}}/page">{{website.name}}</a></div>
-        </div>
-    </li>
-</ul>
-</div>
-<div class="tab-pane" id="reviews">
-    <ul class="list-group">
-        <li class="list-group-item active">
-            <div class="row">
-                <div class="col-xs-5">Your Reviews</div>
-            </div>
-        </li>
-        <div ng-repeat="userReviews in model.allUserReviews">
-            <a ng-click="model.reviewDelete(userReviews._id)" class="btn btn-danger btn-sm pull-right">
-                <i class="fa fa-trash " aria-hidden="true"></i>
-            </a>
-            <a  id = "glyph" href="#!/profile/editReview/{{userReviews._id}}" class="btn btn-primary btn-sm pull-right">
-                <i class="fa fa-pencil " aria-hidden="true"></i>
-            </a>
-            <h5>Product : {{userReviews.productName}}</h5>
-            Description : {{userReviews.description}}
-            <hr>
-        </div>
-    </ul>
-</div>
-<div class="tab-pane" id="queries">
-    <ul class="list-group">
-        <li class="list-group-item active">
-            <div class="row">
-                <div class="col-xs-5">Your questions</div>
-            </div>
-        </li>
-        <div ng-repeat="userQuestion in model.allUserQuestions">
-            <a ng-click="model.questionDelete(userQuestion._id)" class="btn btn-danger btn-sm pull-right">
-                <i class="fa fa-trash " aria-hidden="true"></i>
-            </a>
-            <h5>
-                Product : {{userQuestion.productName}}</h5>
-                Question :{{userQuestion.description}}
-            <br/>
-            Answer : {{userQuestion.answer}}
-            <hr>
-        </div>
-    </ul>
-</div>
-<div class="tab-pane" id="userqueries">
-    <ul class="list-group">
-        <li class="list-group-item active">
-            <div class="row">
-                <div class="col-xs-5">Questions Asked</div>
-            </div>
-        </li>
-        <div ng-repeat="userQuestion in model.allQuestions">
-
-            <a href="#!/profile/answerQuestion/{{userQuestion._id}}" class="btn btn-primary btn-sm pull-right">
-                <i class="fa fa-pencil " aria-hidden="true"></i>
-            </a>
-            <h5>
-                Product : {{userQuestion.productName}}
-                Question :
-
-                {{userQuestion.description}}</h5>
-            Answer : {{userQuestion.answer}}
-            <hr>
-        </div>
-    </ul>
-</div>
-<div class="tab-pane" id="Orders">
-    <ul class="list-group">
-        <li class="list-group-item profile-list-gray">
-            <div class="row">
-                <div class="col-xs-6">Product Name</div>
-                <div class="col-xs-3">Brand</div>
-                <div class="col-xs-3">Price</div>
-
-            </div>
-        </li>
-        <li ng-repeat="order in model.user.orders" class="list-group-item">
-            <div class="row">
-                <div class="col-xs-6">
-                    <a href="#!/product-details/{{order._id}}">{{order.name}}</a>
-                </div>
-                <div class="col-xs-2">
-                    <a href="#!/product-details/{{order._id}}">{{order.brand}}</a>
-                </div>
-                <div class="col-xs-2">
-                    <a href="#!/product-details/{{order._id}}">$ {{order.price}}</a>
-                </div>
-                <div class ="col-xs-2">
-                    <a ng-show="model.user.roles.indexOf('TECHNICIAN') > -1" class="btn btn-default btn-danger btn-block"
-                       data-ng-click="model.deleteProductForOrder(order._id)"
-                       role="button">Delete</a></div>
-            </div>
-        </li>
-    </ul>
-</div>
-<div class="tab-pane" id="Sellers">
-    <ul class="list-group">
-        <li class="list-group-item active">
-            <div class="row">
-                <div class="col-xs-12">Following</div>
-            </div>
-        </li>
-        <li class="list-group-item profile-list-gray">
-            <div class="row">
-                <div class="col-xs-3">Seller Name</div>
-
-            </div>
-        </li>
-        <li ng-repeat="seller in model.user.following" class="list-group-item">
-            <div class="row">
-                <div class="col-xs-6">
-                    <a href="#!/user/{{model.userId}}/website/{{website._id}}/page">{{seller}}</a></div>
-            </div>
-        </li>
-    </ul>
-</div>
-<div class="tab-pane" id="followed">
-    <ul class="list-group">
-        <li class="list-group-item active">
-            <div class="row">
-                <div class="col-xs-12">Followed</div>
-            </div>
-        </li>
-        <li class="list-group-item profile-list-gray">
-            <div class="row">
-                <div class="col-xs-3">Customer Name</div>
-
-            </div>
-        </li>
-        <li ng-repeat="seller in model.user.followed" class="list-group-item">
-            <div class="row">
-                <div class="col-xs-6">
-                    <a href="#!/user/{{model.userId}}/website/{{website._id}}/page">{{seller}}</a></div>
-            </div>
-        </li>
-    </ul>
-
-</div>
-<div class="tab-pane" id="Returns">
-    <ul class="list-group">
-        <li class="list-group-item active">
-            <div class="row">
-                <div class="col-xs-12">Your Returned Products</div>
-            </div>
-        </li>
-        <li class="list-group-item profile-list-gray">
-            <div class="row">
-                <div class="col-xs-6">Product Name</div>
-                <div class="col-xs-2">Brand</div>
-                <div class="col-xs-2">Price</div>
-                <!--<div class="col-xs-2">Status</div>-->
-                <!--<div class="col-xs-1"></div>-->
-            </div>
-        </li>
-        <li ng-repeat="return in model.user.returns" class="list-group-item">
-            <div class="row">
-                <div class="col-xs-6">
-                    <a href="#!/product-details/{{return._id}}">{{return.name}}</a>
-                </div>
-                <div class="col-xs-2">
-                    <a href="#!/product-details/{{return._id}}">{{return.brand}}</a>
-                </div>
-                <div class="col-xs-2">
-                    <a href="#!/product-details/{{return._id}}">$ {{return.price}}</a>
-                </div>
-                <div class ="col-xs-2">
-                    <!--<label ng-if="" class="btn-success"></label>-->
-                    <!--<label ng-if="" class="btn-info"></label>-->
-                    <a ng-show="" class="btn btn-default btn-danger btn-block"
-                       data-ng-click="model.deleteProductForReturn(return._id)"
-                       role="button">Delete</a></div>
-            <!--</div>-->
-        </li>
-    </ul>
-</div>
-    <div class="tab-pane" id="ReturnOrders">
+<li class="list-group-item active">
+<div class="row">
+    <div class="col-xs-12">Liked Products
         <ul class="list-group">
-            <li class="list-group-item active">
-                <div class="row">
-                    <div class="col-xs-12">Returned Products</div>
-                </div>
-            </li>
             <li class="list-group-item profile-list-gray">
                 <div class="row">
                     <div class="col-xs-6">Product Name</div>
-                    <div class="col-xs-2">Brand</div>
-                    <div class="col-xs-2">Price</div>
+                    <div class="col-xs-3">Brand</div>
+                    <div class="col-xs-3">Price</div>
+
 
                 </div>
             </li>
-            <li ng-repeat="return in model.returnedproducts" class="list-group-item">
+            <li ng-repeat="product in model.user.products" class="list-group-item">
                 <div class="row">
                     <div class="col-xs-6">
-                        <a href="#!/product-details/{{return._id}}">{{return.name}}</a>
+                        <a href="#!/product-details/{{product._id}}">{{product.name}}</a>
                     </div>
-                    <div class="col-xs-2">
-                        <a href="#!/product-details/{{return._id}}">{{return.brand}}</a>
+                    <div class="col-xs-3">
+                        <a href="#!/product-details/{{product._id}}">{{product.brand}}</a>
                     </div>
-                    <div class="col-xs-2">
-                        <a href="#!/product-details/{{return._id}}">$ {{return.price}}</a>
+                    <div class="col-xs-3">
+                        <a href="#!/product-details/{{product._id}}">$ {{product.price}}</a>
                     </div>
-                    <div class ="col-xs-2">
-                        <a class="btn btn-default btn-danger btn-block"
-                           data-ng-click="model.deleteProductForReturn(return.returnedproduct,return._id)"
-                           role="button">Delete</a></div>
                 </div>
             </li>
         </ul>
     </div>
+</div>
+</li>
+<li ng-repeat="website in model.websites" class="list-group-item">
+<div class="row">
+    <div class="col-xs-12">
+        <a href="#!/user/{{model.userId}}/website/{{website._id}}/page">{{website.name}}</a></div>
+</div>
+</li>
+</ul>
+</div>
+<div class="tab-pane" id="reviews">
+<ul class="list-group">
+<li class="list-group-item active">
+    <div class="row">
+        <div class="col-xs-5">Your Reviews</div>
+    </div>
+</li>
+<div ng-repeat="userReviews in model.allUserReviews">
+    <a ng-click="model.reviewDelete(userReviews._id)" class="btn btn-danger btn-sm pull-right">
+        <i class="fa fa-trash " aria-hidden="true"></i>
+    </a>
+    <a  id = "glyph" href="#!/profile/editReview/{{userReviews._id}}" class="btn btn-primary btn-sm pull-right">
+        <i class="fa fa-pencil " aria-hidden="true"></i>
+    </a>
+    <h5>Product : {{userReviews.productName}}</h5>
+    Description : {{userReviews.description}}
+    <hr>
+</div>
+</ul>
+</div>
+<div class="tab-pane" id="queries">
+<ul class="list-group">
+<li class="list-group-item active">
+    <div class="row">
+        <div class="col-xs-5">Your questions</div>
+    </div>
+</li>
+<div ng-repeat="userQuestion in model.allUserQuestions">
+    <a ng-click="model.questionDelete(userQuestion._id)" class="btn btn-danger btn-sm pull-right">
+        <i class="fa fa-trash " aria-hidden="true"></i>
+    </a>
+    <h5>
+        Product : {{userQuestion.productName}}</h5>
+        Question :{{userQuestion.description}}
+    <br/>
+    Answer : {{userQuestion.answer}}
+    <hr>
+</div>
+</ul>
+</div>
+<div class="tab-pane" id="userqueries">
+<ul class="list-group">
+<li class="list-group-item active">
+    <div class="row">
+        <div class="col-xs-5">Questions Asked</div>
+    </div>
+</li>
+<div ng-repeat="userQuestion in model.allQuestions">
+
+    <a href="#!/profile/answerQuestion/{{userQuestion._id}}" class="btn btn-primary btn-sm pull-right">
+        <i class="fa fa-pencil " aria-hidden="true"></i>
+    </a>
+    <h5>
+        Product : {{userQuestion.productName}}
+        Question :
+
+        {{userQuestion.description}}</h5>
+    Answer : {{userQuestion.answer}}
+    <hr>
+</div>
+</ul>
+</div>
+<div class="tab-pane" id="Orders">
+<ul class="list-group">
+<li class="list-group-item profile-list-gray">
+    <div class="row">
+        <div class="col-xs-6">Product Name</div>
+        <div class="col-xs-3">Brand</div>
+        <div class="col-xs-3">Price</div>
+
+
+
+    </div>
+</li>
+<li ng-repeat="order in model.user.orders" class="list-group-item">
+    <div class="row">
+        <div class="col-xs-6">
+            <a href="#!/product-details/{{order._id}}">{{order.name}}</a>
+        </div>
+        <div class="col-xs-2">
+            <a href="#!/product-details/{{order._id}}">{{order.brand}}</a>
+        </div>
+        <div class="col-xs-2">
+            <a href="#!/product-details/{{order._id}}">$ {{order.price}}</a></div>
+        <div class ="col-xs-2">
+            <a ng-show="model.user.roles.indexOf('TECHNICIAN') > -1" class="btn btn-default btn-danger btn-block"
+               data-ng-click="model.deleteProductForOrder(order._id)"
+               role="button">Delete</a></div>
+    </div>
+</li>
+</ul>
+</div>
+<div class="tab-pane" id="Sellers">
+<ul class="list-group">
+<li class="list-group-item active">
+    <div class="row">
+        <div class="col-xs-12">Following</div></div>
+</li>
+<li class="list-group-item profile-list-gray">
+    <div class="row">
+        <div class="col-xs-3">Seller Name</div>
+
+    </div>
+</li>
+<li ng-repeat="seller in model.user.following" class="list-group-item">
+    <div class="row">
+        <div class="col-xs-6">
+            <a href="#!/user/{{model.userId}}/website/{{website._id}}/page">{{seller}}</a></div></div>
+</li>
+</ul>
+</div>
+<div class="tab-pane" id="followed">
+<ul class="list-group">
+<li class="list-group-item active">
+    <div class="row">
+        <div class="col-xs-12">Followed</div>
+    </div>
+</li>
+<li class="list-group-item profile-list-gray">
+    <div class="row">
+        <div class="col-xs-3">Customer Name</div>
+
+
+    </div>
+</li>
+<li ng-repeat="seller in model.user.followed" class="list-group-item">
+    <div class="row">
+        <div class="col-xs-6">
+            <a href="#!/user/{{model.userId}}/website/{{website._id}}/page">{{seller}}</a></div></div>
+</li>
+</ul>
+
+</div>
+<div class="tab-pane" id="Returns">
+<ul class="list-group">
+<li class="list-group-item active">
+    <div class="row">
+        <div class="col-xs-12">Your Returned Products</div>
+    </div>
+</li>
+<li class="list-group-item profile-list-gray">
+    <div class="row">
+        <div class="col-xs-6">Product Name</div>
+        <div class="col-xs-2">Brand</div>
+        <div class="col-xs-2">Price</div>
+    </div>
+</li>
+
+
+<li ng-repeat="return in model.user.returns" class="list-group-item">
+    <div class="row">
+        <div class="col-xs-6">
+            <a href="#!/product-details/{{return._id}}">{{return.name}}</a></div>
+        <div class="col-xs-2">
+            <a href="#!/product-details/{{return._id}}">{{return.brand}}</a>
+        </div>
+        <div class="col-xs-2">
+            <a href="#!/product-details/{{return._id}}">$ {{return.price}}</a>
+        </div>
+        <div class ="col-xs-2">
+
+
+
+            <a ng-show="" class="btn btn-default btn-danger btn-block"
+               data-ng-click="model.deleteProductForReturn(return._id)"
+               role="button">Delete</a></div></li>
+</ul>
+</div>
+<div class="tab-pane" id="ReturnOrders">
+<ul class="list-group">
+    <li class="list-group-item active">
+        <div class="row">
+            <div class="col-xs-12">Returned Products</div>
+        </div>
+    </li>
+    <li class="list-group-item profile-list-gray">
+        <div class="row">
+            <div class="col-xs-6">Product Name</div>
+            <div class="col-xs-2">Brand</div>
+            <div class="col-xs-2">Price</div>
+
+
+
+        </div>
+    </li>
+    <li ng-repeat="return in model.returnedproducts" class="list-group-item">
+        <div class="row">
+            <div class="col-xs-6">
+                <a href="#!/product-details/{{return._id}}">{{return.name}}</a>
+            </div>
+            <div class="col-xs-2">
+                <a href="#!/product-details/{{return._id}}">{{return.brand}}</a>
+            </div>
+            <div class="col-xs-2">
+                <a href="#!/product-details/{{return._id}}">$ {{return.price}}</a></div>
+            <div class ="col-xs-2">
+                <a class="btn btn-default btn-danger btn-block"
+                   data-ng-click="model.deleteProductForReturn(return.returnedproduct,return._id)"
+                   role="button">Delete</a></div></div>
+    </li>
+</ul>
+</div>
 <div class="tab-pane" id="yourproducts">
-    <ul class="list-group">
-        <li class="list-group-item active">
-            <div class="row">
-                <div class="col-xs-12">Your Products</div>
-            </div>
-        </li>
-        <li class="list-group-item profile-list-gray">
-            <div class="row">
-                <div class="col-xs-3">Product Name</div>
-                <div class="col-xs-3">Brand</div>
-                <div class="col-xs-3">Price</div>
-                <div class="col-xs-3"></div>
+<ul class="list-group">
+<li class="list-group-item active">
+    <div class="row">
+        <div class="col-xs-12">Your Products</div>
+    </div></li>
+<li class="list-group-item profile-list-gray">
+    <div class="row">
+        <div class="col-xs-3">Product Name</div>
+        <div class="col-xs-3">Brand</div>
+        <div class="col-xs-3">Price</div>
+        <div class="col-xs-3"></div>
 
-            </div>
-        </li>
-        <li ng-repeat="product in model.user.createdProducts" class="list-group-item">
-            <div class="row">
-                <div class="col-xs-3">{{product.name}}</div>
-                <div class="col-xs-3">{{product.brand}}</div>
-                <div class="col-xs-2">{{product.price}}</div>
-                <div class="col-xs-2"><a class="btn btn-default btn-primary btn-block"
-                       data-ng-click="model.updateProduct(product._id)"
-                       role="button">Update</a> </div>
-                <div class ="col-xs-2">
-                    <a class="btn btn-default btn-danger btn-block"
-                       data-ng-click="model.deleteProduct(product._id)"
-                       role="button">Delete</a></div>
-            </div>
-        </li>
-    </ul>
-
-</div>
-</div>
+    </div>
+</li>
+<li ng-repeat="product in model.user.createdProducts" class="list-group-item">
+    <div class="row">
+        <div class="col-xs-3">{{product.name}}</div>
+        <div class="col-xs-3">{{product.brand}}</div>
+        <div class="col-xs-2">{{product.price}}</div>
+        <div class="col-xs-2"><a class="btn btn-default btn-primary btn-block"
+               data-ng-click="model.updateProduct(product._id)"
+               role="button">Update</a> </div>
+        <div class ="col-xs-2">
+            <a class="btn btn-default btn-danger btn-block"
+               data-ng-click="model.deleteProduct(product._id)"
+               role="button">Delete</a></div>
+    </div>
+</li>
+</ul>
 
 </div>
 </div>
+
+
+
 </div>
-
-
-<!--<div class="container-fluid wbd-profile-container">-->
-<!---->
-
-
-<!--</div>-->
+</div>
+</div>
 <div ng-include="'views/common/footer-common.view.client.html'"></div>
 
 

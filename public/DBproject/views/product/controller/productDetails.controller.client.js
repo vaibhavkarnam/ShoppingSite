@@ -1,7 +1,3 @@
-/**
-* Created by Sourabh Punja on 7/21/2017.
-*/
-
 (function () {
 angular
 .module("omdbApp")
@@ -15,23 +11,30 @@ model.updateProduct = updateProduct;
 model.deleteProduct = deleteProduct;
 model.userId = userobject._id;
 model.postNewReview = postNewReview;
+    model.postNewQuestion = postNewQuestion;
+    model.getAllUserQuestions =getAllUserQuestions;
+    model.getProductDetails = getProductDetails;
+    model.logout = logout;
 model.getAllUserReviews =getAllUserReviews;
 model.createProduct = createProduct;
-model.postNewQuestion = postNewQuestion;
-model.getAllUserQuestions =getAllUserQuestions;
-model.getProductDetails = getProductDetails;
-model.logout = logout;
 model.searchProductByName = searchProductByName;
 model.createProductForOrder = createProductForOrder;
 model.createProductForReturn = createProductForReturn;
-function init() {
+
+
+
+function init()
+{
     getAllUserReviews(model.productId);
     getAllUserQuestions(model.productId);
     productService
         .findProductById(model.productId)
-        .then(function (product){
+        .then(function (product)
+
+        {
             model.product = product;
-            if(model.product == "0"){
+            if(model.product == "0")
+            {
                 productService
                     .searchProductByWalmartItemId(model.productId)
                     .then(function (response){
@@ -78,28 +81,34 @@ function init() {
 }
 init();
 
-function createProductForReturn(product){
+function createProductForReturn(product)
+{
     productService
         .createProductForReturn(model.userId,product)
-        .then(function (product){
+        .then(function (product)
+        {
             productService
                 .createReturnInTable(model.userId,product)
                 .then(function (returnproduct){
                     $location.url('/product-details/'+product._id);
             });
-        });
+        }
+        );
 }
 
-function createProductForOrder(product){
+function createProductForOrder(product)
+{
     console.log(product);
     productService
         .createProductForOrder(model.userId,product)
         .then(function (product){
             $location.url('/product-details/'+product._id);
-        });
+        }
+        );
 }
 
-function createProduct(product){
+function createProduct(product)
+{
     console.log(product);
     productService
         .createProduct(model.userId,product)
@@ -108,27 +117,29 @@ function createProduct(product){
         });
 }
 
-//implementation
-function updateProduct(productId){
+function updateProduct(productId)
+{
     $location.url("/updateproduct/"+productId);
 }
 
-function deleteProduct(productId) {
+function deleteProduct(productId)
+{
     productService
         .deleteProduct(productId)
-        .then(function (){
+        .then(function ()
+        {
         $location.url('/');
     });
 }
 
-function searchProductByName(product) {
+function searchProductByName(product)
+{
     $location.path("/list-products/"+product).search({searchInput: product});
-    /*productService
-     .searchProductByName(product)
-     .then(productNames);*/
+
 }
 
-function postNewReview(review) {
+function postNewReview(review)
+{
     model.userReview = review;
     console.log("postingnewreview");
     userService
@@ -150,10 +161,12 @@ function postNewReview(review) {
                     model.userReview.Review = "";
                     $route.reload();
 
-                });
+                }
+                );
         });}
 
-function postNewQuestion(question) {
+function postNewQuestion(question)
+{
     model.userQuestion = question;
     console.log("postingquestion");
     userService
@@ -174,10 +187,12 @@ function postNewQuestion(question) {
                 {model.userQuestion.Question = "";
                     $route.reload();
 
-                });
+                }
+                );
         });}
 
-function getAllUserReviews(productId) {
+function getAllUserReviews(productId)
+{
     model.userReviews =[];
     productService
         .getUserReviews(productId)
@@ -189,10 +204,12 @@ function getAllUserReviews(productId) {
 
                         model.userReviews.push(review);
                 });
-        });
+        }
+        );
 }
 
-function getAllUserQuestions(productId) {
+function getAllUserQuestions(productId)
+{
     model.userQuestions =[];
     productService
         .getUserQuestions(productId)
@@ -205,13 +222,21 @@ function getAllUserQuestions(productId) {
                     if(question.answered === 0)
                     model.userQuestions.push(question);
                 });
-        });
+        }
+        );
 }
-function getProductDetails(productId){
+
+
+function getProductDetails(productId)
+{
     console.log(model.searchInput);
     $location.url("/product-details/"+productId+"?searchInput="+model.searchInput);
 }
-function logout(){
+
+
+
+function logout()
+{
     userService
         .logout()
         .then(function (){

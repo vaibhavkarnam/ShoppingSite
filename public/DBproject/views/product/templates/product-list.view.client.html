@@ -2,163 +2,77 @@
 <link href="bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
 <link href="themes/css/bootstrappage.css" rel="stylesheet"/>
 
-<!-- global styles -->
 <link href="themes/css/flexslider.css" rel="stylesheet"/>
 <link href="themes/css/style.css" rel="stylesheet"/>
 <link href="themes/css/main.css" rel="stylesheet"/>
 <div id="top-bar" class="container">
-	<div class="row">
-		<div class="span4">
-			<!--<form method="POST" class="search_form">-->
-			<!--<input type="text" class="input-block-level search-query" Placeholder="eg. T-sirt">-->
-			<!--</form>-->
-			<input type="text"
-				   class="input-block-level search-query"
-				   id = "TextBoxId"
-				   ng-keyup="$event.keyCode == 13 ? model.searchProductByName(productName) : null"
-				   ng-model="productName"
-				   placeholder="eg. T-shirt">
-			<!--<span class="input-group-btn">-->
-			<!--<button class="btn btn-default"-->
-			<!--ng-click="model.searchProductByName(productName)"-->
-			<!--id = "linkadd"-->
-			<!--type="button">Go!-->
-			<!--</button>-->
-			<!--</span>-->
-		</div>
-		<div class="span8 homespan8li">
-			<div class="account pull-right">
-				<ul class="user-menu">
-					<li ng-if="!model.curretLoggedUser._id"><a href="#!/login">Login</a></li>
-					<li ng-if="!model.curretLoggedUser._id"><a href="#!/register">Register</a></li>
-					<li ng-if="model.curretLoggedUser._id"><a href="#!/profile">My Account</a></li>
-					<li ng-if="model.curretLoggedUser._id"><a ng-click="model.logout()" class= "pointer">Logout</a></li>
-					<li ng-if="model.curretLoggedUser.roles.indexOf('ADMIN') > -1"><a href="#!/admin">Admin</a></li>
-				</ul>
-			</div>
-		</div>
+<div class="row">
+<div class="span4">
+
+	<input type="text"
+		   class="input-block-level search-query"
+		   id = "TextBoxId"
+		   ng-keyup="$event.keyCode == 13 ? model.searchProductByName(productName) : null"
+		   ng-model="productName"
+		   placeholder="eg. T-shirt">
+
+
+</div>
+<div class="span8 homespan8li">
+	<div class="account pull-right">
+		<ul class="user-menu">
+			<li ng-if="!model.curretLoggedUser._id"><a href="#!/login">Login</a></li>
+			<li ng-if="!model.curretLoggedUser._id"><a href="#!/register">Register</a></li>
+			<li ng-if="model.curretLoggedUser._id"><a href="#!/profile">My Account</a></li>
+			<li ng-if="model.curretLoggedUser._id"><a ng-click="model.logout()" class= "pointer">Logout</a></li>
+			<li ng-if="model.curretLoggedUser.roles.indexOf('ADMIN') > -1"><a href="#!/admin">Admin</a></li>
+		</ul>
 	</div>
 </div>
-		<div id="wrapper" class="container">
-			<section class="navbar main-menu">
-				<div class="navbar-inner main-menu">
-					<a href="#!/" class="logo pull-left"><img src="https://github.com/vaibhavkarnam/ShoppingSite/blob/master/public/DBproject/themes/images/logo.png?raw=true" class="site_logo" alt=""></a>
-					<nav id="menu" class="pull-right">
-						<ul>
-							<li><a ng-click="model.searchProductByName('Clothing')" class= "pointer">Clothing</a></li>
-							<li><a ng-click="model.searchProductByName('Electronics')" class= "pointer">Electronics</a></li>
-							<li><a ng-click="model.searchProductByName('Books')" class= "pointer">Books</a></li>
-						</ul>
-					</nav>
-				</div>
-			</section>	
-			<section class="header_text sub">
-			<img class="" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRR-YVxhI4W6PtaZdRc9VHBuoJXp9W8o83DTo4dcWxJNhK4cnf-hg" alt="New products" >
-				<h4><span>Product List</span></h4>
-			</section>
-			<section class="main-content">
-
-				<div class="row">						
-					<div class="span12">
-						<ul class="thumbnails listing-products list-group">
-							<li ng-repeat="product in model.productList" class="span3 list-group-item productlistli">
-								<div class="product-box">
-									<span class="sale_tag"></span>												
-									<a href="" ng-click="model.getProductDetails(product.itemId)"><img class= "productlistliimage" alt="" src="{{product.imageEntities[0].mediumImage}}"></a><br/>
-									<a href="" ng-click="model.getProductDetails(product.itemId)" class="title">{{product.name}}</a><br/>
-									<a><img alt="" src="{{product.customerRatingImage}}" height="140px"></a><br/>
-									<!--<a href="#" class="category">Phasellus consequat</a>-->
-									<p class="price">$ {{product.salePrice}}</p>
-								</div>
-							</li>
-						</ul>								
-						<hr>
-					</div>
-<!--					<div class="span3 col">
-						<div class="block">	
-							<ul class="nav nav-list">
-								<li class="nav-header">SUB CATEGORIES</li>
-								<li><a hrproduct-list.view.client.htmlhtml">Nullam semper elementum</a></li>
-								<li class="active"><a hrproduct-list.view.client.htmlhtml">Phasellus ultricies</a></li>
-								<li><a hrproduct-list.view.client.htmlhtml">Donec laoreet dui</a></li>
-								<li><a hrproduct-list.view.client.htmlhtml">Nullam semper elementum</a></li>
-								<li><a hrproduct-list.view.client.htmlhtml">Phasellus ultricies</a></li>
-								<li><a hrproduct-list.view.client.htmlhtml">Donec laoreet dui</a></li>
-							</ul>
-							<br/>
-							<ul class="nav nav-list below">
-								<li class="nav-header">MANUFACTURES</li>
-								<li><a hrproduct-list.view.client.htmlhtml">Adidas</a></li>
-								<li><a hrproduct-list.view.client.htmlhtml">Nike</a></li>
-								<li><a hrproduct-list.view.client.htmlhtml">Dunlop</a></li>
-								<li><a hrproduct-list.view.client.htmlhtml">Yamaha</a></li>
-							</ul>
-						</div>
-						<div class="block">
-							<h4 class="title">
-								<span class="pull-left"><span class="text">Randomize</span></span>
-								<span class="pull-right">
-									<a class="left button" href="#myCarousel" data-slide="prev"></a><a class="right button" href="#myCarousel" data-slide="next"></a>
-								</span>
-							</h4>
-							<div id="myCarousel" class="carousel slide">
-								<div class="carousel-inner">
-									<div class="active item">
-										<ul class="thumbnails listing-products">
-											<li class="span3">
-												<div class="product-box">
-													<span class="sale_tag"></span>												
-													<img alt="" src="../themes/images/ladies/1.jpg"><br/>
-													<a hrproduct-details.view.client.htmlhtml" class="title">Fusce id molestie massa</a><br/>
-													<a href="#" class="category">Suspendisse aliquet</a>
-													<p class="price">$261</p>
-												</div>
-											</li>
-										</ul>
-									</div>
-									<div class="item">
-										<ul class="thumbnails listing-products">
-											<li class="span3">
-												<div class="product-box">												
-													<img alt="" src="../themes/images/ladies/2.jpg"><br/>
-													<a hrproduct-details.view.client.htmlhtml" class="title">Tempor sem sodales</a><br/>
-													<a href="#" class="category">Urna nec lectus mollis</a>
-													<p class="price">$134</p>
-												</div>
-											</li>
-										</ul>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="block">								
-							<h4 class="title"><strong>Best</strong> Seller</h4>								
-							<ul class="small-product">
-								<li>
-									<a href="#" title="Praesent tempor sem sodales">
-										<img src="../themes/images/ladies/3.jpg" alt="Praesent tempor sem sodales">
-									</a>
-									<a href="#">Praesent tempor sem</a>
-								</li>
-								<li>
-									<a href="#" title="Luctus quam ultrices rutrum">
-										<img src="../themes/images/ladies/4.jpg" alt="Luctus quam ultrices rutrum">
-									</a>
-									<a href="#">Luctus quam ultrices rutrum</a>
-								</li>
-								<li>
-									<a href="#" title="Fusce id molestie massa">
-										<img src="../themes/images/ladies/5.jpg" alt="Fusce id molestie massa">
-									</a>
-									<a href="#">Fusce id molestie massa</a>
-								</li>   
-							</ul>
-						</div>
-					</div>-->
-				</div>
-			</section>
-			<section id="copyright">
-				<span>Copyright 2013 bootstrappage template  All right reserved.</span>
-			</section>
+</div>
+</div>
+<div id="wrapper" class="container">
+	<section class="navbar main-menu">
+		<div class="navbar-inner main-menu">
+			<a href="#!/" class="logo pull-left"><img src="https://github.com/vaibhavkarnam/ShoppingSite/blob/master/public/DBproject/themes/images/logo.png?raw=true" class="site_logo" alt=""></a>
+			<nav id="menu" class="pull-right">
+				<ul>
+					<li><a ng-click="model.searchProductByName('Clothing')" class= "pointer">Clothing</a></li>
+					<li><a ng-click="model.searchProductByName('Electronics')" class= "pointer">Electronics</a></li>
+					<li><a ng-click="model.searchProductByName('Books')" class= "pointer">Books</a></li>
+				</ul>
+			</nav>
 		</div>
-		<script src="../../../themes/js/common.js"></script>
+	</section>
+	<section class="header_text sub">
+	<img class="" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRR-YVxhI4W6PtaZdRc9VHBuoJXp9W8o83DTo4dcWxJNhK4cnf-hg" alt="New products" >
+		<h4><span>Product List</span></h4>
+	</section>
+	<section class="main-content">
+
+		<div class="row">
+			<div class="span12">
+				<ul class="thumbnails listing-products list-group">
+					<li ng-repeat="product in model.productList" class="span3 list-group-item productlistli">
+						<div class="product-box">
+							<span class="sale_tag"></span>
+							<a href="" ng-click="model.getProductDetails(product.itemId)"><img class= "productlistliimage" alt="" src="{{product.imageEntities[0].mediumImage}}"></a><br/>
+							<a href="" ng-click="model.getProductDetails(product.itemId)" class="title">{{product.name}}</a><br/>
+							<a><img alt="" src="{{product.customerRatingImage}}" height="140px"></a><br/>
+							<!--<a href="#" class="category">Phasellus consequat</a>-->
+							<p class="price">$ {{product.salePrice}}</p>
+						</div>
+					</li>
+				</ul>
+				<hr>
+			</div>
+
+
+
+		</div>
+	</section>
+	<section id="copyright">
+		<span>Copyright 2013 bootstrappage template  All right reserved.</span>
+	</section>
+</div>
+<script src="../../../themes/js/common.js"></script>

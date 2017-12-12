@@ -1,77 +1,82 @@
 <nav class="navbar navbar-default navbar-fixed-top">
-    <div class="container-fluid">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header col-xs-6">
-            <div class="row">
-                <div class="col-glyphicon-position">
-                    <a class= "wdc-anchor-new"
-                       href="#!/login">
-                        <span class="glyphicon glyphicon-chevron-left"></span>
-                    </a>
-                </div>
-                <div class="col-website-position">
-                    <a class="navbar-brand"
-                       href="#!/register">Register</a>
-                </div>
-            </div>
+<div class="container-fluid">
+<div class="navbar-header col-xs-6">
+    <div class="row">
+        <div class="col-glyphicon-position">
+            <a class= "wdc-anchor-new"
+               href="#!/login">
+                <span class="glyphicon glyphicon-chevron-left"></span>
+            </a>
         </div>
+        <div class="col-website-position">
+            <a class="navbar-brand"
+               href="#!/register">Register</a>
+        </div>
+    </div>
+</div>
 
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <!-- /.navbar-collapse -->
-    </div><!-- /.container-fluid -->
+</div>
 </nav>
 
 <div class="container-fluid">
-    <div ng-show="model.error" class="alert alert-danger">
-        {{model.error}}
-    </div>
-    <label for="username">Username</label>
-    <input name="username"
-           ng-model="user.username"
-           class="form-control"
-           id="username"
-           placeholder="username"/>
+<div ng-show="model.error" class="alert alert-danger">
+{{model.error}}
+</div>
+<label for="username">Username</label>
+<input name="username"
+   ng-model="user.username"
+   class="form-control"
+   id="username"
+   placeholder="username"/>
 
-    <label for="password">Password</label>
-    <input name="password"
-           type="password"
-           ng-model="user.password"
-           class="form-control"
-           id="password"
-           placeholder="password"/>
-    <label for="password2">Verify Password</label>
-    <input name="password2"
-           ng-model="user.password2"
-           type="password"
-           class="form-control"
-           id="password2"
-           placeholder="verify password"/>
-   <div class="row">
-    <div class="col-lg-2 hidden-sm">  <label for="password2">User Type</label></div>
-    <div class="col-lg-8 col-sm-12">
-        <select class="form-control"
-                placeholder="Create a Password"
-                id="usertype"
-                ng-model="usertype">
-            <option value="" disabled selected>Select User Type</option>
-            <option value="CUSTOMER">Customer</option>
-            <option value="SELLER">Seller</option>
-            <option value="TECHNICIAN">Technician</option>
-            <option value="REPRESENTATIVE">Customer Support</option>
-        </select>
-    </div>
-    <div class="col-lg-2 hidden-sm"></div>
+
+
+<label for="password">Password</label>
+<input name="password"
+   type="password"
+   ng-model="user.password"
+   class="form-control"
+   id="password"
+   placeholder="password"/>
+
+
+<label for="password2">Verify Password</label>
+<input name="password2"
+   ng-model="user.password2"
+   type="password"
+   class="form-control"
+   id="password2"
+   placeholder="verify password"/>
+
+<div class="row">
+<div class="col-lg-2 hidden-sm">
+<label for="password2">User Type</label></div>
+<div class="col-lg-8 col-sm-12">
+<select class="form-control"
+        placeholder="Create a Password"
+        id="usertype"
+        ng-model="usertype">
+    <option value="" disabled selected>Select User Type</option>
+    <option value="CUSTOMER">Customer</option>
+    <option value="SELLER">Seller</option>
+    <option value="TECHNICIAN">Technician</option>
+    <option value="REPRESENTATIVE">Customer Support</option>
+</select>
+</div>
+<div class="col-lg-2 hidden-sm"></div>
 </div>
 
-    <a class="btn btn-default btn-primary btn-block"
-       ng-click="model.registerUser(user,usertype)"
-       role="button">Register</a>
-    <a class="btn btn-default btn-danger btn-block"
-       href="#!/login"
-       role="button">Cancel</a>
 
-    <nav class="navbar navbar-default navbar-fixed-bottom">
 
-    </nav>
+<a class="btn btn-default btn-primary btn-block"
+ng-click="model.registerUser(user,usertype)"
+role="button">Register</a>
+<a class="btn btn-default btn-danger btn-block"
+href="#!/login"
+role="button">Cancel</a>
+
+<nav class="navbar navbar-default navbar-fixed-bottom">
+
+</nav>
 
 </div>

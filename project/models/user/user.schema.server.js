@@ -1,6 +1,3 @@
-/**
- * Created by Sourabh Punja on 8/4/2017.
- */
 var mongoose = require('mongoose');
 
 var userSchema = mongoose.Schema({
@@ -8,16 +5,12 @@ var userSchema = mongoose.Schema({
     password: String,
     firstName: String,
     lastName: String,
-    image_url: String,
     roles: [{type:String,default:'USER',enum:['USER','CUSTOMER','SELLER','ADMIN','REPRESENTATIVE','TECHNICIAN']}],
-    email: String,
     dob: Date,
+    email: String,
     isAdmin: Boolean,
-    google:{
-        id: String,
-        token: String
-    },
     dateCreated: {type: Date,default: Date.now()},
+    image_url: String,
     UserReview : [{type:mongoose.Schema.Types.ObjectId, ref:"ProductModel"}],
     UserQuestion : [{type:mongoose.Schema.Types.ObjectId, ref:"ProductModel"}],
     products: [{type: mongoose.Schema.Types.ObjectId, ref: "ProductModel"}],

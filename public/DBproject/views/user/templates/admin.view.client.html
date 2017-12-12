@@ -1,171 +1,156 @@
 
 <nav class="navbar navbar-default navbar-fixed-top">
-    <div class="container-fluid">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header col-xs-6">
-            <div class="row">
-                <!--<div class="col-glyphicon-position">-->
-                <!--<a class= "wdc-anchor-new"-->
-                <!--hrprofile.view.client.htmlhtml">-->
-                <!--<span class="glyphicon glyphicon-chevron-left"></span>-->
-                <!--</a>-->
-                <!--</div>-->
-                <div class="col-website-position">
-                    <a class="navbar-brand "
-                       href="#!/admin">Admin</a>
-                </div>
-            </div>
-        </div>
+<div class="container-fluid">
+<div class="navbar-header col-xs-6">
+<div class="row">
+    <div class="col-website-position">
+        <a class="navbar-brand "
+           href="#!/admin">Admin</a>
+    </div></div>
+</div>
 
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <!--<div class="span8 homespan8li">-->
-            <!--<div class="account pull-right">-->
-            <ul class="nav navbar-nav navbar-right">
-                <li ng-if="!model.user._id"><a href="#!/login">Login</a></li>
-                <li ng-if="!model.user._id"><a href="#!/register" class="a-white">Register</a></li>
-                <li ng-if="model.user._id"><a href="#!/profile">My Account</a></li>
-                <li ng-if="model.user._id"><a ng-click="model.logout()" class= "pointer">Logout</a></li>
-                <li ng-if="model.user.roles.indexOf('ADMIN') > -1"><a href="#!/admin">Admin</a></li>
-            </ul>
-            <!--</div>-->
-            <!--</div>-->
-        </div><!-- /.navbar-collapse -->
+<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
-    </div><!-- /.container-fluid -->
+
+
+
+<ul class="nav navbar-nav navbar-right">
+    <li ng-if="!model.user._id"><a href="#!/login">Login</a></li>
+    <li ng-if="!model.user._id"><a href="#!/register" class="a-white">Register</a></li>
+    <li ng-if="model.user._id"><a href="#!/profile">My Account</a></li>
+    <li ng-if="model.user._id"><a ng-click="model.logout()" class= "pointer">Logout</a></li>
+    <li ng-if="model.user.roles.indexOf('ADMIN') > -1"><a href="#!/admin">Admin</a></li>
+</ul>
+
+
+
+</div>
+
+</div>
 </nav>
 
 
 
 <div class="container-fluid">
 
-        <div class="list-group taj-bottom-margin taj-top-margin">
-            <div class="list-group-item active">
-                <div class="row">
-                    <!--<div class="col-xs-9 col-lg-5">-->
-                    <div class="col-xs-3">
-                        Users
-                    </div>
-                    <div class="col-xs-3">
-                        First Name
-                    </div>
-                    <!--<div class="col-lg-3 hidden-md hidden-sm hidden-xs">-->
-                    <div class="col-xs-2">
-                        Last Name
-                    </div>
-                    <div class="col-xs-2">
-                        Type
-                    </div>
-                    <div class="col-xs-1">
-                        <div class="pull-right">Update</div>
-                        <!--<a ng-click="model.createNewuser()"-->
-                           <!--ng-show="!model.userList"-->
-                           <!--class="navbar-link pull-right">-->
-                            <!--<span class="glyphicon glyphicon-plus admin-white"></span>-->
-                        <!--</a>-->
-                    </div>
-                    <div class="col-xs-1 pull-right">
-                        <div class="pull-right">Delete</div>
-                    </div>
-                </div>
-            </div>
-            <div ng-repeat="user in model.userList">
-                <div class="list-group-item">
-                    <div class="row">
-                        <div class="col-xs-3">
-                            <a ng-click="model.updateUser(user._id)"
-                               class="navbar-link pull-left">
-                                {{user.username}}
-                            </a>
-                        </div>
-                        <div class="col-xs-3">
-                            <a href="#!/admin/user/{{user._id}}/edit">
-                                {{user.firstName}}
-                            </a>
-                        </div>
-                        <div class="col-xs-2">
-                            <a href="#!/admin/user/{{user._id}}/edit">
-                                {{user.lastName}}
-                            </a>
-                        </div>
-                        <div class="col-xs-2">
-                            <label>
-                            <div ng-repeat="role in user.roles">
-                                <div ng-show="role!='USER'">
-                                        {{role}}
-                                </div>
-                            </div>
-                            </label>
+<div class="list-group taj-bottom-margin taj-top-margin">
+<div class="list-group-item active">
+    <div class="row">
+        <div class="col-xs-3">
+            Users
+        </div>
+        <div class="col-xs-3">
+            First Name
+        </div>
+        <div class="col-xs-2">
+            Last Name
+        </div>
+        <div class="col-xs-2">
+            Type
+        </div>
+        <div class="col-xs-1">
+            <div class="pull-right">Update</div>
 
-                            <!--<select class="form-control"-->
-                                    <!--id="usertype"-->
-                                    <!--ng-model="user.usertype">-->
-                                <!--<option value="patient">Patient</option>-->
-                                <!--<option value="doctor">Doctor</option>-->
-                                <!--<option value="agent">Agent</option>-->
-                                <!--<option value="admin">Admin</option>-->
-                            <!--</select>-->
 
-                            <!--{{user.userType}}-->
-                        </div>
-                        <div class="col-xs-1">
-                            <a ng-click="model.updateUser(user._id)"
-                                 class="navbar-link pull-right">
-                                <span class="glyphicon glyphicon-ok"></span>
-                            </a>
-                        </div>
-                        <div class="col-xs-1">
-                            <a ng-click="model.deleteUser(user._id)"
-                                 class="navbar-link pull-right">
-                                <span class="glyphicon glyphicon-remove"></span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
+
+        </div>
+        <div class="col-xs-1 pull-right">
+            <div class="pull-right">Delete</div>
+        </div>
+    </div>
+</div>
+<div ng-repeat="user in model.userList">
+    <div class="list-group-item">
+        <div class="row">
+            <div class="col-xs-3">
+                <a ng-click="model.updateUser(user._id)"
+                   class="navbar-link pull-left">
+                    {{user.username}}
+                </a></div>
+
+
+            <div class="col-xs-3">
+                <a href="#!/admin/user/{{user._id}}/edit">
+                    {{user.firstName}}
+                </a>
             </div>
-            <div class="list-group-item">
-                <div class="row">
-                    <div class="col-xs-3">
-                        <input class="form-control"
-                               id="name"
-                               name="name"
-                               ng-model="model.newUser.username"
-                               placeholder="Username"/>
-                    </div>
-                    <div class="col-xs-3">
-                        <input class="form-control"
-                               id="password"
-                               name="password"
-                               ng-model="model.newUser.password"
-                               placeholder="Password"/>
-                    </div>
-                    <div class="col-xs-3">
-                        <select class="form-control"
-                                placeholder="Type"
-                                id = "userType"
-                                ng-model="model.newUser.userType">
-                            <option value="" disabled selected>Select User Type</option>
-                            <option value="CUSTOMER">Customer</option>
-                            <option value="SELLER">Seller</option>
-                            <option value="TECHNICIAN">Technician</option>
-                            <option value="REPRESENTATIVE">Customer Support</option>
-                        </select>
-                    </div>
-                    <div class="col-xs-3">
-                        <a ng-click="model.createNewUser(model.newUser)"
-                           class="btn btn-default btn-block btn-success">Create
-                        </a>
+            <div class="col-xs-2">
+                <a href="#!/admin/user/{{user._id}}/edit">
+                    {{user.lastName}}
+                </a></div>
+
+            <div class="col-xs-2">
+                <label>
+                <div ng-repeat="role in user.roles">
+                    <div ng-show="role!='USER'">
+                            {{role}}
                     </div>
                 </div>
+                </label>
+
+            </div>
+            <div class="col-xs-1">
+
+                <a ng-click="model.updateUser(user._id)"
+                     class="navbar-link pull-right">
+                    <span class="glyphicon glyphicon-ok"></span>
+                </a>
+            </div>
+            <div class="col-xs-1">
+
+                <a ng-click="model.deleteUser(user._id)"
+                     class="navbar-link pull-right">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
             </div>
         </div>
-
     </div>
+</div>
+<div class="list-group-item">
+    <div class="row">
+        <div class="col-xs-3">
+            <input class="form-control"
+                   id="name"
+                   name="name"
+                   ng-model="model.newUser.username"
+                   placeholder="Username"/>
+        </div>
+        <div class="col-xs-3">
+            <input class="form-control"
+                   id="password"
+                   name="password"
+                   ng-model="model.newUser.password"
+                   placeholder="Password"/>
+        </div>
+        <div class="col-xs-3">
+            <select class="form-control"
+                    placeholder="Type"
+                    id = "userType"
+                    ng-model="model.newUser.userType">
+                <option value="" disabled selected>Select User Type</option>
+                <option value="CUSTOMER">Customer</option>
+                <option value="SELLER">Seller</option>
+                <option value="TECHNICIAN">Technician</option>
+                <option value="REPRESENTATIVE">Customer Support</option>
+            </select>
+        </div>
+        <div class="col-xs-3">
+            <a ng-click="model.createNewUser(model.newUser)"
+               class="btn btn-default btn-block btn-success">Create
+            </a>
+        </div>
+    </div>
+</div>
+</div>
+
+</div>
 
 
 
 
-    <div ng-include="'views/common/footer-common.view.client.html'"></div>
+
+
+<div ng-include="'views/common/footer-common.view.client.html'"></div>
 
 
 

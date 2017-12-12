@@ -17,13 +17,6 @@ passport.deserializeUser(deserializeUser);
 
 
 
-var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
-var googleConfig = {
-clientID     : process.env.GOOGLE_CLIENT_ID,
-clientSecret : process.env.GOOGLE_CLIENT_SECRET,
-callbackURL  : process.env.GOOGLE_CALLBACK_URL
-};
-passport.use(new GoogleStrategy(googleConfig, googleStrategy));
 app.get("/api/users",isAdmin,getAllUsers);
 app.get("/api/user/:userId",getUserById);
 app.get("/api/user",findUser);
@@ -37,61 +30,23 @@ app.post("/api/upload/project",upload.single('myFile'), uploadImage);
 app.get("/api/checkLoggedIn", checkLoggedIn);
 app.get("/api/checkAdmin", checkAdmin);
 app.post("/api/logout", logout);
-app.get('/auth/google', passport.authenticate('google', { scope : ['profile', 'email'] }));
-app.get('/auth/google/callback',
-passport.authenticate('google', {
-successRedirect: '/assignment/#!/profile',
-failureRedirect: '/assignment/#!/login'
-}));
+
+
 app.get("/api/seller", getSellersList);
 app.post("/api/seller/followMe", followMe);
 
-function getSellersList(req, res){
+function getSellersList(req, res)
+{
 userModel.getSellersList()
 .then(function (owners){
     res.json(owners);
 })
 }
 
-function googleStrategy(token, refreshToken, profile, done) {
-userModel
-.findUserByGoogleId(profile.id)
-.then(
-    function(user) {
-        if(user) {
-            return done(null, user);
-        } else {
-            var email = profile.emails[0].value;
-            var emailParts = email.split("@");
-            var newGoogleUser = {
-                username:  emailParts[0],
-                firstName: profile.name.givenName,
-                lastName:  profile.name.familyName,
-                email:     email,
-                google: {
-                    id:    profile.id,
-                    token: token
-                }
-            };
-            return userModel.createUser(newGoogleUser);
-        }
-    },
-    function(err) {
-        if (err) { return done(err); }
-    }
-)
-.then(
-    function(user){
-        return done(null, user);
-    },
-    function(err){
-        if (err) { return done(err); }
-    }
-);
-}
 
 
-function followMe(req, res){
+function followMe(req, res)
+{
 var user = req.user;
 var body = req.body;
 var userId = body.userId._id;
@@ -124,7 +79,8 @@ var photourl     = '/DBProject/uploads/'+filename;
 
 return userModel
 .findUserById(userId)
-.then(function (user) {
+.then(function (user)
+{
     user.image_url=photourl;
     userModel
         .updateUser(userId, user)
@@ -138,7 +94,8 @@ return userModel
 });
 }
 
-function unRegisterUser(req,res){
+function unRegisterUser(req,res)
+{
 userModel
 .deleteUser(req.user._id)
 .then(function (status){
@@ -146,7 +103,8 @@ userModel
 });
 }
 
-function checkAdmin(req,res){
+function checkAdmin(req,res)
+{
 if(req.isAuthenticated() && req.user.roles.indexOf('ADMIN') > -1){
 res.json(req.user)
 } else{
@@ -154,17 +112,20 @@ res.send('0');
 }
 }
 
-function logout(req,res){
+function logout(req,res)
+{
 req.logout();
 res.sendStatus(200);
 }
 
 
-function deleteUser(req, res) {
+function deleteUser(req, res)
+{
 var userId = req.params.userId;
 userModel
 .findUserById(userId)
-.then(function (user) {
+.then(function (user)
+{
        userModel
            .deleteUser(userId)
            .then(function (status){
@@ -175,7 +136,8 @@ userModel
 });}
 
 
-function checkLoggedIn(req,res){
+function checkLoggedIn(req,res)
+{
 if(req.isAuthenticated()){
 res.json(req.user)
 } else{
@@ -183,15 +145,18 @@ res.send('0');
 }
 }
 
-function localStrategy(username, password, done) {
+function localStrategy(username, password, done)
+{
 userModel
 .findUserByCredentials(username, password)
 .then(
-    function(user) {
+    function(user)
+    {
         if (!user) {
             done(null, false);
         }
-        else{
+        else
+            {
             done(null, user);
         }
     },
@@ -203,11 +168,13 @@ userModel
 );
 }
 
-function serializeUser(user, done) {
+function serializeUser(user, done)
+{
 done(null, user);
 }
 
-function deserializeUser(user, done) {
+function deserializeUser(user, done)
+{
 userModel
 .findUserById(user._id)
 .then(
@@ -221,23 +188,22 @@ userModel
 }
 
 
-function updateUser(req, res){
+function updateUser(req, res)
+{
 var userId = req.params.userId;
 var user = req.body;
-// console.log(typeof user.dob);
+
 
 userModel
 .updateUser(userId,user)
-.then(function (status){
-    // console.log(status);
-    // res.json(status);
+.then(function (status)
+{
     return userModel
         .findUserById(userId);
 },function (err){
     res.sendStatus(404).send(err);
 })
 .then(function (user){
-    // console.log(user);
     res.json(user);
     return;
 },function (err) {
@@ -251,7 +217,8 @@ userModel
 
 
 
-function registerUser(req, res) {
+function registerUser(req, res)
+{
 var user = req.body;
 userModel
 .createUser(user)
@@ -263,24 +230,29 @@ userModel
 }
 
 
-function login(req,response){
+function login(req,response)
+{
 var user = req.user;
 response.json(user);
 }
 
 
-function findUser(req,response){
+function findUser(req,response)
+{
 var username = req.query.username;
 var password = req.query.password;
 var body = req.body;
-if (username && password){
+if (username && password)
+{
 userModel
     .findUserByCredentials(username,password)
-    .then(function (user) {
+    .then(function (user)
+    {
         // console.log(user);
         response.json(user);
         return;
-    },function (err) {
+    },function (err)
+    {
         response.sendStatus(404).send(err);
         return;
         // }
@@ -300,20 +272,39 @@ userModel
 return;
 }
 response.send("0");
+
 }
 
-function getAllUsers(req,response) {
+function getUserById(req,response)
+{
+
+    var userId = req.params.userId;
+    userModel
+        .findUserById(userId)
+        .then(function (user) {
+            console.log(user);
+            response.json(user);
+        });
+}
+
+
+
+function getAllUsers(req,response)
+{
 userModel
 .findAllUsers()
-.then(function (users) {
+.then(function (users)
+{
     response.json(users);
     return;
-},function (err) {
+},function (err)
+{
     response.sendStatus(404).send(err);
     return;
 });}
 
-function isAdmin(req,res,next) {
+function isAdmin(req,res,next)
+{
 console.log(req.user);
 if (req.isAuthenticated()&& req.user.roles.indexOf('ADMIN') > -1){
 next();
@@ -321,17 +312,8 @@ next();
 res.sendStatus(401);}
 }
 
-function getUserById(req,response){
-
-var userId = req.params.userId;
-userModel
-.findUserById(userId)
-.then(function (user) {
-    console.log(user);
-    response.json(user);
-});}
-
-function createUser(request, response) {
+function createUser(request, response)
+{
 var newuser = request.body;
 userModel
 .createUser(newuser)

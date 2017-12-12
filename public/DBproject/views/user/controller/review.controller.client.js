@@ -29,10 +29,8 @@ function getReviewById(reviewId)
 {
 
     console.log(response);
-    model.reviewForUpdate = angular.copy(response[0]);
-    // console.log(model.reviewForUpdate);
-    // console.log(model.reviewForUpdate.description);
-});
+    model.reviewForUpdate = angular.copy(response[0]);}
+    );
 }
 
 function reviewUpdate(reviewId,review)

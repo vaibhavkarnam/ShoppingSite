@@ -1,30 +1,32 @@
 (function(){
-    angular
-        .module("omdbApp")
-        .controller("sellerListController", sellerListController);
+angular
+.module("omdbApp")
+.controller("sellerListController", sellerListController);
 
-    function sellerListController($location, $rootScope,userService, userobject){
-        var model = this;
-        this.followMe = followMe;
+function sellerListController($location, $rootScope,userService, userobject){
+var model = this;
+this.followMe = followMe;
 
-        function init(){
-            //model.userId = loggedUser._id;/*$routeParams["userId"];*/
-            var usr = userobject;
-            model.user = usr;
+function init(){
+    var usr = userobject;
+    model.user = usr;
 
-            userService.getSellersList()
-                .then(function (response){
-                    model.sellersList = response.data;
-                })
-        }init();
+    userService.getSellersList()
+        .then(function (response){
+            model.sellersList = response.data;})
+}
 
-        function followMe(sellerName){
-            userService
-                .followMe(sellerName, model.user)
-                .then(function (response){
-                    response.send(200);
-                })
-        }
 
-    }
+
+init();
+
+function followMe(sellerName){
+    userService
+        .followMe(sellerName, model.user)
+        .then(function (response){
+            response.send(200);})
+
+}
+
+}
 })();
