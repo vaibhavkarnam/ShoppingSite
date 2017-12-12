@@ -73,9 +73,10 @@
                 <div class="list-group-item">
                     <div class="row">
                         <div class="col-xs-3">
-                        <a href="#!/admin/user/{{user._id}}/edit">
-                            {{user.username}}
-                        </a>
+                            <a ng-click="model.updateUser(user._id)"
+                               class="navbar-link pull-left">
+                                {{user.username}}
+                            </a>
                         </div>
                         <div class="col-xs-3">
                             <a href="#!/admin/user/{{user._id}}/edit">
