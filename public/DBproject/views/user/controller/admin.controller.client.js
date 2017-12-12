@@ -22,6 +22,7 @@
         model.deleteUser = deleteUser;
         model.createNewUser = createNewUser;
         model.updateUser = updateUser;
+        model.logout = logout;
 
 
         function init() {
@@ -61,6 +62,14 @@
 
         function editUser(userId) {
             $location("/admin/user/" + userId +"/edit");
+        }
+
+        function logout(){
+            userService
+                .logout()
+                .then(function (){
+                    $location.url('/login');
+                });
         }
 
         function createNewUser(usernew) {
