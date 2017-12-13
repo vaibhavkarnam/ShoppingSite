@@ -7,7 +7,7 @@ if(process.env.MLAB_USERNAME_WEBDEV)
     var username = process.env.MLAB_USERNAME_WEBDEV;
     var password = process.env.MLAB_PASSWORD_WEBDEV;
     connectionString = 'mongodb://' + username + ':' + password;
-    connectionString += '@ds129459.mlab.com:29459/heroku_4kxrfc6l';
+    connectionString += '@ds137826.mlab.com:37826/shoppersite';
 }
 
 
