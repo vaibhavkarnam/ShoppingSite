@@ -164,6 +164,7 @@ jQuery('#myTab a:last').tab('show')
 <button
 type="button"
 class="btn btn-danger btn-block"
+ng-show="model.user.roles.indexOf('CUSTOMER') > -1 || model.user.roles.indexOf('ADMIN') > -1"
 ng-click = "model.getSellersList()">
 Product Sellers
 </button>
@@ -173,7 +174,7 @@ Product Sellers
     ng-click = "#!/createproduct">
 Create Product
 </button>-->
-<div ng-if="model.user.roles.indexOf('SELLER') > -1" class="button-placement">
+<div ng-if="model.user.roles.indexOf('SELLER') > -1 || model.user.roles.indexOf('ADMIN') > -1" class="button-placement">
 <a href="#!/createproduct" class="btn btn-block btn-primary image-margin">
     Create Product
 </a>
