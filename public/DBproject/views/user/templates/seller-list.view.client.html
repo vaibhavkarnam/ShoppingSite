@@ -16,7 +16,7 @@
 </nav>
 <div>
 <ul class="list-group">
-<div ng-repeat = "owner in model.sellersList" class="wd-widget">
+<div ng-repeat = "owner in model.sellersList track by $index" class="wd-widget">
     <li class="list-group-item">
         <div>
             <a href="">{{owner.username}}</a>

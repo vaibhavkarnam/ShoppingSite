@@ -24,7 +24,7 @@ function followMe(sellerName){
     userService
         .followMe(sellerName, model.user)
         .then(function (response){
-            response.send(200);})
+            })
 
 }
 

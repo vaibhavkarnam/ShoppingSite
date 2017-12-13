@@ -411,7 +411,7 @@ Create Product
 
     </div>
 </li>
-<li ng-repeat="seller in model.user.following" class="list-group-item">
+<li ng-repeat="seller in model.user.following track by $index" class="list-group-item">
     <div class="row">
         <div class="col-xs-6">
             <a href="#!/user/{{model.userId}}/website/{{website._id}}/page">{{seller}}</a></div></div>
