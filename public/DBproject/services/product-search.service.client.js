@@ -38,6 +38,12 @@ this.deleteProductForOrder= deleteProductForOrder;
 this.createProductForReturn = createProductForReturn;
 this.deleteProductForReturn= deleteProductForReturn;
 this.createReturnInTable = createReturnInTable;
+this.createReturnInTable = createReturnInTable;
+this.findReturnByUserIdAndProductId = findReturnByUserIdAndProductId;
+
+function findReturnByUserIdAndProductId(){
+
+}
 
 function getAllReturnedProducts()
 {

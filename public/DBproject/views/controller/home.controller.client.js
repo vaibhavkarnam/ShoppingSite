@@ -40,12 +40,21 @@ init();
 
 function searchProductByName(product)
 {
-$location.path("/list-products/"+product).search({searchInput: product});
+    console.log(product);
+    if(product == null){
+        product = "Clothing";
+        $location.path("/list-products/"+product).search({searchInput: product});
+    }
+    else{
+        $location.path("/list-products/"+product).search({searchInput: product});
+    }
+
 
 }
 
-function getProductDetails(productId)
+function getProductDetails(productId,searchInput)
 {
+    model.searchInput = searchInput;
 console.log(model.searchInput);
 $location.url("/product-details/"+productId+"?searchInput="+model.searchInput);
 }

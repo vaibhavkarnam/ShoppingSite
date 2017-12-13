@@ -25,6 +25,7 @@ model.createProductForReturn = createProductForReturn;
 
 function init()
 {
+
     getAllUserReviews(model.productId);
     getAllUserQuestions(model.productId);
     productService
@@ -78,8 +79,18 @@ function init()
         console.log(pronames.data);
         model.productList = pronames.items;
     }
+    // model.return = findReturnByUserIdAndProductId(model.userId,model.productId)
 }
 init();
+
+// function findReturnByUserIdAndProductId(userId,productId)
+// {
+//     productService
+//         .findReturnByUserIdAndProductId(userId,productId)
+//         .then(function (returned)){
+//
+//         }
+// }
 
 function createProductForReturn(product)
 {
