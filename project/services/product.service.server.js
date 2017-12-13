@@ -85,7 +85,6 @@ var body = req.body;
 var userId = body.userId;
 var product = body.product;
 var onereturn = {user:userId,name:product.name,brand:product.brand,price:product.price,isApproved:false,returnedproduct:product._id};
-console.log(onereturn);
 return returnModel
     .createReturn(onereturn)
     .then(function (createdreturn)
@@ -297,8 +296,6 @@ var obj=req.body;
 reviewModel
     .createReview(obj).then(function (response)
 {
-    console.log("in revieww");
-    console.log(response);
     res.sendStatus(200);
 }
 );
@@ -311,7 +308,6 @@ var obj=req.body;
 queryModel
     .createQuery(obj).then(function (response)
 {
-    console.log(response);
     res.sendStatus(200);
 }
 );
@@ -322,12 +318,9 @@ function getReviewByProductId(req,res)
 {
 
 var ReviewId = req.params.productId;
-console.log(ReviewId);
 reviewModel.
 getReviewforId(ReviewId).then(function (reviews)
     {
-        console.log("---");
-        console.log(reviews);
         res.json(reviews);
     }
     );
@@ -340,8 +333,6 @@ var QuestionId = req.params.productId;
 queryModel.
 getQueryforId(QuestionId).then(function (questions)
 {
-    console.log("---");
-    console.log(questions);
     res.json(questions);
 });
 }
@@ -349,7 +340,6 @@ getQueryforId(QuestionId).then(function (questions)
 
 function findProductById(req,res)
 {
-console.log("ins server");
 var productId = req.params.productId;
 if(mongoose.Types.ObjectId.isValid(productId))
 {
@@ -432,7 +422,6 @@ reviewModel
 function deleteQuestion(req, res)
 {
 var Id = req.params.questionId;
-console.log(Id);
 queryModel
     .deleteQuery(Id)
     .then(function (status)
@@ -457,8 +446,6 @@ function answerQuestion(req, res)
 {
 var question = req.body;
 var Id = req.params.answerId;
-console.log(question);
-console.log(Id);
 queryModel
     .updateQuery(Id, question)
     .then(function (response)
@@ -517,13 +504,11 @@ queryModel
 
 function findReviewByReviewId(req, res)
 {
-console.log("getting reviews");
 var reviewId = req.params.reviewId;
 reviewModel
     .findReviewById(reviewId)
     .then(function (response)
     {
-        console.log(response);
         res.json(response);
     });
 }
@@ -546,7 +531,6 @@ queryModel
     .findQueryById(queryId)
     .then(function (response)
     {
-        console.log(response);
         res.json(response);
     });
 }
